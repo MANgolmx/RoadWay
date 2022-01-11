@@ -4,19 +4,30 @@ using namespace sf;
 
 int main()
 {
+
+#pragma region INITIALIZATION
+
 	int window_width = 1200, window_height = 800;
 
-	RenderWindow window(VideoMode(window_width, window_height), "SFMLworks");
+	RenderWindow window(VideoMode(window_width, window_height), "HexagonHighway");
 	CircleShape shape(100.f);
 	shape.setFillColor(Color::Green);
 
-	while (window.isOpen())
+#pragma endregion
+
+	while (window.isOpen()) //Цикл программы
 	{
 		Event event;
-		while (window.pollEvent(event))
+		while (window.pollEvent(event)) //Цикл событий
 		{
-			if (event.type == Event::Closed)
+			switch (event.type)
+			{
+			case Event::Closed:
 				window.close();
+
+
+
+			}
 		}
 
 		window.clear();
