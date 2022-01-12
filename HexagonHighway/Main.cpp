@@ -1,4 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include "Hexagon.h"
+#include "DrivableHex.h"
+#include "NonDrivableHex.h"
 
 using namespace sf;
 

@@ -155,7 +155,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrivableHex.cpp" />
+    <ClCompile Include="Hexagon.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NonDrivableHex.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DrivableHex.h" />
+    <ClInclude Include="Hexagon.h" />
+    <ClInclude Include="NonDrivableHex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
