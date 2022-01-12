@@ -5,10 +5,12 @@ enum types { undefiened, straight, turned, turned_mirrored, threeway_y, fourway_
 
 class DrivableHex:public Hexagon
 {
+private:
 	types type;
 
-
-	DrivableHex();
+public:
+	DrivableHex(std::string path);
 	~DrivableHex();
-
+	
+	types GetType();
 };

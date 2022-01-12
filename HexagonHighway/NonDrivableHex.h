@@ -4,5 +4,8 @@
 class NonDrivableHex:public Hexagon
 {
 
+public:
+	NonDrivableHex();
+	~NonDrivableHex();
 
 };

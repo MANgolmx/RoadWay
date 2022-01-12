@@ -16,6 +16,8 @@ int main()
 	CircleShape shape(100.f);
 	shape.setFillColor(Color::Green);
 
+	DrivableHex hexagon("resources/hexagons/Hexagon.png");
+
 #pragma endregion
 
 	while (window.isOpen()) //Цикл программы
@@ -34,7 +36,7 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);
+		window.draw(hexagon.GetHexSprite());
 		window.display();
 	}
 
