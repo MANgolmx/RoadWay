@@ -9,25 +9,19 @@ struct Point
 	int x, y;
 };
 
+enum directions { up, up_right, down_right, down, down_left, up_left };
+
 class Hexagon
 {
-private:
+protected:
+public:
 	Texture hexagon_texture;
 	Sprite hexagon_sprite;
 
 	Point position;
-	int direction;
-	// direction = 0 -> up
-	// direction = 1 -> up-right
-	// direction = 2 -> down-right
-	// direction = 3 -> down
-	// direction = 4 -> down-left
-	// direction = 5 -> up-left
+	Point mainPosition;
+	directions direction;
 
-	// TODO: directions -> enum
-	// TODO: Hexagon -> virtual
-
-public:
 	Hexagon();
 	Hexagon(std::string path);
 	~Hexagon();
@@ -35,8 +29,13 @@ public:
 	Point GetPosition();
 	void SetPosition(Point pos);
 
+	void SetMainPosition(Point pos);
+	Point GetMainPosition();
+
 	int GetDirection();
-	void SetDirection(int dir);
+	void SetDirection(directions dir);
+
+	void Rotation();
 
 	Texture GetHexTexture();
 	Sprite GetHexSprite();
