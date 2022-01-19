@@ -1,5 +1,10 @@
 #include "DrivableCell.h"
 
+DrivableCell::DrivableCell()
+{
+	type = undefiened;
+}
+
 DrivableCell::DrivableCell(std::string path)
 {
 	type = undefiened;
@@ -11,6 +16,17 @@ DrivableCell::DrivableCell(std::string path)
 
 	square_sprite.setTexture(square_texture);
 	square_sprite.setPosition(position.x, position.y);
+}
+
+DrivableCell::DrivableCell(int num, int tsize[4], int flowers, int trashes, int cities)
+{
+	int tmp;
+	int size = num;
+	mas = new DrivableCell[size];
+	for (int i = 0; i < size; i++) {
+		tmp = rand() % 10 + 1;
+		
+	}
 }
 
 DrivableCell::~DrivableCell()

@@ -23,6 +23,11 @@ Cell::Cell(std::string path)
 	square_sprite.setPosition(50, 25);
 }
 
+Cell::Cell(int flowers, int cities)
+{
+
+}
+
 Cell::~Cell()
 {
 }

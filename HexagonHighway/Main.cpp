@@ -1,20 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
+#include "help.cpp"
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 
 using namespace sf;
-
-bool isBelong(Vector2i a, DrivableCell cell)
-{
-	if (a.x >= cell.GetPosition().x &&
-		a.x <= cell.GetPosition().x + 100 &&
-		a.y >= cell.GetPosition().y &&
-		a.y <= cell.GetPosition().y + 100)
-		return true;
-	return false;
-}
 
 int main()
 {
@@ -25,7 +16,7 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	DrivableCell cell("resources/cells/straight_flowers_1.png");
+	DrivableCell cell();
 
 #pragma endregion
 
