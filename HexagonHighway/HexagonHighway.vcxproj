@@ -24,6 +24,7 @@
     <ProjectGuid>{1e7fef2f-ed63-439d-aacb-a9516b535883}</ProjectGuid>
     <RootNamespace>HexagonHighway</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>RoadWay</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -155,15 +156,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DrivableHex.cpp" />
-    <ClCompile Include="Hexagon.cpp" />
+    <ClCompile Include="DrivableCell.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="NonDrivableHex.cpp" />
+    <ClCompile Include="NonDrivableCell.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DrivableHex.h" />
-    <ClInclude Include="Hexagon.h" />
-    <ClInclude Include="NonDrivableHex.h" />
+    <ClInclude Include="DrivableCell.h" />
+    <ClInclude Include="Cell.h" />
+    <ClInclude Include="NonDrivableCell.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

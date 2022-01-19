@@ -18,24 +18,24 @@
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Hexagon.cpp">
+    <ClCompile Include="Cell.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="DrivableHex.cpp">
+    <ClCompile Include="DrivableCell.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="NonDrivableHex.cpp">
+    <ClCompile Include="NonDrivableCell.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hexagon.h">
+    <ClInclude Include="Cell.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="DrivableHex.h">
+    <ClInclude Include="DrivableCell.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="NonDrivableHex.h">
+    <ClInclude Include="NonDrivableCell.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

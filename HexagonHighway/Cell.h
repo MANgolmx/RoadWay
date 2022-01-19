@@ -9,22 +9,22 @@ struct Point
 	int x, y;
 };
 
-enum directions { up, up_right, down_right, down, down_left, up_left };
+enum directions { up, right, down, left };
 
-class Hexagon
+class Cell
 {
 protected:
 public:
-	Texture hexagon_texture;
-	Sprite hexagon_sprite;
+	Texture square_texture;
+	Sprite square_sprite;
 
 	Point position;
 	Point mainPosition;
 	directions direction;
 
-	Hexagon();
-	Hexagon(std::string path);
-	~Hexagon();
+	Cell();
+	Cell(std::string path);
+	~Cell();
 
 	Point GetPosition();
 	void SetPosition(Point pos);
@@ -37,7 +37,7 @@ public:
 
 	void Rotation();
 
-	Texture GetHexTexture();
-	Sprite GetHexSprite();
+	Texture GetCellTexture();
+	Sprite GetCellSprite();
 
 };
