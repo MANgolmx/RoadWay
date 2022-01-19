@@ -25,7 +25,7 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	DrivableCell cell("resources/cells/Cell.png");
+	DrivableCell cell("resources/cells/straight_flowers_1.png");
 
 #pragma endregion
 
