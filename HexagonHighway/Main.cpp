@@ -6,12 +6,12 @@
 
 using namespace sf;
 
-bool isBelong(Vector2i a, DrivableCell hex)
+bool isBelong(Vector2i a, DrivableCell cell)
 {
-	if (a.x >= hex.GetPosition().x &&
-		a.x <= hex.GetPosition().x + 100 &&
-		a.y >= hex.GetPosition().y + 25 &&
-		a.y <= hex.GetPosition().y + 75)
+	if (a.x >= cell.GetPosition().x &&
+		a.x <= cell.GetPosition().x + 100 &&
+		a.y >= cell.GetPosition().y &&
+		a.y <= cell.GetPosition().y + 100)
 		return true;
 	return false;
 }

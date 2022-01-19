@@ -95,5 +95,3 @@ Sprite Cell::GetCellSprite()
 {
 	return square_sprite;
 }
-
-//TODO: Сделать ориджин для каждого из возможных поворотов
