@@ -14,7 +14,6 @@ enum directions { up, right, down, left };
 class Cell
 {
 protected:
-public:
 	Texture square_texture;
 	Sprite square_sprite;
 
@@ -22,12 +21,16 @@ public:
 	Point mainPosition;
 	directions direction;
 
+public:
 	Cell();
 	Cell(std::string path);
 	~Cell();
 
 	Point GetPosition();
 	void SetPosition(Point pos);
+	void SetPosition(int x, int y);
+
+	void ReSetPosition();
 
 	void SetMainPosition(Point pos);
 	Point GetMainPosition();

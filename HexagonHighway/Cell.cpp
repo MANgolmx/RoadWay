@@ -15,17 +15,12 @@ Cell::Cell()
 Cell::Cell(std::string path)
 {
 	if (!square_texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open Hexagon.png" << std::endl;
+		std::cout << "[ERROR OCURRED] Can not open Cell.png" << std::endl;
 		exit(1);
 	}
 
 	square_sprite.setTexture(square_texture);
 	square_sprite.setPosition(50, 25);
-}
-
-Cell::Cell(int flowers, int cities)
-{
-
 }
 
 Cell::~Cell()
@@ -41,6 +36,18 @@ void Cell::SetPosition(Point pos)
 {
 	position.x = pos.x;
 	position.y = pos.y;
+}
+
+void Cell::SetPosition(int x, int y)
+{
+	position.x = x;
+	position.y = y;
+}
+
+void Cell::ReSetPosition()
+{
+	position.x = position.x + mainPosition.x;
+	position.y = position.y + mainPosition.y;
 }
 
 void Cell::SetMainPosition(Point pos)

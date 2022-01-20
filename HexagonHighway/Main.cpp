@@ -7,8 +7,26 @@
 
 using namespace sf;
 
+bool isBelong(Vector2i a, DrivableCell cell)
+{
+	if (a.x >= cell.GetPosition().x &&
+		a.x <= cell.GetPosition().x + 100 &&
+		a.y >= cell.GetPosition().y &&
+		a.y <= cell.GetPosition().y + 100)
+		return true;
+	return false;
+}
+
+void SetPath(DrivableCell* mas, const int N, int straight, int turned, int threeway, int fourway)
+{
+	for (int i = 0; i < N; i++)
+		mas[i].SetType(straight, turned, threeway, fourway);
+}
+
 int main()
 {
+	srand(time(0));
+	const int N = 10;
 
 #pragma region INITIALIZATION
 
@@ -16,7 +34,8 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	DrivableCell cell();
+	DrivableCell cell[N];
+	SetPath(cell, N, 10, 0, 0, 0);
 
 #pragma endregion
 
@@ -29,17 +48,20 @@ int main()
 			{
 			case Event::Closed:
 				window.close();
+				break;
 			case Event::MouseButtonPressed:
-				if (isBelong(Mouse::getPosition(window), cell))
-				{
-					cell.Rotation();
-				}
+				for (int i = 0; i < N; i++)
+					if (isBelong(Mouse::getPosition(window), cell[i]))
+					{
+						cell[i].Rotation();
+					}
+				break;
 			}
 		}
-		
 
 		window.clear();
-		window.draw(cell.GetCellSprite());
+		for (int i = 0; i < N; i++)
+			window.draw(cell[i].GetCellSprite());
 		window.display();
 	}
 
