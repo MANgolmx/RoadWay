@@ -10,9 +10,9 @@ using namespace sf;
 bool isBelong(Vector2i a, DrivableCell cell)
 {
 	if (a.x >= cell.GetPosition().x &&
-		a.x <= cell.GetPosition().x + 100 &&
+		a.x <= cell.GetPosition().x + 101 &&
 		a.y >= cell.GetPosition().y &&
-		a.y <= cell.GetPosition().y + 100)
+		a.y <= cell.GetPosition().y + 101)
 		return true;
 	return false;
 }
@@ -26,7 +26,7 @@ void SetPath(DrivableCell* mas, const int N, int straight, int turned, int three
 int main()
 {
 	srand(time(0));
-	const int N = 10;
+	const int N = 11;
 
 #pragma region INITIALIZATION
 
@@ -35,7 +35,7 @@ int main()
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	DrivableCell cell[N];
-	SetPath(cell, N, 10, 0, 0, 0);
+	SetPath(cell, N, 11, 0, 0, 0);
 
 #pragma endregion
 
@@ -59,9 +59,9 @@ int main()
 			}
 		}
 
-		for (int i = 0; i < N; i++)
-			cell[i].SetPosition(i * 100, 0);
-
+		for (int i = 0; i < N - 1; i++)
+			cell[i].SetPosition(i * 101, 0);
+		cell[10].SetPosition(0, 101);
 
 		window.clear();
 		for (int i = 0; i < N; i++)

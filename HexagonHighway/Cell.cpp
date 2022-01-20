@@ -78,17 +78,17 @@ void Cell::Rotation()
 	{
 	case up: 
 		square_sprite.rotate(90);
-		square_sprite.setOrigin(0, 100);
+		square_sprite.setOrigin(0, 101);
 		direction = right;
 		break;
 	case right:
 		square_sprite.rotate(90);
-		square_sprite.setOrigin(100, 100);
+		square_sprite.setOrigin(101, 101);
 		direction = down;
 		break;
 	case down:
 		square_sprite.rotate(90);
-		square_sprite.setOrigin(100, 0);
+		square_sprite.setOrigin(101, 0);
 		direction = left;
 		break;
 	case left:
