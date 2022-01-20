@@ -32,13 +32,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 {
 	std::string path;
 
-	int a = rand() % 2;
-	switch (a) {
-	case 0: goto straightRand;
-	case 1: goto turnedRand;
-	}
-
-	straightRand:
+	
 	if (straight > 0)
 	{
 		type = types::straight;
@@ -72,7 +66,6 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 		return;
 	}
 
-	turnedRand:
 	if (turned > 0)
 	{
 		type = types::turned;
@@ -95,5 +88,4 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 		turned--;
 		return;
 	}
-	goto straightRand;
 }
