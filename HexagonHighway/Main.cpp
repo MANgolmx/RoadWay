@@ -26,7 +26,7 @@ void SetPath(DrivableCell* mas, const int N, int straight, int turned, int three
 int main()
 {
 	srand(time(0));
-	const int N = 11;
+	const int N = 12;
 
 #pragma region INITIALIZATION
 
@@ -35,7 +35,7 @@ int main()
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	DrivableCell cell[N];
-	SetPath(cell, N, 11, 0, 0, 0);
+	SetPath(cell, N, 11, 1, 0, 0);
 
 #pragma endregion
 
