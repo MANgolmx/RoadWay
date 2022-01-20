@@ -32,6 +32,13 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 {
 	std::string path;
 
+	int a = rand() % 4;
+	switch (a) {
+	case 0: direction = up; break;
+	case 1: direction = right; break;
+	case 2: direction = down; break;
+	case 3: direction = left; break;
+	}
 	
 	if (straight > 0)
 	{
