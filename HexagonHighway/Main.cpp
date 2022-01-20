@@ -60,7 +60,7 @@ int main()
 
 		for (int i = 0; i < N - 1; i++)
 			cell[i].SetPosition(i * 101, 0);
-		cell[10].SetPosition(0, 101);
+		cell[11].SetPosition(0, 101);
 
 		window.clear();
 		for (int i = 0; i < N; i++)
