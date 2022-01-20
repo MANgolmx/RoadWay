@@ -30,7 +30,7 @@ int main()
 
 #pragma region INITIALIZATION
 
-	int window_width = 1200, window_height = 800;
+	int window_width = 1212, window_height = 808;
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
@@ -50,9 +50,10 @@ int main()
 				window.close();
 				break;
 			case Event::MouseButtonPressed:
-				for (int i = 0; i < N; i++)
-					if (isBelong(Mouse::getPosition(window), cell[i]))
-						cell[i].Rotation();
+				if (Mouse::isButtonPressed(Mouse::Button::Left))
+					for (int i = 0; i < N; i++)
+						if (isBelong(Mouse::getPosition(window), cell[i]))
+							cell[i].Rotation();
 				break;
 			}
 		}

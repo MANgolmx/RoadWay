@@ -68,7 +68,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 
 		int tmp = rand() % 1;
 		switch (tmp) {
-		case 0: path = "resources\\cells\\turned_flowers_1.png";break;
+		case 0: path = "resources\\cells\\turned_flowers_1.png"; break;
 		}
 
 		if (!square_texture.loadFromFile(path)) {
