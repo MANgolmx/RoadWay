@@ -37,7 +37,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	{
 		type = types::straight;
 
-		int tmp = rand() % 24;
+		int tmp = rand() % 25;
 		switch (tmp) {
 		case 4: case 8: case 12: case 22:
 		case 0: path = "resources\\cells\\straight\\straight_flowers_1.png";		 break;
@@ -53,6 +53,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 		case 17: path = "resources\\cells\\straight\\straight_trashbin_4.png";	 break;
 		case 18: path = "resources\\cells\\straight\\straight_trashbin_5.png";	 break;
 		case 19: path = "resources\\cells\\straight\\straight_trashbin_6.png";	 break;
+		case 25: path = "resources\\cells\\straight\\straight_busstop_1.png";	 break;
 		}
 
 		if (!square_texture.loadFromFile(path)) {
@@ -70,12 +71,14 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	{
 		type = types::turned;
 
-		int tmp = rand() % 4;
+		int tmp = rand() % 6;
 		switch (tmp) {
 		case 0: path = "resources\\cells\\turned\\turned_flowers_1.png"; break;
 		case 1: path = "resources\\cells\\turned\\turned_flowers_2.png"; break;
 		case 2: path = "resources\\cells\\turned\\turned_flowers_3.png"; break;
 		case 3: path = "resources\\cells\\turned\\turned_flowers_4.png"; break;
+		case 4: path = "resources\\cells\\turned\\turned_busstop_1.png"; break;
+		case 5: path = "resources\\cells\\turned\\turned_busstop_2.png"; break;
 		}
 
 		if (!square_texture.loadFromFile(path)) {
