@@ -34,11 +34,12 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 
 	int a = rand() % 4;
 	switch (a) {
-	case 0: direction = up; break;
-	case 1: direction = right; break;
-	case 2: direction = down; break;
-	case 3: direction = left; break;
+	case 0: Cell::direction = up; break;
+	case 1: Cell::direction = right; break;
+	case 2: Cell::direction = down; break;
+	case 3: Cell::direction = left; break;
 	}
+	Rotation();
 	
 	if (straight > 0)
 	{
@@ -60,11 +61,11 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 		case 17: path = "resources\\cells\\straight\\straight_trashbin_4.png";	 break;
 		case 18: path = "resources\\cells\\straight\\straight_trashbin_5.png";	 break;
 		case 19: path = "resources\\cells\\straight\\straight_trashbin_6.png";	 break;
-		case 25: path = "resources\\cells\\straight\\straight_busstop_1.png";	 break;
+		case 24: path = "resources\\cells\\straight\\straight_busstop_1.png";	 break;
 		}
 
 		if (!square_texture.loadFromFile(path)) {
-			std::cout << "[ERROR OCURRED] Can not open Cell.png" << std::endl;
+			std::cout << "[ERROR OCURRED] Can not open Straight.png" << std::endl;
 			exit(1);
 		}
 
@@ -89,7 +90,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 		}
 
 		if (!square_texture.loadFromFile(path)) {
-			std::cout << "[ERROR OCURRED] Can not open Cell.png" << std::endl;
+			std::cout << "[ERROR OCURRED] Can not open Turned.png" << std::endl;
 			exit(1);
 		}
 
