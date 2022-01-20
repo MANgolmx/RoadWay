@@ -59,6 +59,10 @@ int main()
 			}
 		}
 
+		for (int i = 0; i < N; i++)
+			cell[i].SetPosition(i * 100, 0);
+
+
 		window.clear();
 		for (int i = 0; i < N; i++)
 			window.draw(cell[i].GetCellSprite());

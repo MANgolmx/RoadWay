@@ -42,6 +42,7 @@ void Cell::SetPosition(int x, int y)
 {
 	position.x = x;
 	position.y = y;
+	square_sprite.setPosition(position.x, position.y);
 }
 
 void Cell::ReSetPosition()
