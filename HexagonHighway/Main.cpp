@@ -52,9 +52,7 @@ int main()
 			case Event::MouseButtonPressed:
 				for (int i = 0; i < N; i++)
 					if (isBelong(Mouse::getPosition(window), cell[i]))
-					{
 						cell[i].Rotation();
-					}
 				break;
 			}
 		}

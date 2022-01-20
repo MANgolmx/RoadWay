@@ -35,18 +35,22 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	{
 		type = types::straight;
 
-		int tmp = rand() % 10;
+		int tmp = rand() % 20;
 		switch (tmp) {
+		case 4: case 8: case 12:
 		case 0: path = "resources\\cells\\straight_flowers_1.png";   break;
+		case 5: case 9: case 13:
 		case 1: path = "resources\\cells\\straight_flowers_2.png";	 break;
+		case 6: case 10:
 		case 2: path = "resources\\cells\\straight_flowers_3.png"; 	 break;
+		case 7: case 11:
 		case 3: path = "resources\\cells\\straight_flowers_4.png";	 break;
-		case 4: path = "resources\\cells\\straight_trashbin_1.png";	 break;
-		case 5: path = "resources\\cells\\straight_trashbin_2.png";	 break;
-		case 6: path = "resources\\cells\\straight_trashbin_3.png";	 break;
-		case 7: path = "resources\\cells\\straight_trashbin_4.png";	 break;
-		case 8: path = "resources\\cells\\straight_trashbin_5.png";	 break;
-		case 9: path = "resources\\cells\\straight_trashbin_6.png";	 break;
+		case 14: path = "resources\\cells\\straight_trashbin_1.png";	 break;
+		case 15: path = "resources\\cells\\straight_trashbin_2.png";	 break;
+		case 16: path = "resources\\cells\\straight_trashbin_3.png";	 break;
+		case 17: path = "resources\\cells\\straight_trashbin_4.png";	 break;
+		case 18: path = "resources\\cells\\straight_trashbin_5.png";	 break;
+		case 19: path = "resources\\cells\\straight_trashbin_6.png";	 break;
 		}
 
 		if (!square_texture.loadFromFile(path)) {
