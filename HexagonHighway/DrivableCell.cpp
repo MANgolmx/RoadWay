@@ -48,9 +48,6 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	case 1: goto turnedRand;
 	}
 
-	while (true)
-	{
-
 	straightRand:
 		if (straight > 0)
 		{
@@ -111,6 +108,6 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 			turned--;
 			return;
 		}
-		goto straightRand;
-	}
+
+	goto straightRand;
 }
