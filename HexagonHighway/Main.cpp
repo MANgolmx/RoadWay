@@ -10,9 +10,9 @@ using namespace sf;
 bool isBelong(Vector2i a, DrivableCell cell)
 {
 	if (a.x >= cell.GetPosition().x &&
-		a.x <= cell.GetPosition().x + 101 &&
+		a.x <= cell.GetPosition().x + cell.GetCellTexture().getSize().x &&
 		a.y >= cell.GetPosition().y &&
-		a.y <= cell.GetPosition().y + 101)
+		a.y <= cell.GetPosition().y + cell.GetCellTexture().getSize().y)
 		return true;
 	return false;
 }
