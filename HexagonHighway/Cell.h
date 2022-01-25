@@ -23,6 +23,7 @@ protected:
 
 public:
 	Cell();
+	Cell(const Cell& cell);
 	Cell(std::string path);
 	~Cell();
 

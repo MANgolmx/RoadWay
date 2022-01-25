@@ -12,6 +12,15 @@ Cell::Cell()
 	direction = up;
 }
 
+Cell::Cell(const Cell& cell)
+{
+	position.x = cell.position.x;
+	position.y = cell.position.y;
+	mainPosition.x = cell.mainPosition.x;
+	mainPosition.y = cell.mainPosition.y;
+	direction = cell.direction;
+}
+
 Cell::Cell(std::string path)
 {
 	if (!square_texture.loadFromFile(path)) {

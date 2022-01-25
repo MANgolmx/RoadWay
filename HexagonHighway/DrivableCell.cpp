@@ -5,6 +5,16 @@ DrivableCell::DrivableCell()
 	type = undefiened;
 }
 
+DrivableCell::DrivableCell(const DrivableCell& cell)
+{
+	position.x = cell.position.x;
+	position.y = cell.position.y;
+	mainPosition.x = cell.mainPosition.x;
+	mainPosition.y = cell.mainPosition.y;
+	direction = cell.direction;
+	type = cell.type;
+}
+
 DrivableCell::DrivableCell(std::string path)
 {
 	type = undefiened;
