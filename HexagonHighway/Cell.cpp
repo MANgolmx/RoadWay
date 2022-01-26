@@ -32,10 +32,11 @@ Point Cell::GetPosition()
 	return position;
 }
 
-void Cell::SetPosition()
+void Cell::SetPosition(Cell cell)
 {
-	position.x = mainPosition.x * GetCellTexture().getSize().x;
-	position.y = mainPosition.y * GetCellTexture().getSize().y;
+	position.x = cell.position.x + mainPosition.x * GetCellTexture().getSize().x;
+	position.y = cell.position.y + mainPosition.y * GetCellTexture().getSize().y;
+	square_sprite.setPosition(position.x, position.y);
 }
 
 void Cell::SetPosition(Point pos)

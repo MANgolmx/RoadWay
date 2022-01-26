@@ -27,7 +27,7 @@
     <ClCompile Include="NonDrivableCell.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="assistant.cpp">
+    <ClCompile Include="Assistant.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="NonDrivableCell.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="assistant.h">
+    <ClInclude Include="Assistant.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

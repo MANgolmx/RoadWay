@@ -27,7 +27,7 @@ public:
 	~Cell();
 
 	Point GetPosition();
-	void SetPosition();
+	void SetPosition(Cell cell);
 	void SetPosition(Point pos);
 	void SetPosition(int x, int y);
 

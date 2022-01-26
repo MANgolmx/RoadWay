@@ -8,3 +8,7 @@ void SetPath(DrivableCell* mas, const int N,
 	int straight, int turned, int threeway, int fourway);
 
 void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window);
+
+void ReadMainPositions(const int N, DrivableCell cell[]);
+
+void SetPositions(const int N, DrivableCell cell[]);

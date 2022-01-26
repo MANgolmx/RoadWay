@@ -2,7 +2,7 @@
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
-#include "assistant.h"
+#include "Assistant.h"
 
 using namespace sf;
 
@@ -20,11 +20,12 @@ int main()
 	DrivableCell cell[N];
 	SetPath(cell, N, 11, 1, 0, 0);
 
-		for (int i = 0; i < N - 1; i++)
-			cell[i].SetPosition(i * 101, 0);
-		cell[11].SetPosition(0, 101);
+	ReadMainPositions(N, cell);
+	SetPositions(N, cell);
 
 #pragma endregion
+
+		//TODO: Добавить обнуление выбора после каждого клика
 
 	while (window.isOpen()) //Цикл программы
 	{

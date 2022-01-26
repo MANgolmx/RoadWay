@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <math.h>
+#include <iostream>
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
@@ -43,4 +44,33 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
 		for (int i = 0; i < N; i++)
 			cell[i].SetChose(false);
 	}
+}
+
+void ReadMainPositions(const int N, DrivableCell cell[])
+{
+	FILE* level_file;
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	{
+		std::cout << "Can not open level file!" << std::endl;
+		system("pause");
+		return;
+	}
+
+	int mpx, mpy;
+	fscanf_s(level_file, "%i %i", &mpx, &mpy); //Сканирование позиции нулевого элемента
+	cell[0].SetPosition(mpx, mpy);
+
+	for (int i = 0; i < N; i++)
+	{
+		fscanf_s(level_file, "%i %i", &mpx, &mpy);
+		cell[i].SetMainPosition(mpx, mpy);
+	}
+
+	fclose(level_file);
+}
+
+void SetPositions(const int N, DrivableCell cell[])
+{
+	for (int i = 0; i < N; i++)
+		cell[i].SetPosition(cell[0]);
 }
