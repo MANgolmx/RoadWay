@@ -14,5 +14,5 @@ public:
 	~DrivableCell();
 	
 	types GetType();
-	void SetType(int& straight, int& turned, int& threeway, int& fourway);
+	void SetType(int& straight, int& turned, int& threeway, int& fourway, int& isNext);
 };
