@@ -42,30 +42,11 @@ int main()
 						if (isBelong(Mouse::getPosition(window), cell[i]))
 							cell[i].Rotation();
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
-				{
-					int count = 0;
-					int ind1 = -1, ind2 = -1;
-					for (int i = 0; i < N; i++)
-						if (isBelong(Mouse::getPosition(window), cell[i]))
-							cell[i].SetChose(true);
-					for (int i = 0; i < N; i++)
-						if (cell[i].ifChosen())
-						{
-							if (count == 0) ind1 = i;
-							else ind2 = i;
-							count++;
-						}
-					if (count == 2)
-					{
-						DrivableCell::Swap(cell[ind1], cell[ind2]);
-						for (int i = 0; i < N; i++)
-							cell[i].SetChose(false);
-					}
-				}
+					CheckSwap(N, cell, window);
 				break;
 			}
 		}
-
+		
 
 		window.clear();
 		for (int i = 0; i < N; i++)
