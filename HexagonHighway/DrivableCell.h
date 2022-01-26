@@ -10,7 +10,6 @@ private:
 
 public:
 	DrivableCell();
-	DrivableCell(const DrivableCell& cell);
 	DrivableCell(std::string path);
 	~DrivableCell();
 	
