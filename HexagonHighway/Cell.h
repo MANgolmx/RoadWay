@@ -23,17 +23,16 @@ protected:
 
 public:
 	Cell();
-	Cell(const Cell& cell);
 	Cell(std::string path);
 	~Cell();
 
 	Point GetPosition();
+	void SetPosition();
 	void SetPosition(Point pos);
 	void SetPosition(int x, int y);
 
-	void ReSetPosition();
-
 	void SetMainPosition(Point pos);
+	void SetMainPosition(int x, int y);
 	Point GetMainPosition();
 
 	int GetDirection();

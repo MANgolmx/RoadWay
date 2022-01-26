@@ -156,13 +156,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="assistant.cpp" />
     <ClCompile Include="DrivableCell.cpp" />
     <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="help.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NonDrivableCell.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="assistant.h" />
     <ClInclude Include="DrivableCell.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="NonDrivableCell.h" />

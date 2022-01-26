@@ -12,15 +12,6 @@ Cell::Cell()
 	direction = up;
 }
 
-Cell::Cell(const Cell& cell)
-{
-	position.x = cell.position.x;
-	position.y = cell.position.y;
-	mainPosition.x = cell.mainPosition.x;
-	mainPosition.y = cell.mainPosition.y;
-	direction = cell.direction;
-}
-
 Cell::Cell(std::string path)
 {
 	if (!square_texture.loadFromFile(path)) {
@@ -41,6 +32,12 @@ Point Cell::GetPosition()
 	return position;
 }
 
+void Cell::SetPosition()
+{
+	position.x = mainPosition.x * GetCellTexture().getSize().x;
+	position.y = mainPosition.y * GetCellTexture().getSize().y;
+}
+
 void Cell::SetPosition(Point pos)
 {
 	position.x = pos.x;
@@ -54,16 +51,16 @@ void Cell::SetPosition(int x, int y)
 	square_sprite.setPosition(position.x, position.y);
 }
 
-void Cell::ReSetPosition()
-{
-	position.x = position.x + mainPosition.x;
-	position.y = position.y + mainPosition.y;
-}
-
 void Cell::SetMainPosition(Point pos)
 {
 	mainPosition.x = pos.x;
 	mainPosition.y = pos.y;
+}
+
+void Cell::SetMainPosition(int x, int y)
+{
+	mainPosition.x = x;
+	mainPosition.y = y;
 }
 
 Point Cell::GetMainPosition()
