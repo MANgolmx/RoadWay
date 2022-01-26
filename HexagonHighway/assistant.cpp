@@ -18,6 +18,7 @@ bool isBelong(Vector2i a, DrivableCell cell)
 void SetPath(DrivableCell* mas, const int N,
 	int straight, int turned, int threeway, int fourway)
 {
+	int isNext = -1;
 	for (int i = 0; i < N; i++)
-		mas[i].SetType(straight, turned, threeway, fourway);
+		mas[i].SetType(straight, turned, threeway, fourway, isNext);
 }
