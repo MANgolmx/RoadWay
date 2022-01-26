@@ -36,14 +36,18 @@ void DrivableCell::SetChose(bool ch)
 
 void DrivableCell::Swap(DrivableCell& cell1, DrivableCell& cell2)
 {
-	Point p = cell2.GetPosition();
-	Point mp = cell2.GetMainPosition();
+	Point p = cell2.position;
+	Point mp = cell2.mainPosition;
 
-	cell2.SetPosition(cell1.GetPosition());
-	cell2.SetMainPosition(cell1.GetMainPosition());
+	cell2.position = cell1.position;
+	cell2.mainPosition = cell1.mainPosition;
 
-	cell1.SetPosition(p);
-	cell1.SetPosition(mp);
+	cell2.square_sprite.setPosition(cell2.position.x, cell2.position.y);
+
+	cell1.position = p;
+	cell1.mainPosition = mp;
+
+	cell1.square_sprite.setPosition(cell1.position.x, cell1.position.y);
 }
 
 types DrivableCell::GetType()
