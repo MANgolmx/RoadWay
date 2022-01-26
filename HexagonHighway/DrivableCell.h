@@ -7,12 +7,18 @@ class DrivableCell:public Cell
 {
 private:
 	types type;
+	bool isChosen;
 
 public:
 	DrivableCell();
 	DrivableCell(std::string path);
 	~DrivableCell();
 	
+	bool ifChosen();
+	void SetChose(bool ch);
+
+	void static Swap(DrivableCell& cell1, DrivableCell& cell2);
+
 	types GetType();
 	void SetType(int& straight, int& turned, int& threeway, int& fourway, int& isNext);
 };

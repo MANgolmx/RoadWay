@@ -68,7 +68,7 @@ Point Cell::GetMainPosition()
 	return mainPosition;
 }
 
-int Cell::GetDirection()
+directions Cell::GetDirection()
 {
 	return direction;
 }

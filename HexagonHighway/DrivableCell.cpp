@@ -3,6 +3,7 @@
 DrivableCell::DrivableCell()
 {
 	type = undefiened;
+	isChosen = false;
 }
 
 DrivableCell::DrivableCell(std::string path)
@@ -21,6 +22,28 @@ DrivableCell::DrivableCell(std::string path)
 DrivableCell::~DrivableCell()
 {
 
+}
+
+bool DrivableCell::ifChosen()
+{
+	return isChosen;
+}
+
+void DrivableCell::SetChose(bool ch)
+{
+	isChosen = ch;
+}
+
+void DrivableCell::Swap(DrivableCell& cell1, DrivableCell& cell2)
+{
+	Point p = cell2.GetPosition();
+	Point mp = cell2.GetMainPosition();
+
+	cell2.SetPosition(cell1.GetPosition());
+	cell2.SetMainPosition(cell1.GetMainPosition());
+
+	cell1.SetPosition(p);
+	cell1.SetPosition(mp);
 }
 
 types DrivableCell::GetType()
@@ -54,14 +77,14 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 			type = types::straight;
 
 			stRand:
-			int tmp = rand() % 25;
+			int tmp = rand() % 23;
 			if (tmp == isNext)
 				goto stRand;
 
 			switch (tmp) {
-			case 4: case 8: case 12: case 22:
+			case 4: case 8: case 12:
 			case 0: path = "resources\\cells\\straight\\straight_flowers_1.png";		 break;
-			case 5: case 9: case 13: case 23:
+			case 5: case 9: case 13:
 			case 1: path = "resources\\cells\\straight\\straight_flowers_2.png";		 break;
 			case 6: case 10: case 20:
 			case 2: path = "resources\\cells\\straight\\straight_flowers_3.png"; 		 break;
@@ -73,7 +96,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 			case 17: path = "resources\\cells\\straight\\straight_trashbin_4.png";	 isNext = 17; break;
 			case 18: path = "resources\\cells\\straight\\straight_trashbin_5.png";	 isNext = 18; break;
 			case 19: path = "resources\\cells\\straight\\straight_trashbin_6.png";	 isNext = 19; break;
-			case 24: path = "resources\\cells\\straight\\straight_busstop_1.png";	 isNext = 24; break;
+			case 22: path = "resources\\cells\\straight\\straight_busstop_1.png";	 isNext = 24; break;
 			}
 
 			if (!square_texture.loadFromFile(path)) {

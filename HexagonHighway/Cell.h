@@ -35,7 +35,7 @@ public:
 	void SetMainPosition(int x, int y);
 	Point GetMainPosition();
 
-	int GetDirection();
+	directions GetDirection();
 	void SetDirection(directions dir);
 
 	void Rotation();
