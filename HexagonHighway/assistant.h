@@ -12,3 +12,5 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window);
 void ReadMainPositions(const int N, DrivableCell cell[]);
 
 void SetPositions(const int N, DrivableCell cell[]);
+
+void SetIsChosen(bool var, const int N, DrivableCell[]);

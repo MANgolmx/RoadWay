@@ -19,9 +19,8 @@ bool isBelong(Vector2i a, DrivableCell cell)
 void SetPath(DrivableCell* mas, const int N,
 	int straight, int turned, int threeway, int fourway)
 {
-	int isNext = -1;
 	for (int i = 0; i < N; i++)
-		mas[i].SetType(straight, turned, threeway, fourway, isNext);
+		mas[i].SetType(straight, turned, threeway, fourway);
 }
 
 void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
@@ -73,4 +72,10 @@ void SetPositions(const int N, DrivableCell cell[])
 {
 	for (int i = 0; i < N; i++)
 		cell[i].SetPosition(cell[0]);
+}
+
+void SetIsChosen(bool var, const int N, DrivableCell cell[])
+{
+	for (int i = 0; i < N; i++)
+		cell[i].SetChose(var);
 }

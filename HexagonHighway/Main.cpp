@@ -39,16 +39,18 @@ int main()
 				break;
 			case Event::MouseButtonPressed: //Нажата кнопка мыши
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
+				{
+					SetIsChosen(false, N, cell);
 					for (int i = 0; i < N; i++)
 						if (isBelong(Mouse::getPosition(window), cell[i]))
 							cell[i].Rotation();
+				}
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
 					CheckSwap(N, cell, window);
 				break;
 			}
 		}
 		
-
 		window.clear();
 		for (int i = 0; i < N; i++)
 			window.draw(cell[i].GetCellSprite());

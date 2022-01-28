@@ -20,5 +20,5 @@ public:
 	void static Swap(DrivableCell& cell1, DrivableCell& cell2);
 
 	types GetType();
-	void SetType(int& straight, int& turned, int& threeway, int& fourway, int& isNext);
+	void SetType(int& straight, int& turned, int& threeway, int& fourway);
 };
