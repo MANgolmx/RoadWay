@@ -13,4 +13,9 @@ void ReadMainPositions(const int N, DrivableCell cell[]);
 
 void SetPositions(const int N, DrivableCell cell[]);
 
+void SetChosenTex(NonDrivableCell cell, std::string path);
+
 void SetIsChosen(bool var, const int N, DrivableCell[]);
+
+void DrawCells(RenderWindow& win, DrivableCell cell[], NonDrivableCell chosen, 
+	const int N);

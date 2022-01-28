@@ -20,6 +20,9 @@ int main()
 	DrivableCell cell[N];
 	SetPath(cell, N, 6, 6, 0, 0);
 
+	NonDrivableCell chosen;
+	chosen.SetCellSprite("resources\\cells\\chosen.png");
+
 	ReadMainPositions(N, cell);
 	SetPositions(N, cell);
 
@@ -52,8 +55,7 @@ int main()
 		}
 		
 		window.clear();
-		for (int i = 0; i < N; i++)
-			window.draw(cell[i].GetCellSprite());
+		DrawCells(window, cell, chosen, N);
 		window.display();
 	}
 

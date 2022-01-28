@@ -31,6 +31,8 @@ public:
 	void SetPosition(Point pos);
 	void SetPosition(int x, int y);
 
+	virtual void SetCellSprite(std::string path);
+
 	void SetMainPosition(Point pos);
 	void SetMainPosition(int x, int y);
 	Point GetMainPosition();
@@ -39,6 +41,8 @@ public:
 	void SetDirection(directions dir);
 
 	void Rotation();
+
+	virtual void Draw(RenderWindow& win);
 
 	Texture GetCellTexture();
 	Sprite GetCellSprite();

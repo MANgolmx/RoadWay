@@ -1,5 +1,6 @@
 #pragma once
 #include "Cell.h"
+#include "NonDrivableCell.h"
 
 enum types { undefiened, straight, turned, threeway, fourway };
 
@@ -16,6 +17,8 @@ public:
 	
 	bool ifChosen();
 	void SetChose(bool ch);
+
+	void Draw(RenderWindow& win, NonDrivableCell chosen);
 
 	void static Swap(DrivableCell& cell1, DrivableCell& cell2);
 

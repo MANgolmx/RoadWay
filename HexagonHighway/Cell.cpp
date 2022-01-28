@@ -20,7 +20,7 @@ Cell::Cell(std::string path)
 	}
 
 	square_sprite.setTexture(square_texture);
-	square_sprite.setPosition(50, 25);
+	square_sprite.setPosition(0, 0);
 }
 
 Cell::~Cell()
@@ -50,6 +50,17 @@ void Cell::SetPosition(int x, int y)
 	position.x = x;
 	position.y = y;
 	square_sprite.setPosition(position.x, position.y);
+}
+
+void Cell::SetCellSprite(std::string path)
+{
+	if (!square_texture.loadFromFile(path)) {
+		std::cout << "[ERROR OCURRED] Can not open Cell.png" << std::endl;
+		exit(1);
+	}
+
+	square_sprite.setTexture(square_texture);
+	square_sprite.setPosition(0, 0);
 }
 
 void Cell::SetMainPosition(Point pos)
@@ -104,6 +115,11 @@ void Cell::Rotation()
 		direction = up;
 		break;
 	}
+}
+
+void Cell::Draw(RenderWindow& win)
+{
+	win.draw(GetCellSprite());
 }
 
 Texture Cell::GetCellTexture()

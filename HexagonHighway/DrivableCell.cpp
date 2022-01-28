@@ -1,4 +1,5 @@
 #include "DrivableCell.h"
+#include "NonDrivableCell.h"
 
 DrivableCell::DrivableCell()
 {
@@ -32,6 +33,16 @@ bool DrivableCell::ifChosen()
 void DrivableCell::SetChose(bool ch)
 {
 	isChosen = ch;
+}
+
+void DrivableCell::Draw(RenderWindow& win, NonDrivableCell chosen)
+{
+	win.draw(GetCellSprite());	
+	if (ifChosen())
+	{
+		chosen.SetPosition(GetPosition().x, GetPosition().y);
+		win.draw(chosen.GetCellSprite());
+	}
 }
 
 void DrivableCell::Swap(DrivableCell& cell1, DrivableCell& cell2)
