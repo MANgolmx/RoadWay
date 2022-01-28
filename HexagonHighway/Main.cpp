@@ -18,7 +18,7 @@ int main()
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	DrivableCell cell[N];
-	SetPath(cell, N, 11, 1, 0, 0);
+	SetPath(cell, N, 6, 6, 0, 0);
 
 	ReadMainPositions(N, cell);
 	SetPositions(N, cell);
