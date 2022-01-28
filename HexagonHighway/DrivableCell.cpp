@@ -79,11 +79,12 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	}
 	Rotation();
 	
-	a = rand() % 2;
+	a = rand() % 3;
 
 	switch (a) {
 	case 0: goto straightRand;
 	case 1: goto turnedRand;
+	case 2: goto threewayRand;
 	}
 
 	straightRand:
@@ -136,6 +137,34 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 			case 3: path = "resources\\cells\\turned\\turned_flowers_4.png"; break;
 			case 4: path = "resources\\cells\\turned\\turned_busstop_1.png"; break;
 			case 5: path = "resources\\cells\\turned\\turned_busstop_2.png"; break;
+			}
+
+			if (!square_texture.loadFromFile(path)) {
+				std::cout << "[ERROR OCURRED] Can not open Turned.png" << std::endl;
+				exit(1);
+			}
+
+			square_sprite.setTexture(square_texture);
+
+			turned--;
+			return;
+		}
+
+	threewayRand:
+		if (threeway > 0)
+		{
+			type = types::threeway;
+
+			int tmp = rand() % 7;
+
+			switch (tmp) {
+			case 0: path = "resources\\cells\\threeway\\threeway_flowers_1.png"; break;
+			case 1: path = "resources\\cells\\threeway\\threeway_flowers_2.png"; break;
+			case 2: path = "resources\\cells\\threeway\\threeway_flowers_3.png"; break;
+			case 3: path = "resources\\cells\\threeway\\threeway_flowers_4.png"; break;
+			case 4: path = "resources\\cells\\threeway\\threeway_flowers_5.png"; break;
+			case 5: path = "resources\\cells\\threeway\\threeway_busstop_1.png"; break;
+			case 6: path = "resources\\cells\\threeway\\threeway_busstop_2.png"; break;
 			}
 
 			if (!square_texture.loadFromFile(path)) {
