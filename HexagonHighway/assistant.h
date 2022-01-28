@@ -13,7 +13,7 @@ void ReadMainPositions(const int N, DrivableCell cell[]);
 
 void SetPositions(const int N, DrivableCell cell[]);
 
-void SetIsChosen(bool var, const int N, DrivableCell[]);
+void SetIsChosen(bool var, const int N, DrivableCell cell[]);
 
 void DrawCells(RenderWindow& win, DrivableCell cell[], NonDrivableCell chosen, 
 	const int N);
