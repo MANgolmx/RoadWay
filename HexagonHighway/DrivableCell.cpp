@@ -174,7 +174,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 
 			square_sprite.setTexture(square_texture);
 
-			turned--;
+			threeway--;
 			return;
 		}
 
