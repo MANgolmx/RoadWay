@@ -18,7 +18,7 @@ int main()
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	DrivableCell cell[N];
-	SetPath(cell, N, 6, 6, 0, 0);
+	SetPath(cell, N, 4, 4, 4, 0);
 
 	NonDrivableCell chosen;
 	chosen.SetCellSprite("resources\\cells\\chosen.png");
