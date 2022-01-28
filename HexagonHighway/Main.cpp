@@ -28,8 +28,6 @@ int main()
 
 #pragma endregion
 
-		//TODO: Добавить обнуление выбора после каждого клика
-
 	while (window.isOpen()) //Цикл программы
 	{
 		Event event;
