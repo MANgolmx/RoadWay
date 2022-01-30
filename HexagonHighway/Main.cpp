@@ -52,7 +52,7 @@ int main()
 			}
 		}
 		
-		window.clear();
+		window.clear({ 181, 230, 29, 255 });
 		DrawCells(window, cell, chosen, N);
 		window.display();
 	}
