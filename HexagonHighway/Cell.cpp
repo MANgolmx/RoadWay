@@ -15,7 +15,7 @@ Cell::Cell()
 Cell::Cell(std::string path)
 {
 	if (!square_texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open Cell.png" << std::endl;
+		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
 		exit(1);
 	}
 
@@ -55,7 +55,7 @@ void Cell::SetPosition(int x, int y)
 void Cell::SetCellSprite(std::string path)
 {
 	if (!square_texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open Cell.png" << std::endl;
+		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
 		exit(1);
 	}
 

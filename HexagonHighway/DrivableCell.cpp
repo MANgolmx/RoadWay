@@ -12,7 +12,7 @@ DrivableCell::DrivableCell(std::string path)
 	type = undefiened;
 
 	if (!square_texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open Cell.png" << std::endl;
+		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
 		exit(1);
 	}
 

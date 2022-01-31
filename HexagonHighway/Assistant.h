@@ -4,7 +4,7 @@
 
 bool isBelong(Vector2i a, DrivableCell cell);
 
-void SetPath(DrivableCell* mas, const int N,
+void SetDrivablePath(DrivableCell* mas, const int N,
 	int straight, int turned, int threeway, int fourway);
 
 void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window);
