@@ -10,6 +10,7 @@ int main()
 {
 	srand(time(0));
 	const int roadSize = 12;
+	const int decotrationSize = 12;
 
 #pragma region INITIALIZATION
 
@@ -17,11 +18,12 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	NonDrivableCell chosen;
-	chosen.SetCellSprite("resources\\cells\\chosen.png");
+	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
 	DrivableCell roads[roadSize];
 	SetDrivablePath(roads, roadSize, 4, 4, 4, 0);
+
+	NonDrivableCell decoration[decotrationSize];
 
 	ReadMainPositions(roadSize, roads);
 	SetPositions(roadSize, roads);

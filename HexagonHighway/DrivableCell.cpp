@@ -61,7 +61,7 @@ void DrivableCell::Swap(DrivableCell& cell1, DrivableCell& cell2)
 	cell1.square_sprite.setPosition(cell1.position.x, cell1.position.y);
 }
 
-types DrivableCell::GetType()
+drivableTypes DrivableCell::GetType()
 {
 	return type;
 }
@@ -69,6 +69,8 @@ types DrivableCell::GetType()
 void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourway)
 {
 	std::string path;
+
+	int Exit = 0;
 
 	int a = rand() % 4;
 	switch (a) {
@@ -90,7 +92,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	straightRand:
 		if (straight > 0)
 		{
-			type = types::straight;
+			type = drivableTypes::straight;
 
 			int tmp = rand() % 23;
 
@@ -126,7 +128,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	turnedRand:
 		if (turned > 0)
 		{
-			type = types::turned;
+			type = drivableTypes::turned;
 
 			int tmp = rand() % 6;
 
@@ -153,7 +155,7 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 	threewayRand:
 		if (threeway > 0)
 		{
-			type = types::threeway;
+			type = drivableTypes::threeway;
 
 			int tmp = rand() % 7;
 
@@ -177,6 +179,10 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 			threeway--;
 			return;
 		}
+		Exit++;
 
-	goto straightRand;
-}
+		if (Exit > 10)
+			return;
+
+		goto straightRand;
+ }

@@ -16,11 +16,18 @@ bool isBelong(Vector2i a, DrivableCell cell)
 	return false;
 }
 
-void SetDrivablePath(DrivableCell* mas, const int N,
+void SetDrivablePath(DrivableCell* mas, const int masSize,
 	int straight, int turned, int threeway, int fourway)
 {
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < masSize; i++)
 		mas[i].SetType(straight, turned, threeway, fourway);
+}
+
+void SetNonDrivablePath(NonDrivableCell* mas, const int masSize,
+	int forest, int private_residence, int apartment)
+{
+	for (int i = 0; i < masSize; i++)
+		mas[i].SetType(forest, private_residence, apartment);
 }
 
 void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
@@ -45,7 +52,8 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
 	}
 }
 
-void ReadMainPositions(const int N, DrivableCell cell[])
+void ReadMainPositions(const int roadSize, DrivableCell roads[], 
+	const int decorSize, NonDrivableCell decor[])
 {
 	FILE* level_file;
 	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
@@ -57,21 +65,31 @@ void ReadMainPositions(const int N, DrivableCell cell[])
 
 	int mpx, mpy;
 	fscanf_s(level_file, "%i %i", &mpx, &mpy); //Сканирование позиции нулевого элемента
-	cell[0].SetPosition(mpx, mpy);
+	roads[0].SetPosition(mpx, mpy);
 
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < roadSize; i++)
 	{
 		fscanf_s(level_file, "%i %i", &mpx, &mpy);
-		cell[i].SetMainPosition(mpx, mpy);
+		roads[i].SetMainPosition(mpx, mpy);
+	}
+
+	for (int i = 0; i < decorSize; i++)
+	{
+		fscanf_s(level_file, "%i %i", &mpx, &mpy);
+		decor[i].SetMainPosition(mpx, mpy);
 	}
 
 	fclose(level_file);
 }
 
-void SetPositions(const int N, DrivableCell cell[])
+void SetPositions(const int roadSize, DrivableCell roads[],
+	const int decorSize, NonDrivableCell decor[])
 {
-	for (int i = 0; i < N; i++)
-		cell[i].SetPosition(cell[0]);
+	for (int i = 0; i < roadSize; i++)
+		roads[i].SetPosition(roads[0]);
+
+	for (int i = 0; i < decorSize; i++)
+		decor[i].SetPosition(roads[0]);
 }
 
 void SetIsChosen(bool var, const int N, DrivableCell cell[])
