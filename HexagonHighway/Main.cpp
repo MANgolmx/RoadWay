@@ -10,7 +10,7 @@ int main()
 {
 	srand(time(0));
 	const int roadSize = 12;
-	const int decotrationSize = 12;
+	const int decorationSize = 12;
 
 #pragma region INITIALIZATION
 
@@ -23,10 +23,11 @@ int main()
 	DrivableCell roads[roadSize];
 	SetDrivablePath(roads, roadSize, 4, 4, 4, 0);
 
-	NonDrivableCell decoration[decotrationSize];
+	NonDrivableCell decorations[decorationSize];
+	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
-	ReadMainPositions(roadSize, roads);
-	SetPositions(roadSize, roads);
+	ReadMainPositions(roadSize, roads, decorationSize, decorations);
+	SetPositions(roadSize, roads, decorationSize, decorations);
 
 #pragma endregion
 
@@ -55,7 +56,7 @@ int main()
 		}
 		
 		window.clear({ 181, 230, 29, 255 });
-		DrawCells(window, roads, chosen, roadSize);
+		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize);
 		window.display();
 	}
 

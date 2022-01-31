@@ -2,6 +2,7 @@
 
 NonDrivableCell::NonDrivableCell()
 {
+	type = undefined;
 }
 
 NonDrivableCell::NonDrivableCell(std::string path)
@@ -34,7 +35,7 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 	}
 	Rotation();
 
-	int a = rand() % 3;
+	 a = rand() % 3;
 	switch (a) {
 	case 0: goto forestRand;
 	case 1: goto privateResidenceRand;
@@ -64,10 +65,10 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 		if (private_residence > 0)
 		{
 			type = nondrivableTypes::private_residence;
-			int a = rand() % 1;
+			a = rand() % 1;
 
 			switch (a) {
-			case 0: path = "resources\\privateResidence\\privateResidence_1"; break;
+			case 0: path = "resources\\cells\\privateResidence\\privateResidence_1.png"; break;
 			}
 
 			if (!square_texture.loadFromFile(path)) {

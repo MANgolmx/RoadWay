@@ -1,7 +1,7 @@
 #pragma once
 #include "Cell.h"
 
-enum nondrivableTypes { forest, private_residence, apartments };
+enum nondrivableTypes { undefined, forest, private_residence, apartments };
 
 class NonDrivableCell:public Cell
 {

@@ -98,9 +98,11 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 		cell[i].SetChose(var);
 }
 
-void DrawCells(RenderWindow& win, DrivableCell cell[], NonDrivableCell chosen,
-	const int N)
+void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
+	const int roadSize, NonDrivableCell decor[], const int decorSize)
 {
-	for (int i = 0; i < N; i++)
-		cell[i].Draw(win, chosen);
+	for (int i = 0; i < roadSize; i++)
+		roads[i].Draw(win, chosen);
+	for (int i = 0; i < decorSize; i++)
+		decor[i].Draw(win);
 }
