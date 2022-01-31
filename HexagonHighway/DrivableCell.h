@@ -2,12 +2,12 @@
 #include "Cell.h"
 #include "NonDrivableCell.h"
 
-enum types { undefiened, straight, turned, threeway, fourway };
+enum drivableTypes { undefiened, straight, turned, threeway, fourway };
 
 class DrivableCell:public Cell
 {
 private:
-	types type;
+	drivableTypes type;
 	bool isChosen;
 
 public:
@@ -22,6 +22,6 @@ public:
 
 	void static Swap(DrivableCell& cell1, DrivableCell& cell2);
 
-	types GetType();
+	drivableTypes GetType();
 	void SetType(int& straight, int& turned, int& threeway, int& fourway);
 };
