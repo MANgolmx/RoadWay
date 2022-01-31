@@ -16,7 +16,7 @@ bool isBelong(Vector2i a, DrivableCell cell)
 	return false;
 }
 
-void SetPath(DrivableCell* mas, const int N,
+void SetDrivablePath(DrivableCell* mas, const int N,
 	int straight, int turned, int threeway, int fourway)
 {
 	for (int i = 0; i < N; i++)

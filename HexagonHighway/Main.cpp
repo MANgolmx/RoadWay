@@ -9,7 +9,7 @@ using namespace sf;
 int main()
 {
 	srand(time(0));
-	const int N = 12;
+	const int roadSize = 12;
 
 #pragma region INITIALIZATION
 
@@ -17,14 +17,14 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	DrivableCell cell[N];
-	SetPath(cell, N, 4, 4, 4, 0);
-
 	NonDrivableCell chosen;
 	chosen.SetCellSprite("resources\\cells\\chosen.png");
 
-	ReadMainPositions(N, cell);
-	SetPositions(N, cell);
+	DrivableCell roads[roadSize];
+	SetDrivablePath(roads, roadSize, 4, 4, 4, 0);
+
+	ReadMainPositions(roadSize, roads);
+	SetPositions(roadSize, roads);
 
 #pragma endregion
 
@@ -41,19 +41,19 @@ int main()
 			case Event::MouseButtonPressed: //Нажата кнопка мыши
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
-					SetIsChosen(false, N, cell);
-					for (int i = 0; i < N; i++)
-						if (isBelong(Mouse::getPosition(window), cell[i]))
-							cell[i].Rotation();
+					SetIsChosen(false, roadSize, roads);
+					for (int i = 0; i < roadSize; i++)
+						if (isBelong(Mouse::getPosition(window), roads[i]))
+							roads[i].Rotation();
 				}
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
-					CheckSwap(N, cell, window);
+					CheckSwap(roadSize, roads, window);
 				break;
 			}
 		}
 		
 		window.clear({ 181, 230, 29, 255 });
-		DrawCells(window, cell, chosen, N);
+		DrawCells(window, roads, chosen, roadSize);
 		window.display();
 	}
 
