@@ -3,6 +3,7 @@
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 #include "Assistant.h"
+#include "Car.h"
 
 using namespace sf;
 
@@ -10,7 +11,7 @@ int main()
 {
 	srand(time(0));
 	const int roadSize = 12;
-	const int decorationSize = 12;
+	const int decorationSize = 1;
 
 #pragma region INITIALIZATION
 
@@ -27,6 +28,13 @@ int main()
 
 	NonDrivableCell decorations[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
+
+	Car car;
+
+	car.car_texture.loadFromFile("resources\\cells\\straight\\straight_flowers_1.png");
+
+	car.car_sprite.setTexture(car.car_texture);
+	car.car_sprite.setPosition(0, 0);
 
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
 	SetPositions(roadSize, roads, decorationSize, decorations);
@@ -57,10 +65,12 @@ int main()
 			}
 		}
 		
-		clock.restart();
+		
+		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
 		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize);
+		car.Draw(window);
 		window.display();
 	}
 

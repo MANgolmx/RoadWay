@@ -7,6 +7,7 @@
 class Car
 {
 private:
+public:
 
 	int timeToMove = 800;
 	int timePassed = 0;
@@ -19,7 +20,6 @@ private:
 
 	directions direction;
 
-public:
 
 	Car();
 	Car(std::string path);
@@ -27,6 +27,8 @@ public:
 
 	void ResetPosition();
 
+	void Draw(RenderWindow& win);
+
 	void Move(Time time, DrivableCell* roads, const int roadCount,
-		NonDrivableCell decor, const int decorCount);
+		NonDrivableCell* decor, const int decorCount);
 };
