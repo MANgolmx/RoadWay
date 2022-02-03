@@ -46,5 +46,4 @@ public:
 
 	Texture GetCellTexture();
 	Sprite GetCellSprite();
-
 };

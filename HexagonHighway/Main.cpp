@@ -16,6 +16,8 @@ int main()
 
 	int window_width = 1212, window_height = 808;
 
+	Clock clock;
+
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
@@ -55,6 +57,8 @@ int main()
 			}
 		}
 		
+		clock.restart();
+
 		window.clear({ 181, 230, 29, 255 });
 		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize);
 		window.display();
