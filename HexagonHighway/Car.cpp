@@ -2,7 +2,7 @@
 
 Car::Car()
 {
-	timeToMove = 800;
+	timeToMove = 10;
 	timePassed;
 	position.x = position.y = 0;
 	mainPosition.x = mainPosition.y = 0;
@@ -15,9 +15,9 @@ Car::~Car()
 
 Car::Car(std::string path)
 {
-	timeToMove = 800;
+	timeToMove = 10;
 	timePassed;
-	position.x = position.y = 0;
+	position.x = position.y = 35;
 	mainPosition.x = mainPosition.y = 0;
 	direction = up;
 
@@ -39,40 +39,40 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 		case up:
 			for (int i = 0; i < roadCount;i++)
 				if (mainPosition.x == roads[i].GetMainPosition().x &&
-					mainPosition.y == roads[i].GetMainPosition().y - 1)
+					mainPosition.y == roads[i].GetMainPosition().y + 1)
 				{
-					position.y -= 101;
-					mainPosition.y--;
+					position.y -= 2;
+					//mainPosition.y--;
 					break;
 				}
 			break;
 		case down:
 			for (int i = 0; i < roadCount; i++)
 				if (mainPosition.x == roads[i].GetMainPosition().x &&
-					mainPosition.y == roads[i].GetMainPosition().y + 1)
+					mainPosition.y == roads[i].GetMainPosition().y - 1)
 				{
-					position.y += 101;
-					mainPosition.y++;
+					position.y += 2;
+				//	mainPosition.y++;
 					break;
 				}
 			break;
 		case right:
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads[i].GetMainPosition().x + 1 &&
+				if (mainPosition.x == roads[i].GetMainPosition().x - 1 &&
 					mainPosition.y == roads[i].GetMainPosition().y)
 				{
-					position.x += 101;
-					mainPosition.x++;
+					position.x += 2;
+					//mainPosition.x++;
 					break;
 				}
 			break;
 		case left:
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads[i]. GetMainPosition().x - 1 &&
+				if (mainPosition.x == roads[i]. GetMainPosition().x + 1 &&
 					mainPosition.y == roads[i].GetMainPosition().y)
 				{
-					position.x -= 101;
-					mainPosition.x--;
+					position.x -= 2;
+					//mainPosition.x--;
 					break;
 				}
 			break;
@@ -86,6 +86,13 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 
 void Car::Draw(RenderWindow& win)
 {
+	switch (direction) {
+	case up: car_sprite.setOrigin(30, 0); car_sprite.setRotation(0); break;
+	case down: car_sprite.setOrigin(-30, 30); car_sprite.setRotation(180); break;
+	case right: car_sprite.setOrigin(30, 30); car_sprite.setRotation(90); break;
+	case left: car_sprite.setOrigin(0, 0); car_sprite.setRotation(270); break;
+	}
+	
 	win.draw(car_sprite);
 }
 

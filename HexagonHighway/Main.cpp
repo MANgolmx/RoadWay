@@ -19,6 +19,8 @@ int main()
 
 	Clock clock;
 
+	Clock fps;
+
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
@@ -30,7 +32,7 @@ int main()
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
 	Car car("resources\\cars\\car_2.png");
-	car.position = { 500,436 };
+	car.position = { 535,436 };
 	car.mainPosition = { 0,1 };
 
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
@@ -61,7 +63,11 @@ int main()
 				break;
 			}
 		}
-		
+
+		Time t = fps.getElapsedTime();
+		std::cout << 1.0f / t.asSeconds() << std::endl;
+		fps.restart().asSeconds();
+
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
