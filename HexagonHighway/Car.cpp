@@ -30,16 +30,16 @@ Car::Car(std::string path)
 	car_sprite.setPosition(0, 0);
 }
 
-void Car::Move(Time time, DrivableCell* roads, const int roadCount,
-	NonDrivableCell* decor, const int decorCount)
+void Car::Move(Time time, DrivableCell roads[], const int roadCount,
+	NonDrivableCell decor[], const int decorCount)
 {
-	if (timePassed + time.asMicroseconds() > timeToMove)
+	if (timePassed + time.asMilliseconds() > timeToMove)
 	{
 		switch (direction) {
 		case up:
 			for (int i = 0; i < roadCount;i++)
-				if (mainPosition.x == roads->GetMainPosition().x &&
-					mainPosition.y == roads->GetMainPosition().y - 1)
+				if (mainPosition.x == roads[i].GetMainPosition().x &&
+					mainPosition.y == roads[i].GetMainPosition().y - 1)
 				{
 					position.y -= 101;
 					mainPosition.y--;
@@ -48,8 +48,8 @@ void Car::Move(Time time, DrivableCell* roads, const int roadCount,
 			break;
 		case down:
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads->GetMainPosition().x &&
-					mainPosition.y == roads->GetMainPosition().y + 1)
+				if (mainPosition.x == roads[i].GetMainPosition().x &&
+					mainPosition.y == roads[i].GetMainPosition().y + 1)
 				{
 					position.y += 101;
 					mainPosition.y++;
@@ -58,8 +58,8 @@ void Car::Move(Time time, DrivableCell* roads, const int roadCount,
 			break;
 		case right:
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads->GetMainPosition().x + 1 &&
-					mainPosition.y == roads->GetMainPosition().y)
+				if (mainPosition.x == roads[i].GetMainPosition().x + 1 &&
+					mainPosition.y == roads[i].GetMainPosition().y)
 				{
 					position.x += 101;
 					mainPosition.x++;
@@ -68,8 +68,8 @@ void Car::Move(Time time, DrivableCell* roads, const int roadCount,
 			break;
 		case left:
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads->GetMainPosition().x - 1 &&
-					mainPosition.y == roads->GetMainPosition().y)
+				if (mainPosition.x == roads[i]. GetMainPosition().x - 1 &&
+					mainPosition.y == roads[i].GetMainPosition().y)
 				{
 					position.x -= 101;
 					mainPosition.x--;

@@ -29,12 +29,9 @@ int main()
 	NonDrivableCell decorations[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
-	Car car;
-
-	car.car_texture.loadFromFile("resources\\cells\\straight\\straight_flowers_1.png");
-
-	car.car_sprite.setTexture(car.car_texture);
-	car.car_sprite.setPosition(0, 0);
+	Car car("resources\\cars\\car_2.png");
+	car.position = { 500,436 };
+	car.mainPosition = { 0,1 };
 
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
 	SetPositions(roadSize, roads, decorationSize, decorations);
@@ -64,7 +61,6 @@ int main()
 				break;
 			}
 		}
-		
 		
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 

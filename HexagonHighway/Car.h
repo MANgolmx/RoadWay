@@ -29,6 +29,6 @@ public:
 
 	void Draw(RenderWindow& win);
 
-	void Move(Time time, DrivableCell* roads, const int roadCount,
-		NonDrivableCell* decor, const int decorCount);
+	void Move(Time time, DrivableCell roads[], const int roadCount,
+		NonDrivableCell decor[], const int decorCount);
 };
