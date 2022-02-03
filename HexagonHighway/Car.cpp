@@ -2,7 +2,7 @@
 
 Car::Car()
 {
-	timeToMove = 10;
+	timeToMove = 15;
 	timePassed;
 	position.x = position.y = 0;
 	mainPosition.x = mainPosition.y = 0;
@@ -15,11 +15,11 @@ Car::~Car()
 
 Car::Car(std::string path)
 {
-	timeToMove = 10;
+	timeToMove = 15;
 	timePassed;
 	position.x = position.y = 35;
 	mainPosition.x = mainPosition.y = 0;
-	direction = up;
+	direction = left;
 
 	if (!car_texture.loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open car texture" << std::endl;
@@ -41,7 +41,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				if (mainPosition.x == roads[i].GetMainPosition().x &&
 					mainPosition.y == roads[i].GetMainPosition().y + 1)
 				{
-					position.y -= 2;
+					position.y -= 1;
 					//mainPosition.y--;
 					break;
 				}
@@ -51,7 +51,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				if (mainPosition.x == roads[i].GetMainPosition().x &&
 					mainPosition.y == roads[i].GetMainPosition().y - 1)
 				{
-					position.y += 2;
+					position.y += 1;
 				//	mainPosition.y++;
 					break;
 				}
@@ -61,7 +61,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				if (mainPosition.x == roads[i].GetMainPosition().x - 1 &&
 					mainPosition.y == roads[i].GetMainPosition().y)
 				{
-					position.x += 2;
+					position.x += 1;
 					//mainPosition.x++;
 					break;
 				}
@@ -71,7 +71,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				if (mainPosition.x == roads[i]. GetMainPosition().x + 1 &&
 					mainPosition.y == roads[i].GetMainPosition().y)
 				{
-					position.x -= 2;
+					position.x -= 1;
 					//mainPosition.x--;
 					break;
 				}
@@ -87,10 +87,10 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 void Car::Draw(RenderWindow& win)
 {
 	switch (direction) {
-	case up: car_sprite.setOrigin(30, 0); car_sprite.setRotation(0); break;
-	case down: car_sprite.setOrigin(-30, 30); car_sprite.setRotation(180); break;
-	case right: car_sprite.setOrigin(30, 30); car_sprite.setRotation(90); break;
-	case left: car_sprite.setOrigin(0, 0); car_sprite.setRotation(270); break;
+	case up: car_sprite.setOrigin(0, 0); car_sprite.setRotation(0); break;
+	case right: car_sprite.setOrigin(0, 30); car_sprite.setRotation(90); break;
+	case down: car_sprite.setOrigin(30, 30); car_sprite.setRotation(180); break;
+	case left: car_sprite.setOrigin(30, 0); car_sprite.setRotation(270); break;
 	}
 	
 	win.draw(car_sprite);

@@ -9,7 +9,7 @@ class Car
 private:
 public:
 
-	int timeToMove = 10;
+	int timeToMove = 15;
 	int timePassed = 0;
 
 	Point position;

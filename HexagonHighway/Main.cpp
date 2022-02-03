@@ -19,8 +19,6 @@ int main()
 
 	Clock clock;
 
-	Clock fps;
-
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
@@ -63,10 +61,6 @@ int main()
 				break;
 			}
 		}
-
-		Time t = fps.getElapsedTime();
-		std::cout << 1.0f / t.asSeconds() << std::endl;
-		fps.restart().asSeconds();
 
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
