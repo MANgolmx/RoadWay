@@ -7,6 +7,9 @@ using namespace sf;
 struct Point
 {
 	int x, y;
+
+	bool operator==(Point p);
+	bool operator!=(Point p);
 };
 
 enum directions { up, right, down, left };
@@ -39,6 +42,8 @@ public:
 
 	directions GetDirection();
 	void SetDirection(directions dir);
+
+	static int GetCellFromMainPos(Point mainPos, Cell cells[], const int size);
 
 	void Rotation();
 

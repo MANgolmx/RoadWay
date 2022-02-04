@@ -35,44 +35,44 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 {
 	if (timePassed + time.asMilliseconds() > timeToMove)
 	{
+		Point tmp;
 		switch (direction) {
 		case up:
-			for (int i = 0; i < roadCount;i++)
-				if (mainPosition.x == roads[i].GetMainPosition().x &&
-					mainPosition.y == roads[i].GetMainPosition().y + 1)
-				{
-					position.y -= 1;
-					//mainPosition.y--;
-					break;
-				}
+			tmp = { mainPosition.x, mainPosition.y - 1 };
+			if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
+			{
+				position.y -= 1;
+
+				break;
+			}
 			break;
 		case down:
+			tmp = { mainPosition.x, mainPosition.y + 1 };
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads[i].GetMainPosition().x &&
-					mainPosition.y == roads[i].GetMainPosition().y - 1)
+				if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
 				{
 					position.y += 1;
-				//	mainPosition.y++;
+
 					break;
 				}
 			break;
 		case right:
+			tmp = { mainPosition.x - 1, mainPosition.y };
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads[i].GetMainPosition().x - 1 &&
-					mainPosition.y == roads[i].GetMainPosition().y)
+				if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
 				{
 					position.x += 1;
-					//mainPosition.x++;
+					
 					break;
 				}
 			break;
 		case left:
+			tmp = { mainPosition.x + 1, mainPosition.y };
 			for (int i = 0; i < roadCount; i++)
-				if (mainPosition.x == roads[i]. GetMainPosition().x + 1 &&
-					mainPosition.y == roads[i].GetMainPosition().y)
+				if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
 				{
 					position.x -= 1;
-					//mainPosition.x--;
+					
 					break;
 				}
 			break;

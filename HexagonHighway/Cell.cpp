@@ -117,6 +117,13 @@ void Cell::Rotation()
 	}
 }
 
+int Cell::GetCellFromMainPos(Point mainPos, Cell cells[], const int size)
+{
+	for (int i = 0; i < size; i++)
+		if (cells[i].mainPosition == mainPos)
+			return i;
+}
+
 void Cell::Draw(RenderWindow& win)
 {
 	win.draw(GetCellSprite());
@@ -130,4 +137,14 @@ Texture Cell::GetCellTexture()
 Sprite Cell::GetCellSprite()
 {
 	return square_sprite;
+}
+
+bool Point::operator==(Point p)
+{
+	return (x == p.x && y == p.y);
+}
+
+bool Point::operator!=(Point p)
+{
+	return !(x == p.x && y == p.y);
 }
