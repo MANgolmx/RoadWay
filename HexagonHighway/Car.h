@@ -7,7 +7,6 @@
 class Car
 {
 private:
-public:
 
 	int timeToMove = 15;
 	int timePassed = 0;
@@ -20,14 +19,20 @@ public:
 
 	directions direction;
 
+public:
 
 	Car();
 	Car(std::string path);
 	~Car();
 
+	Point GetPosition();
+	Point GetMainPosition();
+
 	void ResetPosition();
 
 	void Draw(RenderWindow& win);
+
+	bool IsOnCell(Cell cell);
 
 	void Move(Time time, DrivableCell roads[], const int roadCount,
 		NonDrivableCell decor[], const int decorCount);

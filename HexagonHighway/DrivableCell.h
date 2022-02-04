@@ -22,6 +22,8 @@ public:
 
 	void static Swap(DrivableCell& cell1, DrivableCell& cell2);
 
+	int static GetCellFromMainPos(Point mainPos, DrivableCell cells[], const int size);
+
 	drivableTypes GetType();
 	void SetType(int& straight, int& turned, int& threeway, int& fourway);
 };

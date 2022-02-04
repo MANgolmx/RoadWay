@@ -1,4 +1,5 @@
 #include "Car.h"
+#include "DrivableCell.h"
 
 Car::Car()
 {
@@ -17,8 +18,8 @@ Car::Car(std::string path)
 {
 	timeToMove = 15;
 	timePassed;
-	position.x = position.y = 35;
-	mainPosition.x = mainPosition.y = 0;
+	position = { 535,436 };
+	mainPosition = { 0,1 };
 	direction = left;
 
 	if (!car_texture.loadFromFile(path)) {
@@ -39,40 +40,41 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 		switch (direction) {
 		case up:
 			tmp = { mainPosition.x, mainPosition.y - 1 };
-			if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
+			if (roads[DrivableCell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != NULL)
 			{
 				position.y -= 1;
-
+				if (!IsOnCell(roads[DrivableCell::GetCellFromMainPos(mainPosition, roads, roadCount)]))
+					mainPosition.y--;
 				break;
 			}
 			break;
 		case down:
 			tmp = { mainPosition.x, mainPosition.y + 1 };
-			for (int i = 0; i < roadCount; i++)
-				if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
+				if (roads[DrivableCell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != NULL)
 				{
 					position.y += 1;
-
+					if (!IsOnCell(roads[DrivableCell::GetCellFromMainPos(mainPosition, roads, roadCount)]))
+						mainPosition.y++;
 					break;
 				}
 			break;
 		case right:
 			tmp = { mainPosition.x - 1, mainPosition.y };
-			for (int i = 0; i < roadCount; i++)
-				if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
+				if (roads[DrivableCell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != NULL)
 				{
 					position.x += 1;
-					
+					if (!IsOnCell(roads[DrivableCell::GetCellFromMainPos(mainPosition, roads, roadCount)]))
+						mainPosition.x++;
 					break;
 				}
 			break;
 		case left:
 			tmp = { mainPosition.x + 1, mainPosition.y };
-			for (int i = 0; i < roadCount; i++)
-				if (roads[Cell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != mainPosition)
+				if (roads[DrivableCell::GetCellFromMainPos(tmp, roads, roadCount)].GetMainPosition() != NULL)
 				{
 					position.x -= 1;
-					
+					if (!IsOnCell(roads[DrivableCell::GetCellFromMainPos(mainPosition, roads, roadCount)]))
+						mainPosition.x--;
 					break;
 				}
 			break;
@@ -82,6 +84,14 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	ResetPosition();
 
 	timePassed = timePassed + time.asMilliseconds() % timeToMove;
+}
+
+bool Car::IsOnCell(Cell cell)
+{
+	return (position.x < cell.GetPosition().x + 101 &&
+		position.x > cell.GetPosition().x &&
+		position.y < cell.GetPosition().y + 101 &&
+		position.y > cell.GetPosition().y);
 }
 
 void Car::Draw(RenderWindow& win)
@@ -99,4 +109,14 @@ void Car::Draw(RenderWindow& win)
 void Car::ResetPosition()
 {
 	car_sprite.setPosition(position.x, position.y);
+}
+
+Point Car::GetPosition()
+{
+	return position;
+}
+
+Point Car::GetMainPosition()
+{
+	return mainPosition;
 }

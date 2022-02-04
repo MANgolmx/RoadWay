@@ -10,6 +10,7 @@ struct Point
 
 	bool operator==(Point p);
 	bool operator!=(Point p);
+	bool operator!=(int a);
 };
 
 enum directions { up, right, down, left };
@@ -42,8 +43,6 @@ public:
 
 	directions GetDirection();
 	void SetDirection(directions dir);
-
-	static int GetCellFromMainPos(Point mainPos, Cell cells[], const int size);
 
 	void Rotation();
 

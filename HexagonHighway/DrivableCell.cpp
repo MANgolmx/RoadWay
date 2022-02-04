@@ -66,6 +66,14 @@ drivableTypes DrivableCell::GetType()
 	return type;
 }
 
+int DrivableCell::GetCellFromMainPos(Point mainPos, DrivableCell cells[], const int size)
+{
+	for (int i = 0; i < size; i++)
+		if (cells[i].mainPosition == mainPos)
+			return i;
+	return NULL;
+}
+
 void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourway)
 {
 	std::string path;
