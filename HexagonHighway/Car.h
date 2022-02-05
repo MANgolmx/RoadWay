@@ -32,7 +32,7 @@ public:
 
 	void Draw(RenderWindow& win);
 
-	bool IsOnCell(Cell cell);
+	bool IsOnCell(DrivableCell cell);
 
 	void Move(Time time, DrivableCell roads[], const int roadCount,
 		NonDrivableCell decor[], const int decorCount);
