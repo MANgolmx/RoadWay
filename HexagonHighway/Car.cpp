@@ -20,7 +20,7 @@ Car::Car(std::string path)
 	timePassed;
 	position = { 535,436 };
 	mainPosition = { 0,1 };
-	direction = left;
+	direction = right;
 
 	if (!car_texture.loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open car texture" << std::endl;
@@ -88,10 +88,10 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 
 bool Car::IsOnCell(Cell cell)
 {
-	return (position.x < cell.GetPosition().x + 101 &&
-		position.x > cell.GetPosition().x &&
-		position.y < cell.GetPosition().y + 101 &&
-		position.y > cell.GetPosition().y);
+	return (position.x + 25 < cell.GetPosition().x + 101 &&
+		cell.GetPosition().x < position.x &&
+		position.y + 25 < cell.GetPosition().y + 101 &&
+		cell.GetPosition().y < position.y);
 }
 
 void Car::Draw(RenderWindow& win)
