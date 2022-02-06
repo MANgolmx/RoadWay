@@ -74,6 +74,17 @@ DrivableCell* DrivableCell::GetCellFromMainPos(Point mainPos, DrivableCell cells
 	return nullptr;
 }
 
+DrivableCell* DrivableCell::GetCellFromPos(Point pos, DrivableCell cells[], const int size)
+{
+	for (int i = 0; i < size; i++)
+		if (pos.x >= cells[i].position.x &&
+			pos.x < cells[i].position.x + 101 &&
+			pos.y >= cells[i].position.y &&
+			pos.y < cells[i].position.y + 101)
+			return &cells[i];
+	return nullptr;
+}
+
 void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourway)
 {
 	std::string path;
