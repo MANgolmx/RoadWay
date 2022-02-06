@@ -45,6 +45,7 @@ int main()
 		{
 			switch (event.type)
 			{
+				// TODO: Добавить переинициализацию спрайтов при изменении окна
 			case Event::Closed:
 				window.close();
 				break;
