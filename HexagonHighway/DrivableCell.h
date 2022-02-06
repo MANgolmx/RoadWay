@@ -18,6 +18,8 @@ public:
 	bool ifChosen();
 	void SetChose(bool ch);
 
+	bool CanGo(directions carDir);
+
 	void Draw(RenderWindow& win, NonDrivableCell chosen);
 
 	void static Swap(DrivableCell& cell1, DrivableCell& cell2);

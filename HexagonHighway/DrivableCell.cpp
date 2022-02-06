@@ -35,6 +35,34 @@ void DrivableCell::SetChose(bool ch)
 	isChosen = ch;
 }
 
+bool DrivableCell::CanGo(directions carDir)
+{
+	switch (type) {
+	case straight:
+		switch (direction) {
+		case up: case down: return false; break;
+		case right: case left: return true; break;
+		} break;
+	case turned:
+		switch (direction) {
+		case down: if (carDir == left || carDir == down) return true; break;
+		case up: if (carDir == right || carDir == up) return true; break;
+		case left: if (carDir == down || carDir == right) return true; break;
+		case right: if (carDir == left || carDir == up) return true; break;
+		} break;
+	case threeway:
+		switch (direction) {
+		case up: if (carDir == left || carDir == up || carDir == right) return true; break;
+		case down: if (carDir == left || carDir == down || carDir == right) return true; break;
+		case right: if (carDir == down || carDir == up || carDir == right) return true; break;
+		case left: if (carDir == left || carDir == up || carDir == down) return true; break;
+		} break;
+	case fourway:
+		return true; break;
+	}
+	return false;
+}
+
 void DrivableCell::Draw(RenderWindow& win, NonDrivableCell chosen)
 {
 	win.draw(GetCellSprite());	

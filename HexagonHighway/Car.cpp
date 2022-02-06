@@ -38,7 +38,8 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	{
 		switch (direction) {
 		case up:
-			if (DrivableCell::GetCellFromPos({ position.x, position.y - 1 }, roads, roadCount) != nullptr)
+			if (DrivableCell::GetCellFromPos({ position.x, position.y - 1 }, roads, roadCount) != nullptr &&
+				DrivableCell::GetCellFromPos({ position.x, position.y - 1 }, roads, roadCount)->CanGo(direction))
 			{
 				position.y--;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
@@ -46,7 +47,8 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			}
 			break;
 		case down:
-			if (DrivableCell::GetCellFromPos({ position.x, position.y + 31 }, roads, roadCount) != nullptr)
+			if (DrivableCell::GetCellFromPos({ position.x, position.y + 31 }, roads, roadCount) != nullptr &&
+				DrivableCell::GetCellFromPos({ position.x, position.y + 31 }, roads, roadCount)->CanGo(direction))
 			{
 				position.y++;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
@@ -54,7 +56,8 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			}
 			break;
 		case right:
-			if (DrivableCell::GetCellFromPos({ position.x + 31, position.y }, roads, roadCount) != nullptr)
+			if (DrivableCell::GetCellFromPos({ position.x + 31, position.y }, roads, roadCount) != nullptr &&
+				DrivableCell::GetCellFromPos({ position.x + 31, position.y }, roads, roadCount)->CanGo(direction))
 			{
 				position.x++;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
@@ -62,7 +65,8 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			}
 			break;
 		case left:
-			if (DrivableCell::GetCellFromPos({ position.x - 1, position.y }, roads, roadCount) != nullptr)
+			if (DrivableCell::GetCellFromPos({ position.x - 1, position.y }, roads, roadCount) != nullptr &&
+				DrivableCell::GetCellFromPos({ position.x - 1, position.y }, roads, roadCount)->CanGo(direction))
 			{
 				position.x--;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
