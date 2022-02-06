@@ -35,27 +35,31 @@ void DrivableCell::SetChose(bool ch)
 	isChosen = ch;
 }
 
-bool DrivableCell::CanGo(directions carDir)
+bool DrivableCell::CanGo(directions& carDir, directions& lastCarDir)
 {
 	switch (type) {
 	case straight:
 		switch (direction) {
-		case up: case down: return false; break;
-		case right: case left: return true; break;
+		case up: case down: if (carDir == up || carDir == down) return false; else return true; break;
+		case right: case left: if (carDir == right || carDir == left) return false; else return true; break;
 		} break;
 	case turned:
 		switch (direction) {
-		case down: if (carDir == left || carDir == down) return true; break;
-		case up: if (carDir == right || carDir == up) return true; break;
-		case left: if (carDir == down || carDir == right) return true; break;
-		case right: if (carDir == left || carDir == up) return true; break;
+		case up: if (carDir == right || carDir == down ||
+			carDir == left && lastCarDir == down || carDir == up && lastCarDir == right) return true; break;
+		case right: if (carDir == down || carDir == left ||
+			carDir == right && lastCarDir == down || carDir == up && lastCarDir == left) return true; break;
+		case down: if (carDir == left || carDir == up ||
+			carDir == right && lastCarDir == up || carDir == down && lastCarDir == left) return true; break;
+		case left:  if (carDir == up || carDir == right ||
+			carDir == left && lastCarDir == up || carDir == down && lastCarDir == right) return true; break;
 		} break;
 	case threeway:
 		switch (direction) {
-		case up: if (carDir == left || carDir == up || carDir == right) return true; break;
-		case down: if (carDir == left || carDir == down || carDir == right) return true; break;
-		case right: if (carDir == down || carDir == up || carDir == right) return true; break;
-		case left: if (carDir == left || carDir == up || carDir == down) return true; break;
+		case up: if (carDir == up && lastCarDir == up) return false; else return true; break;
+		case right: if (carDir == right && lastCarDir == right) return false; else return true; break;
+		case down: if (carDir == down && lastCarDir == down) return false; else return true; break;
+		case left: if (carDir == left && lastCarDir == left) return false; else return true; break;
 		} break;
 	case fourway:
 		return true; break;

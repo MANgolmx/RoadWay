@@ -7,7 +7,7 @@ Car::Car()
 	timePassed;
 	position.x = position.y = 0;
 	mainPosition.x = mainPosition.y = 0;
-	direction = up;
+	direction = lastDirection = up;
 }
 
 Car::~Car()
@@ -20,7 +20,7 @@ Car::Car(std::string path)
 	timePassed;
 	position = { 535,436 };
 	mainPosition = { 0,1 };
-	direction = up;
+	direction = lastDirection = up;
 
 	if (!car_texture.loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open car texture" << std::endl;
@@ -39,7 +39,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 		switch (direction) {
 		case up:
 			if (DrivableCell::GetCellFromPos({ position.x, position.y - 1 }, roads, roadCount) != nullptr &&
-				DrivableCell::GetCellFromPos({ position.x, position.y - 1 }, roads, roadCount)->CanGo(direction))
+				DrivableCell::GetCellFromPos({ position.x, position.y - 1 }, roads, roadCount)->CanGo(direction, lastDirection))
 			{
 				position.y--;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
@@ -48,7 +48,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			break;
 		case down:
 			if (DrivableCell::GetCellFromPos({ position.x, position.y + 31 }, roads, roadCount) != nullptr &&
-				DrivableCell::GetCellFromPos({ position.x, position.y + 31 }, roads, roadCount)->CanGo(direction))
+				DrivableCell::GetCellFromPos({ position.x, position.y + 31 }, roads, roadCount)->CanGo(direction, lastDirection))
 			{
 				position.y++;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
@@ -57,7 +57,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			break;
 		case right:
 			if (DrivableCell::GetCellFromPos({ position.x + 31, position.y }, roads, roadCount) != nullptr &&
-				DrivableCell::GetCellFromPos({ position.x + 31, position.y }, roads, roadCount)->CanGo(direction))
+				DrivableCell::GetCellFromPos({ position.x + 31, position.y }, roads, roadCount)->CanGo(direction, lastDirection))
 			{
 				position.x++;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
@@ -66,7 +66,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			break;
 		case left:
 			if (DrivableCell::GetCellFromPos({ position.x - 1, position.y }, roads, roadCount) != nullptr &&
-				DrivableCell::GetCellFromPos({ position.x - 1, position.y }, roads, roadCount)->CanGo(direction))
+				DrivableCell::GetCellFromPos({ position.x - 1, position.y }, roads, roadCount)->CanGo(direction, lastDirection))
 			{
 				position.x--;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))

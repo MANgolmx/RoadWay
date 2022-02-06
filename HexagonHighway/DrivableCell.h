@@ -18,7 +18,7 @@ public:
 	bool ifChosen();
 	void SetChose(bool ch);
 
-	bool CanGo(directions carDir);
+	bool CanGo(directions& carDir, directions& lastCarDir);
 
 	void Draw(RenderWindow& win, NonDrivableCell chosen);
 

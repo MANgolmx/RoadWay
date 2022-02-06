@@ -10,6 +10,7 @@ private:
 
 	int timeToMove = 15;
 	int timePassed = 0;
+	int toTurn = 0;
 
 	Point position;
 	Point mainPosition;
@@ -17,6 +18,7 @@ private:
 	Texture car_texture;
 	Sprite car_sprite;
 
+	directions lastDirection;
 	directions direction;
 
 public:
