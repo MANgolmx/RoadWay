@@ -48,25 +48,34 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					position.y--;
 					if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
 						mainPosition.y--;
-
+					break;
 				case turned:
-					if (DrivableCell::GetCellFromPos({ position.y - 1, position.y }, roads, roadCount)->GetType() != turned && toTurn == 0)
+					if (DrivableCell::GetCellFromPos({ position.x, position.y + 1 }, roads, roadCount) != tmp && toTurn <= 0)
 					{
-						toTurn = 30;
+						toTurn = 65;
 						position.y--;
 					}
 					else {
-						toTurn--;
 						if (toTurn == 0)
 						{
+							toTurn = 0;
 							lastDirection = up;
-							if (DrivableCell::GetCellFromPos({ position.y - 1, position.y }, roads, roadCount)->GetDirection() == down)
-								direction = left;
-							else direction = right;
+							if (DrivableCell::GetCellFromPos({ position.x, position.y + 1 }, roads, roadCount)->GetDirection() == down)
+								direction = right;
+							else direction = left;
 						}
 						else {
 							position.y--;
 						}
+						toTurn--;
+					}
+					break;
+				case threeway:
+					if (DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)->GetDirection() == up)
+					{
+						position.y--;
+						if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
+							mainPosition.y--;
 					}
 					break;
 				}
@@ -82,24 +91,32 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					position.y++;
 					if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
 						mainPosition.y++;
-
+					break;
 				case turned:
-					if (DrivableCell::GetCellFromPos({ position.y + 33, position.y }, roads, roadCount)->GetType() != turned && toTurn == 0)
+					if (DrivableCell::GetCellFromPos({ position.x, position.y + 29}, roads, roadCount) != tmp && toTurn <= 0)
 					{
-						toTurn = 30;
+						toTurn = 65;
 						position.y++;
 					}
 					else {
-						toTurn--;
 						if (toTurn == 0)
 						{
 							lastDirection = down;
-							if (DrivableCell::GetCellFromPos({ position.y + 33, position.y }, roads, roadCount)->GetDirection() == up)
-								direction = right;
-							else direction = left;
+							if (DrivableCell::GetCellFromPos({ position.x, position.y + 29}, roads, roadCount)->GetDirection() == up)
+								direction = left;
+							else direction = right;
 						} else {
 							position.y++;
 						}
+						toTurn--;
+					}
+					break;
+				case threeway:
+					if (DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)->GetDirection() == left)
+					{
+						position.y++;
+						if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
+							mainPosition.y++;
 					}
 					break;
 				}
@@ -115,25 +132,32 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					position.x++;
 					if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
 						mainPosition.x++;
-
+					break;
 				case turned:
-					if (DrivableCell::GetCellFromPos({ position.x + 33, position.y }, roads, roadCount)->GetType() != turned && toTurn == 0)
+					if (DrivableCell::GetCellFromPos({ position.x + 29, position.y }, roads, roadCount) != tmp && toTurn <= 0)
 					{
-						toTurn = 30;
+						toTurn = 65;
 						position.x++;
 					}
 					else {
-						toTurn--;
 						if (toTurn == 0)
 						{
 							lastDirection = right;
-							if (DrivableCell::GetCellFromPos({ position.x + 33, position.y }, roads, roadCount)->GetDirection() == right)
-								direction = down;
-							else direction = up;
+							if (DrivableCell::GetCellFromPos({ position.x + 29, position.y }, roads, roadCount)->GetDirection() == up)
+								direction = up;
+							else direction = down;
 						} else {
 							position.x++;
 						}
-
+						toTurn--;
+					}
+					break;
+				case threeway:
+					if (DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)->GetDirection() == up)
+					{
+						position.x++;
+						if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
+							mainPosition.x++;
 					}
 					break;
 				}
@@ -149,24 +173,32 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				position.x--;
 				if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
 					mainPosition.x--;
-
+				break;
 				case turned:
-					if (DrivableCell::GetCellFromPos({position.x + 2, position.y}, roads, roadCount)->GetType() != turned && toTurn == 0)
+					if (DrivableCell::GetCellFromPos({position.x + 1, position.y}, roads, roadCount) != tmp && toTurn <= 0)
 					{
-						toTurn = 30;
+						toTurn = 65;
 						position.x--;
 					}
 					else {
-						toTurn--;
 						if (toTurn == 0)
 						{
 							lastDirection = left;
-							if (DrivableCell::GetCellFromPos({ position.x + 2, position.y }, roads, roadCount)->GetDirection() == up)
+							if (DrivableCell::GetCellFromPos({ position.x + 1, position.y }, roads, roadCount)->GetDirection() == down)
 								direction = down;
 							else direction = up;
 						} else {
 							position.x--;
 						}
+						toTurn--;
+					}
+					break;
+				case threeway:
+					if (DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)->GetDirection() == up)
+					{
+						position.x--;
+						if (!IsOnCell(*DrivableCell::GetCellFromPos({ position.x, position.y }, roads, roadCount)))
+							mainPosition.x--;
 					}
 					break;
 				}
