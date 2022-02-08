@@ -34,7 +34,7 @@ int main()
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
 	SetPositions(roadSize, roads, decorationSize, decorations);
 
-	window.setFramerateLimit(90);
+	window.setFramerateLimit(60);
 
 #pragma endregion
 
