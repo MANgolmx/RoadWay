@@ -29,7 +29,7 @@ int main()
 	NonDrivableCell decorations[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
-	Car car("resources\\cars\\car_2.png");
+	Car car("resources\\cars\\car_1.png");
 
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
 	SetPositions(roadSize, roads, decorationSize, decorations);
