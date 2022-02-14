@@ -157,22 +157,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Assistant.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="DrivableCell.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="NonDrivableCell.cpp" />
-    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="FText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assistant.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="DrivableCell.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="NonDrivableCell.h" />
-    <ClInclude Include="Text.h" />
+    <ClInclude Include="FText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -19,8 +19,6 @@ void play(RenderWindow& window)
 
 	Clock clock;
 
-	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
-
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
 	DrivableCell roads[roadSize];

@@ -5,6 +5,7 @@
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
+#include "Assistant.h"
 
 bool isBelong(Vector2i a, DrivableCell cell)
 {
@@ -105,4 +106,9 @@ void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 		roads[i].Draw(win, chosen);
 	for (int i = 0; i < decorSize; i++)
 		decor[i].Draw(win);
+}
+
+Button CreateButton(std::string texturePath, std::string str, int size, std::string fontPath, const sf::Color col)
+{
+	//TODO: This function
 }

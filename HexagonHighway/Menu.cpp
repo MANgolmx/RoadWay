@@ -1,9 +1,10 @@
-#include <SFML/Graphics.hpp>
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 #include "Assistant.h"
 #include "Car.h"
+#include "FText.h"
+#include "Button.h"
 #include "Level.h"
 
 using namespace sf;
@@ -18,16 +19,8 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	Texture texture;
-	Sprite sprite;
-
-	if (!texture.loadFromFile("resources\\buttons\\button_play.png")) {
-		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
-		exit(1);
-	}
-
-	sprite.setTexture(texture);
-	sprite.setPosition(0, 0);
+	Button play = CreateButton("resources\\buttons\\button_play.png", "PLAY", 100, "resources\\fonts\\roboto\\Roboto-Light.ttf");
+	//Is not working
 
 	window.setFramerateLimit(60);
 
@@ -47,6 +40,8 @@ int main()
 		}
 
 		window.clear({ 181, 230, 29, 255 });
+		window.draw(play.GetSprite());
+		window.draw(play.GetFText().GetText());
 		window.display();
 	}
 

@@ -33,11 +33,14 @@
     <ClCompile Include="Car.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Text.cpp">
+    <ClCompile Include="FText.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Файлы заголовков</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,10 +59,13 @@
     <ClInclude Include="Car.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Text.h">
+    <ClInclude Include="FText.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

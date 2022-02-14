@@ -46,7 +46,7 @@ public:
 
 	void Rotation();
 
-	virtual void Draw(RenderWindow& win);
+	virtual void Draw(sf::RenderWindow& win);
 
 	Texture GetCellTexture();
 	Sprite GetCellSprite();
