@@ -7,7 +7,7 @@
 
 using namespace sf;
 
-int main()
+void play(RenderWindow& window)
 {
 	srand(time(0));
 	const int roadSize = 12;
@@ -70,6 +70,4 @@ int main()
 		car.Draw(window);
 		window.display();
 	}
-
-	return 0;
 }

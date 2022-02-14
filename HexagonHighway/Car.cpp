@@ -34,6 +34,7 @@ Car::Car(std::string path)
 void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	NonDrivableCell decor[], const int decorCount)
 {
+	//TODO: Fix turned cell problem
 	if (timePassed + time.asMilliseconds() > timeToMove)
 	{
 		DrivableCell* tmp;
