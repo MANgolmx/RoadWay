@@ -6,6 +6,7 @@
 #include "FText.h"
 #include "Button.h"
 #include "Level.h"
+#include "Logo.h"
 
 using namespace sf;
 
@@ -26,6 +27,8 @@ int main()
 	window.setFramerateLimit(60);
 
 #pragma endregion
+
+	playlogo(window);
 
 	while (window.isOpen()) //Цикл программы
 	{
