@@ -72,7 +72,7 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Logo.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

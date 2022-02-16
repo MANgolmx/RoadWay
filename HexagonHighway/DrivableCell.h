@@ -1,8 +1,10 @@
 #pragma once
 #include "Cell.h"
-#include "NonDrivableCell.h"
 
 enum drivableTypes { undefiened, straight, turned, threeway, fourway };
+
+class DrivableCell;
+class NonDrivableCell;
 
 class DrivableCell:public Cell
 {
@@ -24,8 +26,8 @@ public:
 
 	void static Swap(DrivableCell& cell1, DrivableCell& cell2);
 
-	static DrivableCell* GetCellFromMainPos(Vector2f mainPos, DrivableCell cells[], const int size);
-	static DrivableCell* GetCellFromPos(Vector2f pos, DrivableCell cells[], const int size);
+	static DrivableCell* GetCellFromMainPos(sf::Vector2f mainPos, DrivableCell cells[], const int size);
+	static DrivableCell* GetCellFromPos(sf::Vector2f pos, DrivableCell cells[], const int size);
 
 	drivableTypes GetType();
 	void SetType(int& straight, int& turned, int& threeway, int& fourway);

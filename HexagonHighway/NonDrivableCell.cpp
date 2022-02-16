@@ -1,4 +1,6 @@
 #include "NonDrivableCell.h"
+#include <iostream>
+
 
 NonDrivableCell::NonDrivableCell()
 {

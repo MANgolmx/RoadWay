@@ -1,8 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-using namespace sf;
-
 class FText
 {
 private:
@@ -15,12 +13,12 @@ public:
 
 	~FText();
 
-	Text GetText();
+	sf::Text GetText();
 
-	void ChangeColor(Color col);
+	void ChangeColor(sf::Color col);
 
-	Vector2f GetPosition();
-	void SetPosition(Vector2f pos);
+	sf::Vector2f GetPosition();
+	void SetPosition(sf::Vector2f pos);
 
 	void operator=(FText txt);
 };

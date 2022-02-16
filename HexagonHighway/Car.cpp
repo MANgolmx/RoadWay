@@ -1,5 +1,11 @@
 #include "Car.h"
+#include "Cell.h"
 #include "DrivableCell.h"
+#include "NonDrivableCell.h"
+#include <iostream>
+#include <SFML\Graphics.hpp>
+
+using namespace sf;
 
 Car::Car()
 {

@@ -7,6 +7,9 @@
 #include "NonDrivableCell.h"
 #include "Assistant.h"
 #include "Car.h"
+#include "Button.h"
+
+using namespace sf;
 
 int ReadLevelFile(std::string lvlpath)
 {

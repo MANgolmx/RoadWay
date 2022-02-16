@@ -1,6 +1,9 @@
 #include "Button.h"
 #include "FText.h"
 #include  <iostream>
+#include <SFML\Graphics.hpp>
+
+using namespace sf;
 
 Button::Button()
 {

@@ -1,5 +1,9 @@
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
+#include <iostream>
+#include <SFML\Graphics.hpp>
+
+using namespace sf;
 
 DrivableCell::DrivableCell()
 {

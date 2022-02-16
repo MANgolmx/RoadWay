@@ -1,5 +1,6 @@
 #include "Cell.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 using namespace sf;
 

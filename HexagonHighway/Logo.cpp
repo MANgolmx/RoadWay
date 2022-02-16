@@ -1,3 +1,4 @@
+#include <SFML/Graphics.hpp>
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"

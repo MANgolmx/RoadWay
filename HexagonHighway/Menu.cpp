@@ -7,6 +7,8 @@
 #include "Button.h"
 #include "Level.h"
 #include "Logo.h"
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
 using namespace sf;
 

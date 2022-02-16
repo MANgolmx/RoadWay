@@ -1,5 +1,4 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
-#include <SFML\Graphics.hpp>
-
-void playlogo(RenderWindow& window);
+void playlogo(sf::RenderWindow& window);
