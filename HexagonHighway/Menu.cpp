@@ -18,6 +18,17 @@ int main()
 
 	int window_width = 1212, window_height = 808;
 
+	Texture texture;
+	Sprite sprite;
+
+	if (!texture.loadFromFile("resources\\menu.png")) {
+		std::cout << "[ERROR OCURRED] Can not open menu texture" << std::endl;
+		exit(1);
+	}
+
+	sprite.setTexture(texture);
+	sprite.setPosition(0, 0);
+
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	FText play_txt("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
@@ -48,7 +59,7 @@ int main()
 			}
 		}
 
-		window.clear({ 181, 230, 29, 255 });
+		window.draw(sprite);
 		window.draw(bt_play.GetSprite());
 		window.draw(bt_play.GetFText().GetText());
 		window.display();

@@ -40,6 +40,8 @@ void playlogo(RenderWindow& window)
 			case Event::Closed:
 				window.close();
 				break;
+
+
 			}
 		}
 
