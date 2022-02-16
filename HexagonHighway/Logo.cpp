@@ -40,8 +40,9 @@ void playlogo(RenderWindow& window)
 			case Event::Closed:
 				window.close();
 				break;
-
-
+			case Event::KeyPressed:
+				if (event.key.code == Keyboard::Enter)
+					return;
 			}
 		}
 
@@ -66,7 +67,8 @@ void playlogo(RenderWindow& window)
 		}
 		if (phase == 3)
 		{
-			Time t = seconds(1.f);
+			col.a--;
+			Time t = seconds(1.5f);
 			sleep(t);
 			return;
 		}
