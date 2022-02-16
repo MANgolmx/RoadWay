@@ -5,6 +5,8 @@
 #include "NonDrivableCell.h"
 #include "Button.h"
 
+int ReadLevelFile(std::string lvlpath);
+
 bool isBelong(Vector2i a, DrivableCell cell);
 
 bool isBelong(Vector2i a, Button bt);
