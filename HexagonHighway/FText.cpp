@@ -28,6 +28,11 @@ Text FText::GetText()
 	return text;
 }
 
+void FText::ChangeColor(Color col)
+{
+	text.setFillColor(col);
+}
+
 Vector2f FText::GetPosition()
 {
 	return text.getPosition();

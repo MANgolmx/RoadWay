@@ -17,6 +17,8 @@ public:
 
 	Text GetText();
 
+	void ChangeColor(Color col);
+
 	Vector2f GetPosition();
 	void SetPosition(Vector2f pos);
 

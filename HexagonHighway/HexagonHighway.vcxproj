@@ -162,6 +162,7 @@
     <ClCompile Include="DrivableCell.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Logo.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="NonDrivableCell.cpp" />
     <ClCompile Include="FText.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="DrivableCell.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Logo.h" />
     <ClInclude Include="NonDrivableCell.h" />
     <ClInclude Include="FText.h" />
   </ItemGroup>
