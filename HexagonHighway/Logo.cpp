@@ -67,7 +67,7 @@ void playlogo(RenderWindow& window)
 		}
 		if (phase == 3)
 		{
-			col.a--;
+			col.a = 0;
 			Time t = seconds(1.5f);
 			sleep(t);
 			return;
