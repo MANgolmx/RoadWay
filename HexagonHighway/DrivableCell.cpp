@@ -79,8 +79,8 @@ void DrivableCell::Draw(RenderWindow& win, NonDrivableCell chosen)
 
 void DrivableCell::Swap(DrivableCell& cell1, DrivableCell& cell2)
 {
-	Point p = cell2.position;
-	Point mp = cell2.mainPosition;
+	Vector2f p = cell2.position;
+	Vector2f mp = cell2.mainPosition;
 
 	cell2.position = cell1.position;
 	cell2.mainPosition = cell1.mainPosition;
@@ -98,7 +98,7 @@ drivableTypes DrivableCell::GetType()
 	return type;
 }
 
-DrivableCell* DrivableCell::GetCellFromMainPos(Point mainPos, DrivableCell cells[], const int size)
+DrivableCell* DrivableCell::GetCellFromMainPos(Vector2f mainPos, DrivableCell cells[], const int size)
 {
 	for (int i = 0; i < size; i++)
 		if (cells[i].mainPosition == mainPos)
@@ -106,7 +106,7 @@ DrivableCell* DrivableCell::GetCellFromMainPos(Point mainPos, DrivableCell cells
 	return nullptr;
 }
 
-DrivableCell* DrivableCell::GetCellFromPos(Point pos, DrivableCell cells[], const int size)
+DrivableCell* DrivableCell::GetCellFromPos(Vector2f pos, DrivableCell cells[], const int size)
 {
 	for (int i = 0; i < size; i++)
 		if (pos.x >= cells[i].position.x &&

@@ -19,8 +19,8 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	FText play_txt("PLAY", 100, "resources\\fonts\\roboto\\Roboto-Light.ttf");
-	Button bt_play(play_txt, "resources\\buttons\\button_play.png", {30,24});
+	FText play_txt("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_play(play_txt, "resources\\buttons\\button_play.png", {20,24});
 	bt_play.SetPosition({500, 400});
 
 	window.setFramerateLimit(60);

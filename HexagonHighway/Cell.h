@@ -4,15 +4,6 @@
 
 using namespace sf;
 
-struct Point
-{
-	int x, y;
-
-	bool operator==(Point p);
-	bool operator!=(Point p);
-	bool operator!=(int a);
-};
-
 enum directions { up, right, down, left };
 
 class Cell
@@ -21,8 +12,8 @@ protected:
 	Texture square_texture;
 	Sprite square_sprite;
 
-	Point position;
-	Point mainPosition;
+	Vector2f position;
+	Vector2f mainPosition;
 	directions direction;
 
 public:
@@ -30,16 +21,16 @@ public:
 	Cell(std::string path);
 	~Cell();
 
-	Point GetPosition();
+	Vector2f GetPosition();
 	void SetPosition(Cell cell);
-	void SetPosition(Point pos);
+	void SetPosition(Vector2f pos);
 	void SetPosition(int x, int y);
 
 	virtual void SetCellSprite(std::string path);
 
-	void SetMainPosition(Point pos);
+	void SetMainPosition(Vector2f pos);
 	void SetMainPosition(int x, int y);
-	Point GetMainPosition();
+	Vector2f GetMainPosition();
 
 	directions GetDirection();
 	void SetDirection(directions dir);

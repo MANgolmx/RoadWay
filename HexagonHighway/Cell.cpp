@@ -27,7 +27,7 @@ Cell::~Cell()
 {
 }
 
-Point Cell::GetPosition()
+Vector2f Cell::GetPosition()
 {
 	return position;
 }
@@ -39,7 +39,7 @@ void Cell::SetPosition(Cell cell)
 	square_sprite.setPosition(position.x, position.y);
 }
 
-void Cell::SetPosition(Point pos)
+void Cell::SetPosition(Vector2f pos)
 {
 	position.x = pos.x;
 	position.y = pos.y;
@@ -63,7 +63,7 @@ void Cell::SetCellSprite(std::string path)
 	square_sprite.setPosition(0, 0);
 }
 
-void Cell::SetMainPosition(Point pos)
+void Cell::SetMainPosition(Vector2f pos)
 {
 	mainPosition.x = pos.x;
 	mainPosition.y = pos.y;
@@ -75,7 +75,7 @@ void Cell::SetMainPosition(int x, int y)
 	mainPosition.y = y;
 }
 
-Point Cell::GetMainPosition()
+Vector2f Cell::GetMainPosition()
 {
 	return mainPosition;
 }
@@ -130,19 +130,4 @@ Texture Cell::GetCellTexture()
 Sprite Cell::GetCellSprite()
 {
 	return square_sprite;
-}
-
-bool Point::operator==(Point p)
-{
-	return (x == p.x && y == p.y);
-}
-
-bool Point::operator!=(Point p)
-{
-	return !(x == p.x && y == p.y);
-}
-
-bool Point::operator!=(int a)
-{
-	return !(x == a && y == a);
 }

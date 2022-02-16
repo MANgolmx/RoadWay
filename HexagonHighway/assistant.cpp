@@ -6,6 +6,25 @@
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 #include "Assistant.h"
+#include "Car.h"
+
+int ReadLevelFile(std::string lvlpath)
+{
+	int a;
+	FILE* level_file;
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	{
+		std::cout << "Can not open level file!" << std::endl;
+		system("pause");
+		return 0;
+	}
+
+	fscanf_s(level_file, "%i", &a);
+
+	fclose(level_file);
+
+	return a;
+}
 
 bool isBelong(Vector2i a, DrivableCell cell)
 {
@@ -66,6 +85,7 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
 void ReadMainPositions(const int roadSize, DrivableCell roads[], 
 	const int decorSize, NonDrivableCell decor[])
 {
+	int mpx, mpy;
 	FILE* level_file;
 	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
 	{
@@ -74,8 +94,8 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 		return;
 	}
 
-	int mpx, mpy;
-	fscanf_s(level_file, "%i %i", &mpx, &mpy); //Сканирование позиции нулевого элемента
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);// TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);//Сканирование позиции нулевого элемента
 	roads[0].SetPosition(mpx, mpy);
 
 	for (int i = 0; i < roadSize; i++)
@@ -107,6 +127,20 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 {
 	for (int i = 0; i < N; i++)
 		cell[i].SetChose(var);
+}
+
+void ReadCarPosition(Car& car, std::string lvlpath)
+{
+	FILE* level_file;
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	{
+		std::cout << "Can not open level file!" << std::endl;
+		system("pause");
+		return;
+	}
+
+
+	fclose(level_file);
 }
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,

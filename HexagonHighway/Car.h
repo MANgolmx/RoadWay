@@ -12,8 +12,8 @@ private:
 	int timePassed = 0;
 	int toTurn = 0;
 
-	Point position;
-	Point mainPosition;
+	Vector2f position;
+	Vector2f mainPosition;
 
 	Texture car_texture;
 	Sprite car_sprite;
@@ -27,8 +27,8 @@ public:
 	Car(std::string path);
 	~Car();
 
-	Point GetPosition();
-	Point GetMainPosition();
+	Vector2f GetPosition();
+	Vector2f GetMainPosition();
 
 	void ResetPosition();
 

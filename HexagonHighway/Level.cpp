@@ -10,10 +10,11 @@ using namespace sf;
 
 void levelStart(RenderWindow& window)
 {
-	const int roadSize = 12;
-	const int decorationSize = 1;
 
 #pragma region INITIALIZATION
+
+	int roadSize = 12;
+	int decorationSize = 1;
 
 	int window_width = 1212, window_height = 808;
 
@@ -21,10 +22,10 @@ void levelStart(RenderWindow& window)
 
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
-	DrivableCell roads[roadSize];
+	DrivableCell* roads = new DrivableCell[roadSize];
 	SetDrivablePath(roads, roadSize, 4, 4, 4, 0);
 
-	NonDrivableCell decorations[decorationSize];
+	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
 	Car car("resources\\cars\\car_1.png");
@@ -36,14 +37,14 @@ void levelStart(RenderWindow& window)
 
 #pragma endregion
 
-	while (window.isOpen()) //Цикл программы
+	while (window.isOpen()) //Цикл игры
 	{
 		Event event;
 		while (window.pollEvent(event)) //Цикл событий
 		{
 			switch (event.type)
 			{
-				// TODO: Добавить переинициализацию спрайтов при изменении окна
+			// TODO: Добавить переинициализацию спрайтов при изменении окна
 			case Event::Closed:
 				window.close();
 				break;
