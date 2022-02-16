@@ -256,12 +256,12 @@ void Car::ResetPosition()
 	car_sprite.setPosition(position.x, position.y);
 }
 
-Point Car::GetPosition()
+Vector2f Car::GetPosition()
 {
 	return position;
 }
 
-Point Car::GetMainPosition()
+Vector2f Car::GetMainPosition()
 {
 	return mainPosition;
 }

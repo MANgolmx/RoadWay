@@ -6,6 +6,7 @@
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 #include "Assistant.h"
+#include "Car.h"
 
 int ReadLevelFile(std::string lvlpath)
 {
@@ -93,7 +94,8 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 		return;
 	}
 
-	fscanf_s(level_file, "%i %i", &mpx, &mpy); //Сканирование позиции нулевого элемента
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);// TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);//Сканирование позиции нулевого элемента
 	roads[0].SetPosition(mpx, mpy);
 
 	for (int i = 0; i < roadSize; i++)
@@ -125,6 +127,20 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 {
 	for (int i = 0; i < N; i++)
 		cell[i].SetChose(var);
+}
+
+void ReadCarPosition(Car& car, std::string lvlpath)
+{
+	FILE* level_file;
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	{
+		std::cout << "Can not open level file!" << std::endl;
+		system("pause");
+		return;
+	}
+
+
+	fclose(level_file);
 }
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,

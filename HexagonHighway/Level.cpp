@@ -10,10 +10,11 @@ using namespace sf;
 
 void levelStart(RenderWindow& window)
 {
-	int roadSize = 12;
-	int decorationSize = 1;
 
 #pragma region INITIALIZATION
+
+	int roadSize = 12;
+	int decorationSize = 1;
 
 	int window_width = 1212, window_height = 808;
 
