@@ -4,12 +4,12 @@
 #include "NonDrivableCell.h"
 #include "Assistant.h"
 #include "Car.h"
+#include "Level.h"
 
 using namespace sf;
 
-void play(RenderWindow& window)
+void levelStart(RenderWindow& window)
 {
-	srand(time(0));
 	const int roadSize = 12;
 	const int decorationSize = 1;
 

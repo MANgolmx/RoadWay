@@ -28,7 +28,19 @@ Text FText::GetText()
 	return text;
 }
 
+Vector2f FText::GetPosition()
+{
+	return text.getPosition();
+}
+
 void FText::SetPosition(Vector2f pos)
 {
 	text.setPosition(pos);
+}
+
+void FText::operator=(FText txt)
+{
+	font = txt.font;
+	text = txt.text;
+	text.setPosition(txt.text.getPosition());
 }

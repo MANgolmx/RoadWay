@@ -4,20 +4,27 @@
 class Button
 {
 private:
-	FText text;
+	FText ftext;
 
 	sf::Sprite sprite;
 	sf::Texture texture;
-public:
 
+	Vector2f textPosition;
+
+public:
 	Button();
-	Button(FText txt, std::string txtPath);
+	Button(FText txt, std::string texturePath, Vector2f textPos);
+	Button(FText txt, sf::Texture Texture, Vector2f textPos);
 
 	~Button() {};
 
 	sf::Sprite GetSprite();
 	sf::Texture GetTexture();
+	
+	Vector2f GetPosition();
+	void SetPosition(Vector2f pos);
 
 	FText GetFText();
 
+	void operator=(Button bt);
 };

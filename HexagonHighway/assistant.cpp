@@ -17,6 +17,16 @@ bool isBelong(Vector2i a, DrivableCell cell)
 	return false;
 }
 
+bool isBelong(Vector2i a, Button bt)
+{
+	if (a.x >= bt.GetPosition().x &&
+		a.x <= bt.GetPosition().x + bt.GetTexture().getSize().x &&
+		a.y >= bt.GetPosition().y &&
+		a.y <= bt.GetPosition().y + bt.GetTexture().getSize().y)
+		return true;
+	return false;
+}
+
 void SetDrivablePath(DrivableCell* mas, const int masSize,
 	int straight, int turned, int threeway, int fourway)
 {
@@ -106,9 +116,4 @@ void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 		roads[i].Draw(win, chosen);
 	for (int i = 0; i < decorSize; i++)
 		decor[i].Draw(win);
-}
-
-Button CreateButton(std::string texturePath, std::string str, int size, std::string fontPath, const sf::Color col)
-{
-	//TODO: This function
 }

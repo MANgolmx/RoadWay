@@ -19,8 +19,9 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	Button play = CreateButton("resources\\buttons\\button_play.png", "PLAY", 100, "resources\\fonts\\roboto\\Roboto-Light.ttf");
-	//Is not working
+	FText play_txt("PLAY", 100, "resources\\fonts\\roboto\\Roboto-Light.ttf");
+	Button bt_play(play_txt, "resources\\buttons\\button_play.png", {30,24});
+	bt_play.SetPosition({500, 400});
 
 	window.setFramerateLimit(60);
 
@@ -36,12 +37,17 @@ int main()
 			case Event::Closed:
 				window.close();
 				break;
+			case Event::MouseButtonPressed:
+				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
+					if (isBelong(Mouse::getPosition(window), bt_play))
+						levelStart(window);
+				break;
 			}
 		}
 
 		window.clear({ 181, 230, 29, 255 });
-		window.draw(play.GetSprite());
-		window.draw(play.GetFText().GetText());
+		window.draw(bt_play.GetSprite());
+		window.draw(bt_play.GetFText().GetText());
 		window.display();
 	}
 

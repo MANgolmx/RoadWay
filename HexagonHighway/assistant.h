@@ -1,9 +1,13 @@
+#pragma once
+
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 #include "Button.h"
 
 bool isBelong(Vector2i a, DrivableCell cell);
+
+bool isBelong(Vector2i a, Button bt);
 
 void SetDrivablePath(DrivableCell* mas, const int masSize,
 	int straight, int turned, int threeway, int fourway);
@@ -23,6 +27,3 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[]);
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 	const int roadSize, NonDrivableCell decor[], const int decorSize);
-
-Button CreateButton(std::string texturePath, std::string str, int size,
-	std::string fontPath, const sf::Color col = sf::Color::White);

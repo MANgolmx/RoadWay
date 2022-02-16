@@ -6,10 +6,10 @@ using namespace sf;
 class FText
 {
 private:
-public:
 	sf::Font font;
 	sf::Text text;
 
+public:
 	FText();
 	FText(std::string str, int size, std::string fontPath, const sf::Color col = sf::Color::White);
 
@@ -17,5 +17,8 @@ public:
 
 	Text GetText();
 
+	Vector2f GetPosition();
 	void SetPosition(Vector2f pos);
+
+	void operator=(FText txt);
 };
