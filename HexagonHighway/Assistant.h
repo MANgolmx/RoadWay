@@ -4,7 +4,6 @@
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 #include "Button.h"
-#include "Car.h"
 
 int ReadLevelFile(std::string lvlpath);
 
@@ -27,8 +26,6 @@ void SetPositions(const int roadSize, DrivableCell cell[],
 	const int decorSize, NonDrivableCell decor[]);
 
 void SetIsChosen(bool var, const int N, DrivableCell cell[]);
-
-void ReadCarPosition(Car& car, std::string lvlpath);
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 	const int roadSize, NonDrivableCell decor[], const int decorSize);
