@@ -33,7 +33,7 @@ int main()
 
 	FText play_txt("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
 	Button bt_play(play_txt, "resources\\buttons\\button_play.png", {20,24});
-	bt_play.SetPosition({500, 400});
+	bt_play.SetPosition({ 100, 150 });
 
 	window.setFramerateLimit(60);
 
