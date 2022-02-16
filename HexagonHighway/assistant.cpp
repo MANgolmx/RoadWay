@@ -5,6 +5,7 @@
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
+#include "Assistant.h"
 
 bool isBelong(Vector2i a, DrivableCell cell)
 {
@@ -12,6 +13,16 @@ bool isBelong(Vector2i a, DrivableCell cell)
 		a.x <= cell.GetPosition().x + cell.GetCellTexture().getSize().x &&
 		a.y >= cell.GetPosition().y &&
 		a.y <= cell.GetPosition().y + cell.GetCellTexture().getSize().y)
+		return true;
+	return false;
+}
+
+bool isBelong(Vector2i a, Button bt)
+{
+	if (a.x >= bt.GetPosition().x &&
+		a.x <= bt.GetPosition().x + bt.GetTexture().getSize().x &&
+		a.y >= bt.GetPosition().y &&
+		a.y <= bt.GetPosition().y + bt.GetTexture().getSize().y)
 		return true;
 	return false;
 }

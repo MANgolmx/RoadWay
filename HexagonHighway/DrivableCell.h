@@ -20,7 +20,7 @@ public:
 
 	bool CanGo(directions& carDir, directions& lastCarDir);
 
-	void Draw(RenderWindow& win, NonDrivableCell chosen);
+	void Draw(sf::RenderWindow& win, NonDrivableCell chosen);
 
 	void static Swap(DrivableCell& cell1, DrivableCell& cell2);
 

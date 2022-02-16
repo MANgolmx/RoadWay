@@ -4,12 +4,12 @@
 #include "NonDrivableCell.h"
 #include "Assistant.h"
 #include "Car.h"
+#include "Level.h"
 
 using namespace sf;
 
-int main()
+void levelStart(RenderWindow& window)
 {
-	srand(time(0));
 	const int roadSize = 12;
 	const int decorationSize = 1;
 
@@ -18,8 +18,6 @@ int main()
 	int window_width = 1212, window_height = 808;
 
 	Clock clock;
-
-	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
@@ -70,6 +68,4 @@ int main()
 		car.Draw(window);
 		window.display();
 	}
-
-	return 0;
 }
