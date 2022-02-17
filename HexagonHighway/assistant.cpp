@@ -16,7 +16,7 @@ int ReadLevelFile(std::string lvlpath)
 {
 	int a;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_test2.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
@@ -91,7 +91,7 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 {
 	int mpx, mpy;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_test2.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
@@ -141,7 +141,7 @@ void ReadCarPosition(Car& car, std::string lvlpath, RenderWindow& window)
 	float t1, t2;
 	FILE* level_file;
 	directions dir;
-	if (fopen_s(&level_file, "levels\\level_testcar.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_testcar2.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
@@ -173,7 +173,7 @@ sf::Vector2f ReadSizes(std::string path)
 {
 	float t1, t2;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_test2.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
