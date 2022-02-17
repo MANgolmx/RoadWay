@@ -49,8 +49,16 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 		{
 			type = nondrivableTypes::forest;
 
+			a = rand() % 6;
 
-
+			switch (a) {
+			case 0: path = "resources\\cells\\flowers\\floawers_1.png"; break;
+			case 1: path = "resources\\cells\\flowers\\floawers_2.png"; break;
+			case 2: path = "resources\\cells\\flowers\\floawers_3.png"; break;
+			case 3: path = "resources\\cells\\flowers\\floawers_4.png"; break;
+			case 4: path = "resources\\cells\\flowers\\floawers_5.png"; break;
+			case 5: path = "resources\\cells\\flowers\\floawers_6.png"; break;
+			}
 
 			if (!square_texture.loadFromFile(path)) {
 				std::cout << "[ERROR OCURRED] Can not open Forest.png" << std::endl;

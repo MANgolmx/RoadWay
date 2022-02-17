@@ -67,7 +67,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					else {
 						if (toTurn == 0)
 						{
-							toTurn = 0;
 							lastDirection = up;
 							if (DrivableCell::GetCellFromPos({ position.x, position.y + 1 }, roads, roadCount)->GetDirection() == down)
 								direction = right;
@@ -89,6 +88,22 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
+				case finish:
+					if (toTurn == 0)
+					{
+						toTurn = 65;
+						position.y--;
+					}
+					else {
+						if (toTurn == 1)
+						{
+							direction = STOP;
+						}
+						position.y--;
+						toTurn--;
+					}
+
+
 				}
 			}
 			break;
@@ -134,6 +149,20 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
+				case finish:
+					if (toTurn == 0)
+					{
+						toTurn = 65;
+						position.y++;
+					}
+					else {
+						if (toTurn == 1)
+						{
+							direction = STOP;
+						}
+						position.y++;
+						toTurn--;
+					}
 				}
 			}
 			break;
@@ -179,6 +208,20 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
+				case finish:
+					if (toTurn == 0)
+					{
+						toTurn = 65;
+						position.x++;
+					}
+					else {
+						if (toTurn == 1)
+						{
+							direction = STOP;
+						}
+						position.x++;
+						toTurn--;
+					}
 				}
 			}
 			break;
@@ -224,6 +267,20 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
+				case finish:
+					if (toTurn == 0)
+					{
+						toTurn = 65;
+						position.x--;
+					}
+					else {
+						if (toTurn == 1)
+						{
+							direction = STOP;
+						}
+						position.x--;
+						toTurn--;
+					}
 				}
 			}
 			break;

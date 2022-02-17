@@ -187,4 +187,23 @@ sf::Vector2f ReadSizes(std::string path)
 	return { t1,t2 };
 }
 
+void GenerateDecoration(DrivableCell roads[], int roadSize, NonDrivableCell decor[], int decorSize)
+{
+	Vector2f* mas = new Vector2f[ReadSizes("").x];
+	
+
+	for (int i = 0; i < 19; i++)
+	{
+		bool isSet = false;
+		for (int j = 0; j < 11; j++)
+			if (mas[j].x != i && mas[j].y != j)
+				decor->SetMainPosition(i,j);
+		
+
+
+
+
+	}
+}
+
 //TODO: Починить все считывания из файлов (не считывает string)

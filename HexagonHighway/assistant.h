@@ -36,3 +36,6 @@ void DrawCells(sf::RenderWindow& win, DrivableCell roads[], NonDrivableCell chos
 	StructureCell park);
 
 sf::Vector2f ReadSizes(std::string path);
+
+void GenerateDecoration(DrivableCell roads[], int roadSize,
+	NonDrivableCell decor[], int decorSize);

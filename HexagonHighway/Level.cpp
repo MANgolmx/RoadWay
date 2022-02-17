@@ -25,9 +25,11 @@ void levelStart(RenderWindow& window)
 
 	DrivableCell* roads = new DrivableCell[roadSize];
 	SetDrivablePath(roads, roadSize, 4, 4, 4, 0);
+	roads[72].SetCellSprite("resources\\cells\\finish.png");
+	roads[72].SetMainPosition({ 6,4 });
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
-	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
+	SetNonDrivablePath(decorations, decorationSize, 80, 56, 0);
 
 	StructureCell park("resources\\cells\\structures\\structure_park.png");
 
@@ -35,6 +37,8 @@ void levelStart(RenderWindow& window)
 
 	ReadCarPosition(car, "levels\\level_testcar.lvl", window);
 	
+	//GenerateDecoration(roads, roadSize, decorations, decorationSize);
+
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
 	SetPositions(window, roadSize, roads, decorationSize, decorations);
 
