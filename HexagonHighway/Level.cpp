@@ -15,7 +15,7 @@ void levelStart(RenderWindow& window)
 #pragma region INITIALIZATION
 
 	int roadSize = ReadSizes("").x;
-	int decorationSize = ReadSizes("").y;
+	int decorationSize = 136;
 
 	int window_width = 1212, window_height = 808;
 

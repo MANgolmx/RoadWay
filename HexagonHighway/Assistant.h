@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 class DrivableCell;
+class StructureCell;
 class NonDrivableCell;
 class Button;
 class Car;
@@ -23,12 +24,18 @@ void CheckSwap(const int N, DrivableCell cell[], sf::RenderWindow& window);
 void ReadMainPositions(const int N, DrivableCell cell[],
 	const int decorSize, NonDrivableCell decor[]);
 
-void SetPositions(const int roadSize, DrivableCell cell[],
+void SetPositions(sf::RenderWindow& window, const int roadSize, DrivableCell cell[],
 	const int decorSize, NonDrivableCell decor[]);
 
 void SetIsChosen(bool var, const int N, DrivableCell cell[]);
 
-void ReadCarPosition(Car& car, std::string lvlpath);
+void ReadCarPosition(Car& car, std::string lvlpath, sf::RenderWindow& window);
 
 void DrawCells(sf::RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
-	const int roadSize, NonDrivableCell decor[], const int decorSize);
+	const int roadSize, NonDrivableCell decor[], const int decorSize,
+	StructureCell park);
+
+sf::Vector2f ReadSizes(std::string path);
+
+void GenerateDecoration(DrivableCell roads[], int roadSize,
+	NonDrivableCell decor[], int decorSize);
