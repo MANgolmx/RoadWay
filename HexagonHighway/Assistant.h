@@ -1,16 +1,16 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
-#include "Cell.h"
-#include "DrivableCell.h"
-#include "NonDrivableCell.h"
-#include "Button.h"
-#include "Car.h"
+class DrivableCell;
+class NonDrivableCell;
+class Button;
+class Car;
 
 int ReadLevelFile(std::string lvlpath);
 
-bool isBelong(Vector2i a, DrivableCell cell);
+bool isBelong(sf::Vector2i a, DrivableCell cell);
 
-bool isBelong(Vector2i a, Button bt);
+bool isBelong(sf::Vector2i a, Button bt);
 
 void SetDrivablePath(DrivableCell* mas, const int masSize,
 	int straight, int turned, int threeway, int fourway);
@@ -18,7 +18,7 @@ void SetDrivablePath(DrivableCell* mas, const int masSize,
 void SetNonDrivablePath(NonDrivableCell* mas, const int masSize,
 	int forest, int private_residence, int apartment);
 
-void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window);
+void CheckSwap(const int N, DrivableCell cell[], sf::RenderWindow& window);
 
 void ReadMainPositions(const int N, DrivableCell cell[],
 	const int decorSize, NonDrivableCell decor[]);
@@ -30,5 +30,5 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[]);
 
 void ReadCarPosition(Car& car, std::string lvlpath);
 
-void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
+void DrawCells(sf::RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 	const int roadSize, NonDrivableCell decor[], const int decorSize);

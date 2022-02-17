@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Assistant.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="DrivableCell.cpp" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assistant.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="DrivableCell.h" />

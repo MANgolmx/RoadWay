@@ -7,6 +7,7 @@
 #include "Button.h"
 #include "Level.h"
 #include "Logo.h"
+#include "Background.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -20,16 +21,7 @@ int main()
 
 	int window_width = 1212, window_height = 808;
 
-	Texture texture;
-	Sprite sprite;
-
-	if (!texture.loadFromFile("resources\\menu.png")) {
-		std::cout << "[ERROR OCURRED] Can not open menu texture" << std::endl;
-		exit(1);
-	}
-
-	sprite.setTexture(texture);
-	sprite.setPosition(0, 0);
+	Background menu("resources\\menu.png");
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
@@ -58,10 +50,15 @@ int main()
 					if (isBelong(Mouse::getPosition(window), bt_play))
 						levelStart(window);
 				break;
+			case Event::Resized:
+				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
+				window.setView(View(Vector2f(windowSize.x / 2.f,
+					windowSize.y / 2.f), Vector2f(windowSize)));
+				break;
 			}
 		}
 
-		window.draw(sprite);
+		window.draw(menu.GetSprite());
 		window.draw(bt_play.GetSprite());
 		window.draw(bt_play.GetFText().GetText());
 		window.display();
