@@ -196,8 +196,8 @@ void GenerateDecoration(DrivableCell roads[], int roadSize, NonDrivableCell deco
 	{
 		bool isSet = false;
 		for (int j = 0; j < 11; j++)
-			if (mas[j] != decor->GetMainPosition())
-				
+			if (mas[j].x != i && mas[j].y != j)
+				decor->SetMainPosition(i,j);
 		
 
 

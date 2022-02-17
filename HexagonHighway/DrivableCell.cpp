@@ -67,6 +67,8 @@ bool DrivableCell::CanGo(directions& carDir, directions& lastCarDir)
 		} break;
 	case fourway:
 		return true; break;
+	case finish:
+		return true; break;
 	}
 	return false;
 }
