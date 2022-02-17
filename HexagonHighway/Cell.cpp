@@ -44,6 +44,7 @@ void Cell::SetPosition(Vector2f pos)
 {
 	position.x = pos.x;
 	position.y = pos.y;
+	square_sprite.setPosition(position.x, position.y);
 }
 
 void Cell::SetPosition(int x, int y)

@@ -5,6 +5,7 @@
 #include "Assistant.h"
 #include "Car.h"
 #include "Level.h"
+#include "StructureCell.h"
 
 using namespace sf;
 
@@ -13,8 +14,8 @@ void levelStart(RenderWindow& window)
 
 #pragma region INITIALIZATION
 
-	int roadSize = 12;
-	int decorationSize = 1;
+	int roadSize = ReadSizes("").x;
+	int decorationSize = ReadSizes("").y;
 
 	int window_width = 1212, window_height = 808;
 
@@ -28,10 +29,14 @@ void levelStart(RenderWindow& window)
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
+	StructureCell park("resources\\cells\\structures\\structure_park.png");
+
 	Car car("resources\\cars\\car_1.png");
 
+	ReadCarPosition(car, "levels\\level_testcar.lvl", window);
+	
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
-	SetPositions(roadSize, roads, decorationSize, decorations);
+	SetPositions(window, roadSize, roads, decorationSize, decorations);
 
 	window.setFramerateLimit(60);
 
@@ -62,6 +67,8 @@ void levelStart(RenderWindow& window)
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
+				SetPositions(window, roadSize, roads, decorationSize, decorations);
+				ReadCarPosition(car, "levels\\level_testcar.lvl", window);
 				break;
 			}
 		}
@@ -69,7 +76,7 @@ void levelStart(RenderWindow& window)
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
-		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize);
+		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, park);
 		car.Draw(window);
 		window.display();
 	}
