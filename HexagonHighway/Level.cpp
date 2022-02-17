@@ -5,6 +5,7 @@
 #include "Assistant.h"
 #include "Car.h"
 #include "Level.h"
+#include "StructureCell.h"
 
 using namespace sf;
 
@@ -13,8 +14,8 @@ void levelStart(RenderWindow& window)
 
 #pragma region INITIALIZATION
 
-	int roadSize = 12;
-	int decorationSize = 1;
+	int roadSize = ReadSizes("").x;
+	int decorationSize = ReadSizes("").y;
 
 	int window_width = 1212, window_height = 808;
 
@@ -27,6 +28,8 @@ void levelStart(RenderWindow& window)
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
+
+	StructureCell park("resources\\cells\\structures\\structure_park.png");
 
 	Car car("resources\\cars\\car_1.png");
 
@@ -73,7 +76,7 @@ void levelStart(RenderWindow& window)
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
-		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize);
+		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, park);
 		car.Draw(window);
 		window.display();
 	}

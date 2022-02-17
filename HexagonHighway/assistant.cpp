@@ -8,6 +8,7 @@
 #include "Assistant.h"
 #include "Car.h"
 #include "Button.h"
+#include "StructureCell.h"
 
 using namespace sf;
 
@@ -157,10 +158,33 @@ void ReadCarPosition(Car& car, std::string lvlpath, RenderWindow& window)
 }
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
-	const int roadSize, NonDrivableCell decor[], const int decorSize)
+	const int roadSize, NonDrivableCell decor[], const int decorSize,
+	StructureCell park)
 {
 	for (int i = 0; i < roadSize; i++)
 		roads[i].Draw(win, chosen);
 	for (int i = 0; i < decorSize; i++)
 		decor[i].Draw(win);
+
+	park.Draw(win);
 }
+
+sf::Vector2f ReadSizes(std::string path)
+{
+	float t1, t2;
+	FILE* level_file;
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	{
+		std::cout << "Can not open level file!" << std::endl;
+		system("pause");
+		return { 0,0 };
+	}
+
+	fscanf_s(level_file, "%f %f", &t1, &t2);
+
+	fclose(level_file);
+
+	return { t1,t2 };
+}
+
+//TODO: Починить все считывания из файлов (не считывает string)
