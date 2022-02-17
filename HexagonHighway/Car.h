@@ -34,6 +34,10 @@ public:
 
 	void ResetPosition();
 
+	void SetPosition(sf::Vector2f pos);
+	void SetMainPosition(sf::Vector2f pos, sf::RenderWindow& window);
+	void SetDirection(directions dir);
+
 	void Draw(sf::RenderWindow& win);
 
 	bool IsOnCell(DrivableCell cell);

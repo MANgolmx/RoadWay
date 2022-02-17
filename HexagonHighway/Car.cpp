@@ -262,6 +262,27 @@ void Car::ResetPosition()
 	car_sprite.setPosition(position.x, position.y);
 }
 
+void Car::SetPosition(Vector2f pos)
+{
+	position = pos;
+	car_sprite.setPosition(pos);
+}
+
+void Car::SetMainPosition(sf::Vector2f pos, RenderWindow& window)
+{
+	mainPosition = pos;
+	float f1 = window.getSize().x / 2 - 30 / 2;
+	float f2 = window.getSize().y / 2 - 30 / 2;
+	position.x = f1 + mainPosition.x * 101;
+	position.y = f2 + mainPosition.y * 101;
+	car_sprite.setPosition(position);
+}
+
+void Car::SetDirection(directions dir)
+{
+	direction = dir;
+}
+
 Vector2f Car::GetPosition()
 {
 	return position;

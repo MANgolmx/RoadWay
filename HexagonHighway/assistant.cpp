@@ -98,8 +98,6 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	}
 
 	fscanf_s(level_file, "%i %i", &mpx, &mpy);// TODO: Заменить на движение курсора
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);//Сканирование позиции нулевого элемента
-	roads[0].SetPosition(mpx, mpy);
 
 	for (int i = 0; i < roadSize; i++)
 	{
@@ -116,10 +114,15 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	fclose(level_file);
 }
 
-void SetPositions(const int roadSize, DrivableCell roads[],
+void SetPositions(RenderWindow& window, const int roadSize, DrivableCell roads[],
 	const int decorSize, NonDrivableCell decor[])
 {
-	for (int i = 0; i < roadSize; i++)
+	float f1 = window.getSize().x / 2 - 101 / 2;
+	float f2 = window.getSize().y / 2 - 101 / 2;
+
+	roads[0].SetPosition({ f1,f2 });
+
+	for (int i = 1; i < roadSize; i++)
 		roads[i].SetPosition(roads[0]);
 
 	for (int i = 0; i < decorSize; i++)
@@ -132,18 +135,25 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 		cell[i].SetChose(var);
 }
 
-void ReadCarPosition(Car& car, std::string lvlpath)
+void ReadCarPosition(Car& car, std::string lvlpath, RenderWindow& window)
 {
+	float t1, t2;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	directions dir;
+	if (fopen_s(&level_file, "levels\\level_testcar.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
 		return;
 	}
 
+	fscanf_s(level_file, "%f %f", &t1, &t2);
+	fscanf_s(level_file, "%i", &dir);
 
 	fclose(level_file);
+
+	car.SetMainPosition({ t1,t2 }, window);
+	car.SetDirection(dir);
 }
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
