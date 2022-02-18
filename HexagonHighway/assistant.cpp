@@ -117,9 +117,15 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 }
 
 void SetPositions(const int roadSize, DrivableCell roads[],
-	const int decorSize, NonDrivableCell decor[])
+	const int decorSize, NonDrivableCell decor[], RenderWindow& window)
 {
-	for (int i = 0; i < roadSize; i++)
+
+	float f1 = window.getSize().x / 2 - 101 / 2;
+	float f2 = window.getSize().y / 2 - 101 / 2;
+
+	roads[0].SetPosition({f1,f2});
+
+	for (int i = 1; i < roadSize; i++)
 		roads[i].SetPosition(roads[0]);
 
 	for (int i = 0; i < decorSize; i++)
@@ -134,16 +140,23 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 
 void ReadCarPosition(Car& car, std::string lvlpath)
 {
+	float mx, my;
+	directions dir;
+	
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_testcar.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
 		return;
 	}
 
+	fscanf_s(level_file, "%i %i %i", &mx, &my, &dir);
 
 	fclose(level_file);
+
+	car.SetMainPosition({ mx,my });
+	car.SetDirection(dir);
 }
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,

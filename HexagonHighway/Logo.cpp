@@ -48,6 +48,9 @@ void playlogo(RenderWindow& window)
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
+				f1 = window.getSize().x / 2 - ms.GetText().getGlobalBounds().width / 2;
+				f2 = window.getSize().y / 2 - ms.GetText().getGlobalBounds().height / 2;
+				ms.SetPosition({ f1,f2 });
 				break;
 			}
 		}

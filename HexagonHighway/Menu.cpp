@@ -21,13 +21,17 @@ int main()
 
 	int window_width = 1212, window_height = 808;
 
+
 	Background menu("resources\\menu.png");
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
+	float f1 = window.getSize().x / 10;
+	float f2 = window.getSize().y / 10 + 50;
+
 	FText play_txt("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
 	Button bt_play(play_txt, "resources\\buttons\\button_play.png", {20,24});
-	bt_play.SetPosition({ 100, 150 });
+	bt_play.SetPosition({ f1, f2 });
 
 	window.setFramerateLimit(60);
 
@@ -54,6 +58,9 @@ int main()
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
+				f1 = window.getSize().x / 10;
+				f2 = window.getSize().y / 10 + 50;
+				bt_play.SetPosition({ f1, f2 });
 				break;
 			}
 		}

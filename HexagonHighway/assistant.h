@@ -24,7 +24,7 @@ void ReadMainPositions(const int N, DrivableCell cell[],
 	const int decorSize, NonDrivableCell decor[]);
 
 void SetPositions(const int roadSize, DrivableCell cell[],
-	const int decorSize, NonDrivableCell decor[]);
+	const int decorSize, NonDrivableCell decor[], sf::RenderWindow& window);
 
 void SetIsChosen(bool var, const int N, DrivableCell cell[]);
 

@@ -29,9 +29,11 @@ void levelStart(RenderWindow& window)
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
 	Car car("resources\\cars\\car_1.png");
+	ReadCarPosition(car, "");
+	car.ReCalcPosition(window);
 
 	ReadMainPositions(roadSize, roads, decorationSize, decorations);
-	SetPositions(roadSize, roads, decorationSize, decorations);
+	SetPositions(roadSize, roads, decorationSize, decorations, window);
 
 	window.setFramerateLimit(60);
 
@@ -62,6 +64,9 @@ void levelStart(RenderWindow& window)
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
+				SetPositions(roadSize, roads, decorationSize, decorations, window);
+				ReadCarPosition(car, "");
+				car.ReCalcPosition(window);
 				break;
 			}
 		}
