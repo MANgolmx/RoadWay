@@ -167,6 +167,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="NonDrivableCell.cpp" />
     <ClCompile Include="FText.cpp" />
+    <ClCompile Include="StructureCell.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assistant.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Logo.h" />
     <ClInclude Include="NonDrivableCell.h" />
     <ClInclude Include="FText.h" />
+    <ClInclude Include="StructureCell.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

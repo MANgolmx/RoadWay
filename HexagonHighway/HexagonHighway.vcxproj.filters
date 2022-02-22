@@ -13,72 +13,102 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Cells">
+      <UniqueIdentifier>{cb0146ec-287e-4b1b-b617-a065fa9a8bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GameExecutable">
+      <UniqueIdentifier>{7f324e57-aaac-4916-ac52-3165c34f893f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Assist">
+      <UniqueIdentifier>{7f83bd4b-c98f-4824-ba19-8ee1948785bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Other">
+      <UniqueIdentifier>{ed637d2f-a17f-447f-9894-5dd09dac2477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Cells">
+      <UniqueIdentifier>{fdc249e5-0963-4946-8278-02d643def5cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GameExecutable">
+      <UniqueIdentifier>{70d58144-eac4-4837-a0c5-872582da2665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Assist">
+      <UniqueIdentifier>{2045ed99-5f4b-485b-aad0-7f28a4b2ef60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Other">
+      <UniqueIdentifier>{8ffc0efa-137c-4a1d-b342-30608317da12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Level.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="DrivableCell.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Cells</Filter>
     </ClCompile>
     <ClCompile Include="NonDrivableCell.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Cells</Filter>
     </ClCompile>
-    <ClCompile Include="Assistant.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Car.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="FText.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Logo.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="DrivableCell.cpp">
+      <Filter>Исходные файлы\Cells</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\GameExecutable</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>Исходные файлы\GameExecutable</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Исходные файлы\GameExecutable</Filter>
+    </ClCompile>
+    <ClCompile Include="Assistant.cpp">
+      <Filter>Исходные файлы\Assist</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="FText.cpp">
+      <Filter>Исходные файлы\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Исходные файлы\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>Исходные файлы\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="StructureCell.cpp">
+      <Filter>Исходные файлы\Cells</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cell.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="DrivableCell.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="NonDrivableCell.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Assistant.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Car.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="FText.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Logo.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Assist</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Assist</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Файлы заголовков\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>Файлы заголовков\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Файлы заголовков\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="DrivableCell.h">
+      <Filter>Файлы заголовков\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="NonDrivableCell.h">
+      <Filter>Файлы заголовков\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="FText.h">
+      <Filter>Файлы заголовков\Assist</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Файлы заголовков\GameExecutable</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>Файлы заголовков\GameExecutable</Filter>
+    </ClInclude>
+    <ClInclude Include="StructureCell.h">
+      <Filter>Файлы заголовков\Cells</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

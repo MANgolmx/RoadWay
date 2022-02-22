@@ -27,7 +27,7 @@ void playlogo(RenderWindow& window)
 
 	ms.SetPosition({f1,f2});
 
-	window.setFramerateLimit(90);
+	window.setFramerateLimit(120);
 
 #pragma endregion
 
@@ -72,19 +72,23 @@ void playlogo(RenderWindow& window)
 		{
 			col.a--;
 			if (col.a == 0)
+			{
 				phase++;
+				ms.SetPosition({ 10000,10000 });
+			}
 		}
+		
+		window.clear(Color::Black);
+		window.draw(ms.GetText());
+		window.display();
+
 		if (phase == 3)
 		{
-			col.a = 0;
 			Time t = seconds(1.5f);
 			sleep(t);
 			return;
 		}
 
-		window.clear(Color::Black);
-		window.draw(ms.GetText());
-		window.display();
 	}
 
 	return;
