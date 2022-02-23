@@ -15,7 +15,13 @@ DrivableCell::DrivableCell()
 DrivableCell::DrivableCell(std::string path)
 {
 	type = undefiened;
-	Cell(path);
+	if (!square_texture.loadFromFile(path)) {
+		std::cout << "[ERROR OCURRED] Can not open drivableCell texture" << std::endl;
+		exit(1);
+	}
+
+	square_sprite.setTexture(square_texture);
+	square_sprite.setPosition(0, 0);
 }
 
 DrivableCell::~DrivableCell()

@@ -2,6 +2,7 @@
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
+#include "StructureCell.h"
 #include "Assistant.h"
 #include "Car.h"
 #include "Level.h"
@@ -15,6 +16,7 @@ void levelStart(RenderWindow& window)
 
 	int roadSize = 12;
 	int decorationSize = 1;
+	int structuresSize = 1;
 
 	int window_width = 1212, window_height = 808;
 
@@ -28,11 +30,14 @@ void levelStart(RenderWindow& window)
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
+	StructureCell* structures = new StructureCell[structuresSize];
+
 	Car car("resources\\cars\\car_1.png");
 	ReadCarPosition(car, "");
 	car.ReCalcPosition(window);
 
-	ReadMainPositions(roadSize, roads, decorationSize, decorations);
+	ReadMainPositions(roadSize, roads, decorationSize, decorations,
+		structuresSize, structures);
 	SetPositions(roadSize, roads, decorationSize, decorations, window);
 
 	window.setFramerateLimit(60);

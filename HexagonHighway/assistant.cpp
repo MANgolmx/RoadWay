@@ -5,6 +5,7 @@
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
+#include "StructureCell.h"
 #include "Assistant.h"
 #include "Car.h"
 #include "Button.h"
@@ -86,7 +87,8 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
 }
 
 void ReadMainPositions(const int roadSize, DrivableCell roads[], 
-	const int decorSize, NonDrivableCell decor[])
+	const int decorSize, NonDrivableCell decor[], 
+	const int structSize, StructureCell structs[])
 {
 	int mpx, mpy;
 	FILE* level_file;
@@ -97,9 +99,8 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 		return;
 	}
 
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);// TODO: Заменить на движение курсора
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);//Сканирование позиции нулевого элемента
-	roads[0].SetPosition(mpx, mpy);
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
 
 	for (int i = 0; i < roadSize; i++)
 	{
@@ -111,6 +112,12 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	{
 		fscanf_s(level_file, "%i %i", &mpx, &mpy);
 		decor[i].SetMainPosition(mpx, mpy);
+	}
+
+	for (int i = 0; i < structSize; i++)
+	{
+		fscanf_s(level_file, "%i %i", &mpx, &mpy);
+		structs[i].SetMainPosition(mpx, mpy);
 	}
 
 	fclose(level_file);

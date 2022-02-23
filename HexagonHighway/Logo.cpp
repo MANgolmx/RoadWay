@@ -42,8 +42,7 @@ void playlogo(RenderWindow& window)
 				window.close();
 				break;
 			case Event::KeyPressed:
-				if (event.key.code == Keyboard::Enter)
-					return;
+				return;
 			case Event::Resized:
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,

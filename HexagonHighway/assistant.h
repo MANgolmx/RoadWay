@@ -3,6 +3,7 @@
 
 class DrivableCell;
 class NonDrivableCell;
+class StructureCell;
 class Button;
 class Car;
 
@@ -21,7 +22,8 @@ void SetNonDrivablePath(NonDrivableCell* mas, const int masSize,
 void CheckSwap(const int N, DrivableCell cell[], sf::RenderWindow& window);
 
 void ReadMainPositions(const int N, DrivableCell cell[],
-	const int decorSize, NonDrivableCell decor[]);
+	const int decorSize, NonDrivableCell decor[],
+	const int structSize, StructureCell structs[]);
 
 void SetPositions(const int roadSize, DrivableCell cell[],
 	const int decorSize, NonDrivableCell decor[], sf::RenderWindow& window);
