@@ -80,10 +80,10 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 			a = rand() % 4;
 
 			switch (a) {
-			case 0: path = "resources\\cells\\privateResidence\\privateResidence_1.png"; break;
-			case 1: path = "resources\\cells\\privateResidence\\privateResidence_2.png"; break;
-			case 2: path = "resources\\cells\\privateResidence\\privateResidence_3.png"; break;
-			case 3: path = "resources\\cells\\privateResidence\\privateResidence_4.png"; break;
+			case 0: path = "resources\\cells\\privateResidence\\private_residence_1.png"; break;
+			case 1: path = "resources\\cells\\privateResidence\\private_residence_2.png"; break;
+			case 2: path = "resources\\cells\\privateResidence\\private_residence_3.png"; break;
+			case 3: path = "resources\\cells\\privateResidence\\private_residence_4.png"; break;
 			}
 
 			if (!square_texture.loadFromFile(path)) {

@@ -52,14 +52,12 @@ void playlogo(RenderWindow& window)
 		}
 
 		ms.ChangeColor(col);
-		if (phase == 0)
-		{
+		if (phase == 0) {
 			col.a++;
 			if (col.a == 225)
 				phase++;
 		}
-		if (phase == 1)
-		{
+		if (phase == 1) {
 			Time t = seconds(2.f);
 			sleep(t);
 			phase++;
@@ -67,7 +65,7 @@ void playlogo(RenderWindow& window)
 		if (phase == 2)
 		{
 			col.a--;
-			if (col.a == 0)
+			if (col.a == 0) {
 				phase++;
 				ms.SetPosition({ 10000,10000 });
 			}
