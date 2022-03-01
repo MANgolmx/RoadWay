@@ -100,7 +100,7 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	}
 
 	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
 
 	roads[0].SetMainPosition(0, 0);
 
@@ -160,7 +160,7 @@ void ReadCarPosition(Car& car, std::string lvlpath)
 
 	FILE* level_file;
 
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_testcar.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
