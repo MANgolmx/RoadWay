@@ -2,10 +2,10 @@
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
+#include "StructureCell.h"
 #include "Assistant.h"
 #include "Car.h"
 #include "Level.h"
-#include "StructureCell.h"
 
 using namespace sf;
 
@@ -14,8 +14,9 @@ void levelStart(RenderWindow& window)
 
 #pragma region INITIALIZATION
 
-	int roadSize = ReadSizes("").x;
-	int decorationSize = ReadSizes("").y;
+	int roadSize = 12;
+	int decorationSize = 1;
+	int structuresSize = 1;
 
 	int window_width = 1212, window_height = 808;
 
@@ -24,23 +25,22 @@ void levelStart(RenderWindow& window)
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
 	DrivableCell* roads = new DrivableCell[roadSize];
-	SetDrivablePath(roads, roadSize, 34, 37, 6, 0);
-	roads[72].SetCellSprite("resources\\cells\\finish.png");
-	roads[72].SetMainPosition({ 6,4 });
+	SetDrivablePath(roads, roadSize, 4, 4, 4, 0);
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
-	SetNonDrivablePath(decorations, decorationSize, 80, 56, 0);
+	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
 
-	StructureCell park("resources\\cells\\structures\\structure_park.png");
+	StructureCell* structures = new StructureCell[structuresSize];
+	structures[0].SetCellSprite("resources\\cells\\straight\\straight_flowers_1.png");
 
 	Car car("resources\\cars\\car_1.png");
+	ReadCarPosition(car, "");
+	car.ReCalcPosition(window);
 
-	ReadCarPosition(car, "levels\\level_testcar2.lvl", window);
-	
-	//GenerateDecoration(roads, roadSize, decorations, decorationSize);
-
-	ReadMainPositions(roadSize, roads, decorationSize, decorations);
-	SetPositions(window, roadSize, roads, decorationSize, decorations);
+	ReadMainPositions(roadSize, roads, decorationSize, decorations,
+		structuresSize, structures);
+	SetPositions(roadSize, roads, decorationSize, decorations,
+		structuresSize, structures, window);
 
 	window.setFramerateLimit(60);
 
@@ -71,8 +71,10 @@ void levelStart(RenderWindow& window)
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
-				SetPositions(window, roadSize, roads, decorationSize, decorations);
-				ReadCarPosition(car, "levels\\level_testcar2.lvl", window);
+				SetPositions(roadSize, roads, decorationSize, decorations,
+					structuresSize, structures, window);
+				ReadCarPosition(car, "");
+				car.ReCalcPosition(window);
 				break;
 			}
 		}
@@ -80,7 +82,7 @@ void levelStart(RenderWindow& window)
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
-		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, park);
+		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, structures, structuresSize);
 		car.Draw(window);
 		window.display();
 	}

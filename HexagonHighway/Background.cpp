@@ -24,3 +24,8 @@ sf::Sprite Background::GetSprite()
 {
 	return sprite;
 }
+
+void Background::SetPosition(sf::Vector2f pos)
+{
+	sprite.setPosition(pos);
+}

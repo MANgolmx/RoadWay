@@ -14,4 +14,5 @@ public:
 	~Background();
 
 	sf::Sprite GetSprite();
+	void SetPosition(sf::Vector2f pos);
 };

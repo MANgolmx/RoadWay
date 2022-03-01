@@ -88,22 +88,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
-				case finish:
-					if (toTurn == 0)
-					{
-						toTurn = 65;
-						position.y--;
-					}
-					else {
-						if (toTurn == 1)
-						{
-							direction = STOP;
-						}
-						position.y--;
-						toTurn--;
-					}
-
-
 				}
 			}
 			break;
@@ -149,20 +133,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
-				case finish:
-					if (toTurn == 0)
-					{
-						toTurn = 65;
-						position.y++;
-					}
-					else {
-						if (toTurn == 1)
-						{
-							direction = STOP;
-						}
-						position.y++;
-						toTurn--;
-					}
 				}
 			}
 			break;
@@ -208,20 +178,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
-				case finish:
-					if (toTurn == 0)
-					{
-						toTurn = 65;
-						position.x++;
-					}
-					else {
-						if (toTurn == 1)
-						{
-							direction = STOP;
-						}
-						position.x++;
-						toTurn--;
-					}
 				}
 			}
 			break;
@@ -267,20 +223,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
-				case finish:
-					if (toTurn == 0)
-					{
-						toTurn = 65;
-						position.x--;
-					}
-					else {
-						if (toTurn == 1)
-						{
-							direction = STOP;
-						}
-						position.x--;
-						toTurn--;
-					}
 				}
 			}
 			break;
@@ -319,25 +261,27 @@ void Car::ResetPosition()
 	car_sprite.setPosition(position.x, position.y);
 }
 
-void Car::SetPosition(Vector2f pos)
+void Car::SetPosition(sf::Vector2f pos)
 {
 	position = pos;
-	car_sprite.setPosition(pos);
+	car_sprite.setPosition(position);
 }
 
-void Car::SetMainPosition(sf::Vector2f pos, RenderWindow& window)
+void Car::SetMainPosition(sf::Vector2f pos)
 {
 	mainPosition = pos;
-	float f1 = window.getSize().x / 2 - 30 / 2;
-	float f2 = window.getSize().y / 2 - 30 / 2;
-	position.x = f1 + mainPosition.x * 101;
-	position.y = f2 + mainPosition.y * 101;
-	car_sprite.setPosition(position);
 }
 
 void Car::SetDirection(directions dir)
 {
 	direction = dir;
+}
+
+void Car::ReCalcPosition(RenderWindow& window)
+{
+	position.x = window.getSize().x / 2 + mainPosition.x * 101 - 30 / 2;
+	position.y = window.getSize().y / 2 + mainPosition.y * 101 - 30 / 2;
+	car_sprite.setPosition(position);
 }
 
 Vector2f Car::GetPosition()

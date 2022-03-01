@@ -5,12 +5,14 @@
 NonDrivableCell::NonDrivableCell()
 {
 	type = undefined;
+	Cell();
 }
 
 NonDrivableCell::NonDrivableCell(std::string path)
 {
+	type = undefined;
 	if (!square_texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
+		std::cout << "[ERROR OCURRED] Can not open nonDrivableCell texture" << std::endl;
 		exit(1);
 	}
 
@@ -47,7 +49,7 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 	forestRand:
 		if (forest > 0)
 		{
-			type = nondrivableTypes::forest;
+			type = nondrivableTypes::flowers;
 
 			a = rand() % 6;
 

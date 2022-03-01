@@ -1,18 +1,14 @@
-#pragma once
 #include "NonDrivableCell.h"
-#include <SFML/Graphics.hpp>
 
-class StructureCell :public NonDrivableCell
+class StructureCell :
+    public NonDrivableCell
 {
-private:
+protected:
 	sf::Vector2f size;
 
-
 public:
+
 	StructureCell();
-	StructureCell(std::string path);
+    StructureCell(std::string path, sf::Vector2f size);
 	~StructureCell();
-
-
-
 };

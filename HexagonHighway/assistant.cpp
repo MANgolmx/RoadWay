@@ -5,10 +5,10 @@
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
+#include "StructureCell.h"
 #include "Assistant.h"
 #include "Car.h"
 #include "Button.h"
-#include "StructureCell.h"
 
 using namespace sf;
 
@@ -16,7 +16,7 @@ int ReadLevelFile(std::string lvlpath)
 {
 	int a;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test2.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
@@ -87,18 +87,21 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
 }
 
 void ReadMainPositions(const int roadSize, DrivableCell roads[], 
-	const int decorSize, NonDrivableCell decor[])
+	const int decorSize, NonDrivableCell decor[], 
+	const int structSize, StructureCell structs[])
 {
 	int mpx, mpy;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test2.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
 		return;
 	}
 
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);// TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i", &mpx);
+	roads[0].SetPosition(mpx, mpy);
 
 	for (int i = 0; i < roadSize; i++)
 	{
@@ -112,22 +115,33 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 		decor[i].SetMainPosition(mpx, mpy);
 	}
 
+	for (int i = 0; i < structSize; i++)
+	{
+		fscanf_s(level_file, "%i %i", &mpx, &mpy);
+		structs[i].SetMainPosition(mpx, mpy);
+	}
+
 	fclose(level_file);
 }
-
-void SetPositions(RenderWindow& window, const int roadSize, DrivableCell roads[],
+void SetPositions(const int roadSize, DrivableCell roads[],
+	const int decorSize, NonDrivableCell decor[],
+	const int structSize, StructureCell structs[], RenderWindow& window)
 	const int decorSize, NonDrivableCell decor[])
-{
+
 	float f1 = window.getSize().x / 2 - 101 / 2;
 	float f2 = window.getSize().y / 2 - 101 / 2;
 
-	roads[0].SetPosition({ f1,f2 });
+	roads[0].SetPosition({f1,f2});
 
 	for (int i = 1; i < roadSize; i++)
+	for (int i = 0; i < roadSize; i++)
 		roads[i].SetPosition(roads[0]);
 
 	for (int i = 0; i < decorSize; i++)
 		decor[i].SetPosition(roads[0]);
+
+	for (int i = 0; i < structSize; i++)
+		structs[i].SetPosition(roads[0]);
 }
 
 void SetIsChosen(bool var, const int N, DrivableCell cell[])
@@ -135,75 +149,35 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 	for (int i = 0; i < N; i++)
 		cell[i].SetChose(var);
 }
-
+void ReadCarPosition(Car& car, std::string lvlpath)
 void ReadCarPosition(Car& car, std::string lvlpath, RenderWindow& window)
-{
-	float t1, t2;
-	FILE* level_file;
+	float mx, my;
 	directions dir;
-	if (fopen_s(&level_file, "levels\\level_testcar2.lvl", "rt"))
+	
+{
+	if (fopen_s(&level_file, "levels\\level_testcar.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
 		return;
 	}
+	fscanf_s(level_file, "%i %i %i", &mx, &my, &dir);
 
-	fscanf_s(level_file, "%f %f", &t1, &t2);
-	fscanf_s(level_file, "%i", &dir);
 
-	fclose(level_file);
 
-	car.SetMainPosition({ t1,t2 }, window);
+	car.SetMainPosition({ mx,my });
 	car.SetDirection(dir);
+	fclose(level_file);
 }
 
-void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
-	const int roadSize, NonDrivableCell decor[], const int decorSize,
-	StructureCell park)
+	const int roadSize, NonDrivableCell decor[], const int decorSize, 
+	StructureCell structs[], const int structSize)
+	const int roadSize, NonDrivableCell decor[], const int decorSize)
 {
 	for (int i = 0; i < roadSize; i++)
 		roads[i].Draw(win, chosen);
 	for (int i = 0; i < decorSize; i++)
-		decor[i].Draw(win);
-
-	park.Draw(win);
-}
-
-sf::Vector2f ReadSizes(std::string path)
-{
-	float t1, t2;
-	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test2.lvl", "rt"))
-	{
-		std::cout << "Can not open level file!" << std::endl;
-		system("pause");
-		return { 0,0 };
-	}
-
-	fscanf_s(level_file, "%f %f", &t1, &t2);
-
-	fclose(level_file);
-
-	return { t1,t2 };
-}
-
-void GenerateDecoration(DrivableCell roads[], int roadSize, NonDrivableCell decor[], int decorSize)
-{
-	Vector2f* mas = new Vector2f[ReadSizes("").x];
-	
-
-	for (int i = 0; i < 19; i++)
-	{
-		bool isSet = false;
-		for (int j = 0; j < 11; j++)
-			if (mas[j].x != i && mas[j].y != j)
-				decor->SetMainPosition(i,j);
-		
-
-
-
-
-	}
-}
-
-//TODO: Починить все считывания из файлов (не считывает string)
+	for (int i = 0; i < structSize; i++)
+		structs[i].Draw(win);
+}}

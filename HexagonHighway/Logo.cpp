@@ -27,7 +27,7 @@ void playlogo(RenderWindow& window)
 
 	ms.SetPosition({f1,f2});
 
-	window.setFramerateLimit(90);
+	window.setFramerateLimit(120);
 
 #pragma endregion
 
@@ -42,16 +42,11 @@ void playlogo(RenderWindow& window)
 				window.close();
 				break;
 			case Event::KeyPressed:
-				if (event.key.code == Keyboard::Enter)
-					return;
-				break;
+				return;
 			case Event::Resized:
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
-				f1 = window.getSize().x / 2 - ms.GetText().getGlobalBounds().width / 2;
-				f2 = window.getSize().y / 2 - ms.GetText().getGlobalBounds().height / 2;
-				ms.SetPosition({ f1,f2 });
 				break;
 			}
 		}
@@ -73,21 +68,26 @@ void playlogo(RenderWindow& window)
 		{
 			col.a--;
 			if (col.a == 0)
-			{
 				phase++;
-				ms.SetPosition({ 10000, 10000 });
+				ms.SetPosition({ 10000,10000 });
 			}
 		}
+		
 		window.clear(Color::Black);
 		window.draw(ms.GetText());
 		window.display();
+
 		if (phase == 3)
 		{
+			col.a = 0;
 			Time t = seconds(1.5f);
 			sleep(t);
 			return;
 		}
 
+		window.clear(Color::Black);
+		window.draw(ms.GetText());
+		window.display();
 	}
 
 	return;

@@ -9,19 +9,19 @@ DrivableCell::DrivableCell()
 {
 	type = undefiened;
 	isChosen = false;
+	Cell();
 }
 
 DrivableCell::DrivableCell(std::string path)
 {
 	type = undefiened;
-
 	if (!square_texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
+		std::cout << "[ERROR OCURRED] Can not open drivableCell texture" << std::endl;
 		exit(1);
 	}
 
 	square_sprite.setTexture(square_texture);
-	square_sprite.setPosition(position.x, position.y);
+	square_sprite.setPosition(0, 0);
 }
 
 DrivableCell::~DrivableCell()

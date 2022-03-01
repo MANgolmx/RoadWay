@@ -1,11 +1,12 @@
 #pragma once
 #include "Cell.h"
 
-enum nondrivableTypes { undefined, forest, private_residence, apartments, structure};
+enum nondrivableTypes { undefined, flowers, private_residence,
+	apartments, structure};
 
 class NonDrivableCell:public Cell
 {
-protected:
+private:
 	nondrivableTypes type;
 
 public:
