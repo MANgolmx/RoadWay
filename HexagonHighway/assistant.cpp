@@ -101,6 +101,7 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 
 	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
 	fscanf_s(level_file, "%i", &mpx);
+	roads[0].SetPosition(mpx, mpy);
 
 	for (int i = 0; i < roadSize; i++)
 	{
@@ -122,11 +123,10 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 
 	fclose(level_file);
 }
-
 void SetPositions(const int roadSize, DrivableCell roads[],
 	const int decorSize, NonDrivableCell decor[],
 	const int structSize, StructureCell structs[], RenderWindow& window)
-{
+	const int decorSize, NonDrivableCell decor[])
 
 	float f1 = window.getSize().x / 2 - 101 / 2;
 	float f2 = window.getSize().y / 2 - 101 / 2;
@@ -134,6 +134,7 @@ void SetPositions(const int roadSize, DrivableCell roads[],
 	roads[0].SetPosition({f1,f2});
 
 	for (int i = 1; i < roadSize; i++)
+	for (int i = 0; i < roadSize; i++)
 		roads[i].SetPosition(roads[0]);
 
 	for (int i = 0; i < decorSize; i++)
@@ -148,36 +149,35 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 	for (int i = 0; i < N; i++)
 		cell[i].SetChose(var);
 }
-
 void ReadCarPosition(Car& car, std::string lvlpath)
-{
+void ReadCarPosition(Car& car, std::string lvlpath, RenderWindow& window)
 	float mx, my;
 	directions dir;
 	
-	FILE* level_file;
+{
 	if (fopen_s(&level_file, "levels\\level_testcar.lvl", "rt"))
+	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
 		return;
 	}
-
 	fscanf_s(level_file, "%i %i %i", &mx, &my, &dir);
 
-	fclose(level_file);
+
 
 	car.SetMainPosition({ mx,my });
 	car.SetDirection(dir);
+	fclose(level_file);
 }
 
-void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 	const int roadSize, NonDrivableCell decor[], const int decorSize, 
 	StructureCell structs[], const int structSize)
+	const int roadSize, NonDrivableCell decor[], const int decorSize)
 {
 	for (int i = 0; i < roadSize; i++)
 		roads[i].Draw(win, chosen);
 	for (int i = 0; i < decorSize; i++)
-		decor[i].Draw(win);
 	for (int i = 0; i < structSize; i++)
 		structs[i].Draw(win);
-}
+}}

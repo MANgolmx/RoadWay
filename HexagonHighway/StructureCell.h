@@ -4,11 +4,11 @@ class StructureCell :
     public NonDrivableCell
 {
 protected:
-    sf::Vector2f size;
+	sf::Vector2f size;
 
 public:
 
-    StructureCell();
+	StructureCell();
     StructureCell(std::string path, sf::Vector2f size);
-    ~StructureCell();
+	~StructureCell();
 };

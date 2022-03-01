@@ -67,7 +67,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					else {
 						if (toTurn == 0)
 						{
-							toTurn = 0;
 							lastDirection = up;
 							if (DrivableCell::GetCellFromPos({ position.x, position.y + 1 }, roads, roadCount)->GetDirection() == down)
 								direction = right;

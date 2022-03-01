@@ -6,7 +6,7 @@ enum nondrivableTypes { undefined, flowers, private_residence,
 
 class NonDrivableCell:public Cell
 {
-protected:
+private:
 	nondrivableTypes type;
 
 public:

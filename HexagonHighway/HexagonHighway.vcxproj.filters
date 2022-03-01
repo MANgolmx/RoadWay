@@ -75,6 +75,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>Исходные файлы\Assist</Filter>
     </ClCompile>
+    <ClCompile Include="StructureCell.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assistant.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="StructureCell.h">
       <Filter>Файлы заголовков\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="StructureCell.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
