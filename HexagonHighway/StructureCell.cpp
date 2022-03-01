@@ -4,13 +4,14 @@
 StructureCell::StructureCell()
 {
 	size = { 1,1 };
+	type = structure;
 	NonDrivableCell();
 }
 
 StructureCell::StructureCell(std::string path, sf::Vector2f size)
 {
 	this->size = size;
-	type = undefined;
+	type = structure;
 	if (!square_texture.loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open structureCell texture" << std::endl;
 		exit(1);
