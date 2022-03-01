@@ -100,9 +100,11 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	}
 
 	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
-	fscanf_s(level_file, "%i", &mpx);
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);
 
-	for (int i = 0; i < roadSize; i++)
+	roads[0].SetMainPosition(0, 0);
+
+	for (int i = 1; i < roadSize; i++)
 	{
 		fscanf_s(level_file, "%i %i", &mpx, &mpy);
 		roads[i].SetMainPosition(mpx, mpy);
@@ -119,6 +121,8 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 		fscanf_s(level_file, "%i %i", &mpx, &mpy);
 		structs[i].SetMainPosition(mpx, mpy);
 	}
+
+	structs[0].SetMainPosition(-5, -3);
 
 	fclose(level_file);
 }
