@@ -45,7 +45,6 @@ void Cell::SetPosition(Vector2f pos)
 	position.x = pos.x;
 	position.y = pos.y;
 	square_sprite.setPosition(position);
-
 }
 
 void Cell::SetPosition(int x, int y)
@@ -58,7 +57,7 @@ void Cell::SetPosition(int x, int y)
 void Cell::SetCellSprite(std::string path)
 {
 	if (!square_texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open structureCell texture" << std::endl;
+		std::cout << "[ERROR OCURRED] Can not open Cell texture" << std::endl;
 		exit(1);
 	}
 

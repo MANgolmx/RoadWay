@@ -1,4 +1,5 @@
 #include "NonDrivableCell.h"
+
 class StructureCell :
     public NonDrivableCell
 {
@@ -10,6 +11,4 @@ public:
     StructureCell();
     StructureCell(std::string path, sf::Vector2f size);
     ~StructureCell();
-
-
 };

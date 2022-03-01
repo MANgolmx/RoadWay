@@ -100,7 +100,7 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	}
 
 	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i", &mpx);
 
 	for (int i = 0; i < roadSize; i++)
 	{
@@ -124,7 +124,8 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 }
 
 void SetPositions(const int roadSize, DrivableCell roads[],
-	const int decorSize, NonDrivableCell decor[], RenderWindow& window)
+	const int decorSize, NonDrivableCell decor[],
+	const int structSize, StructureCell structs[], RenderWindow& window)
 {
 
 	float f1 = window.getSize().x / 2 - 101 / 2;
@@ -137,6 +138,9 @@ void SetPositions(const int roadSize, DrivableCell roads[],
 
 	for (int i = 0; i < decorSize; i++)
 		decor[i].SetPosition(roads[0]);
+
+	for (int i = 0; i < structSize; i++)
+		structs[i].SetPosition(roads[0]);
 }
 
 void SetIsChosen(bool var, const int N, DrivableCell cell[])
@@ -167,10 +171,13 @@ void ReadCarPosition(Car& car, std::string lvlpath)
 }
 
 void DrawCells(RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
-	const int roadSize, NonDrivableCell decor[], const int decorSize)
+	const int roadSize, NonDrivableCell decor[], const int decorSize, 
+	StructureCell structs[], const int structSize)
 {
 	for (int i = 0; i < roadSize; i++)
 		roads[i].Draw(win, chosen);
 	for (int i = 0; i < decorSize; i++)
 		decor[i].Draw(win);
+	for (int i = 0; i < structSize; i++)
+		structs[i].Draw(win);
 }
