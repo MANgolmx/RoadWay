@@ -15,7 +15,7 @@ void levelStart(RenderWindow& window)
 #pragma region INITIALIZATION
 
 	int roadSize = 12;
-	int decorationSize = 1;
+	int decorationSize = 4;
 	int structuresSize = 1;
 
 	int window_width = 1212, window_height = 808;
@@ -25,13 +25,13 @@ void levelStart(RenderWindow& window)
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
 	DrivableCell* roads = new DrivableCell[roadSize];
-	SetDrivablePath(roads, roadSize, 4, 4, 4, 0);
+	SetDrivablePath(roads, roadSize, 6, 6, 0, 0);
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
-	SetNonDrivablePath(decorations, decorationSize, 0, 1, 0);
+	SetNonDrivablePath(decorations, decorationSize, 2, 2, 0);
 
 	StructureCell* structures = new StructureCell[structuresSize];
-	structures[0].SetCellSprite("resources\\cells\\straight\\straight_flowers_1.png");
+	structures[0].SetCellSprite("resources\\cells\\structures\\structure_park.png");
 
 	Car car("resources\\cars\\car_1.png");
 	ReadCarPosition(car, "");

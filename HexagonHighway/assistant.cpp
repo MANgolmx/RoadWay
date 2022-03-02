@@ -58,10 +58,10 @@ void SetDrivablePath(DrivableCell* mas, const int masSize,
 }
 
 void SetNonDrivablePath(NonDrivableCell* mas, const int masSize,
-	int forest, int private_residence, int apartment)
+	int flowers, int private_residence, int apartment)
 {
 	for (int i = 0; i < masSize; i++)
-		mas[i].SetType(forest, private_residence, apartment);
+		mas[i].SetType(flowers, private_residence, apartment);
 }
 
 void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
@@ -100,7 +100,7 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	}
 
 	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i", &mpx);//TODO: Заменить на движение курсора
 
 	roads[0].SetMainPosition(0, 0);
 
@@ -121,8 +121,6 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 		fscanf_s(level_file, "%i %i", &mpx, &mpy);
 		structs[i].SetMainPosition(mpx, mpy);
 	}
-
-	structs[0].SetMainPosition(-5, -3);
 
 	fclose(level_file);
 }
@@ -167,7 +165,7 @@ void ReadCarPosition(Car& car, std::string lvlpath)
 		return;
 	}
 
-	fscanf_s(level_file, "%i %i %i", &mx, &my, &dir);
+	fscanf_s(level_file, "%f %f %i", &mx, &my, &dir);
 
 	car.SetMainPosition({ mx,my });
 	car.SetDirection(dir);

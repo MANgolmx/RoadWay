@@ -35,8 +35,8 @@ Vector2f Cell::GetPosition()
 
 void Cell::SetPosition(Cell cell)
 {
-	position.x = cell.position.x + mainPosition.x * GetCellTexture().getSize().x;
-	position.y = cell.position.y + mainPosition.y * GetCellTexture().getSize().y;
+	position.x = cell.position.x + mainPosition.x * 101;
+	position.y = cell.position.y + mainPosition.y * 101;
 	square_sprite.setPosition(position.x, position.y);
 }
 

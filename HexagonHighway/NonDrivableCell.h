@@ -14,6 +14,6 @@ public:
 	NonDrivableCell(std::string path);
 	~NonDrivableCell();
 
-	void SetType(int& forest, int& private_residence, int& apartment);
+	void SetType(int& flowers, int& private_residence, int& apartment);
 
 };

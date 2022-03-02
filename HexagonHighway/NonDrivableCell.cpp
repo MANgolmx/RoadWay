@@ -24,7 +24,7 @@ NonDrivableCell::~NonDrivableCell()
 {
 }
 
-void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartment)
+void NonDrivableCell::SetType(int& flowers, int& private_residence, int& apartment)
 {
 	std::string path;
 
@@ -41,13 +41,13 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 
 	 a = rand() % 3;
 	switch (a) {
-	case 0: goto forestRand;
+	case 0: goto flowersRand;
 	case 1: goto privateResidenceRand;
 	case 2: goto apartmentRand;
 	}
 
-	forestRand:
-		if (forest > 0)
+	flowersRand:
+		if (flowers > 0)
 		{
 			type = nondrivableTypes::flowers;
 
@@ -63,13 +63,13 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 			}
 
 			if (!square_texture.loadFromFile(path)) {
-				std::cout << "[ERROR OCURRED] Can not open Forest.png" << std::endl;
+				std::cout << "[ERROR OCURRED] Can not open Flowers.png" << std::endl;
 				exit(1);
 			}
 
 			square_sprite.setTexture(square_texture);
 
-			forest--;
+			flowers--;
 			return;
 		}
 
@@ -118,5 +118,5 @@ void NonDrivableCell::SetType(int& forest, int& private_residence, int& apartmen
 
 		if (Exit > 10)
 			return;
-	goto forestRand;
+	goto flowersRand;
 }
