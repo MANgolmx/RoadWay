@@ -67,6 +67,11 @@ void levelStart(RenderWindow& window)
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
 					CheckSwap(roadSize, roads, window);
 				break;
+			case Event::KeyPressed:
+				if (event.key.code == Keyboard::Space)
+					if (!car.IsMoving())
+						car.StartMoving();
+				break;
 			case Event::Resized:
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,

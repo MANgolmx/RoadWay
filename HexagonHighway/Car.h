@@ -23,6 +23,8 @@ private:
 	directions lastDirection;
 	directions direction;
 
+	bool isMoving;
+
 public:
 
 	Car();
@@ -41,6 +43,11 @@ public:
 	void ReCalcPosition(sf::RenderWindow& window);
 
 	void Draw(sf::RenderWindow& win);
+
+	void StopMoving();
+	void StartMoving();
+
+	bool IsMoving();
 
 	bool IsOnCell(DrivableCell cell);
 

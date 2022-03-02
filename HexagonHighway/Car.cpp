@@ -14,6 +14,7 @@ Car::Car()
 	position.x = position.y = 0;
 	mainPosition.x = mainPosition.y = 0;
 	direction = lastDirection = up;
+	isMoving = false;
 }
 
 Car::~Car()
@@ -27,6 +28,7 @@ Car::Car(std::string path)
 	position = { 535,436 };
 	mainPosition = { 0,1 };
 	direction = lastDirection = up;
+	isMoving = false;
 
 	if (!car_texture.loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open car texture" << std::endl;
@@ -41,6 +43,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	NonDrivableCell decor[], const int decorCount)
 {
 	//TODO: Fix turned cell problem
+	if (isMoving)
 	if (timePassed + time.asMilliseconds() > timeToMove)
 	{
 		DrivableCell* tmp;
@@ -90,6 +93,9 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					break;
 				}
 			}
+			else {
+				isMoving = false;
+			}
 			break;
 		case down:
 			tmp = DrivableCell::GetCellFromPos({ position.x, position.y + 31}, roads, roadCount);
@@ -135,6 +141,9 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					break;
 				}
 			}
+			else {
+				isMoving = false;
+			}
 			break;
 		case right:
 			tmp = DrivableCell::GetCellFromPos({ position.x + 31, position.y }, roads, roadCount);
@@ -162,7 +171,8 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 							if (DrivableCell::GetCellFromPos({ position.x + 29, position.y }, roads, roadCount)->GetDirection() == up)
 								direction = up;
 							else direction = down;
-						} else {
+						}
+						else {
 							position.x++;
 						}
 						toTurn--;
@@ -179,6 +189,8 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					}
 					break;
 				}
+			} else {
+				isMoving = false;
 			}
 			break;
 		case left:
@@ -225,6 +237,9 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					break;
 				}
 			}
+			else {
+				isMoving = false;
+			}
 			break;
 		}
 	}
@@ -254,6 +269,21 @@ void Car::Draw(RenderWindow& win)
 	}
 	
 	win.draw(car_sprite);
+}
+
+void Car::StopMoving()
+{
+	isMoving = false;
+}
+
+void Car::StartMoving()
+{
+	isMoving = true;
+}
+
+bool Car::IsMoving()
+{
+	return isMoving;
 }
 
 void Car::ResetPosition()
