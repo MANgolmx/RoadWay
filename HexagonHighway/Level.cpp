@@ -34,11 +34,11 @@ void levelStart(RenderWindow& window)
 	structures[0].SetCellSprite("resources\\cells\\structures\\structure_park.png");
 
 	Car car("resources\\cars\\car_1.png");
-	ReadCarPosition(car, "");
+	ReadCarPosition(car, "levels\\level_testcar.lvl");
 	car.ReCalcPosition(window);
 
 	ReadMainPositions(roadSize, roads, decorationSize, decorations,
-		structuresSize, structures);
+		structuresSize, structures, "levels\\level_test.lvl");
 	SetPositions(roadSize, roads, decorationSize, decorations,
 		structuresSize, structures, window);
 
@@ -78,7 +78,7 @@ void levelStart(RenderWindow& window)
 					windowSize.y / 2.f), Vector2f(windowSize)));
 				SetPositions(roadSize, roads, decorationSize, decorations,
 					structuresSize, structures, window);
-				ReadCarPosition(car, "");
+				ReadCarPosition(car, "levels\\level_testcar.lvl");
 				car.ReCalcPosition(window);
 				break;
 			}

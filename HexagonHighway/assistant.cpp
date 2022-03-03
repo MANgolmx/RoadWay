@@ -12,11 +12,11 @@
 
 using namespace sf;
 
-int ReadLevelFile(std::string lvlpath)
+int ReadLevelFile(const char lvlpath[])
 {
 	int a;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	if (fopen_s(&level_file, lvlpath, "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
@@ -88,11 +88,11 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
 
 void ReadMainPositions(const int roadSize, DrivableCell roads[], 
 	const int decorSize, NonDrivableCell decor[], 
-	const int structSize, StructureCell structs[])
+	const int structSize, StructureCell structs[], const char lvlpath[])
 {
 	int mpx, mpy;
 	FILE* level_file;
-	if (fopen_s(&level_file, "levels\\level_test.lvl", "rt"))
+	if (fopen_s(&level_file, lvlpath, "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
@@ -129,7 +129,7 @@ void SetPositions(const int roadSize, DrivableCell roads[],
 	const int decorSize, NonDrivableCell decor[],
 	const int structSize, StructureCell structs[], RenderWindow& window)
 {
-
+	//TODO: Пофиксить баг с исчезновением клетки при масштибировании
 	float f1 = window.getSize().x / 2 - 101 / 2;
 	float f2 = window.getSize().y / 2 - 101 / 2;
 
@@ -151,14 +151,14 @@ void SetIsChosen(bool var, const int N, DrivableCell cell[])
 		cell[i].SetChose(var);
 }
 
-void ReadCarPosition(Car& car, std::string lvlpath)
+void ReadCarPosition(Car& car, const char lvlpath[])
 {
 	float mx, my;
 	directions dir;
 
 	FILE* level_file;
 
-	if (fopen_s(&level_file, "levels\\level_testcar.lvl", "rt"))
+	if (fopen_s(&level_file, lvlpath, "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
