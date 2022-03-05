@@ -42,6 +42,13 @@ int main()
 
 	playlogo(window);
 
+	f1 = window.getSize().x / 10;
+	f2 = window.getSize().y / 10 + 50;
+	bt_play.SetPosition({ f1, f2 });
+	f1 = (1920 / 2 - window.getSize().x / 2);
+	f2 = (1080 / 2 - window.getSize().y / 2);
+	menu.SetPosition({ -f1,-f2 });
+
 	while (window.isOpen()) //Цикл программы
 	{
 		Event event;
