@@ -46,9 +46,11 @@ void levelStart(RenderWindow& window)
 
 	window.setFramerateLimit(60);
 
+	bool isPlaying = true;
+
 #pragma endregion
 
-	while (window.isOpen()) //Цикл игры
+	while (isPlaying) //Цикл игры
 	{
 		Event event;
 		while (window.pollEvent(event)) //Цикл событий

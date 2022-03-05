@@ -29,9 +29,11 @@ void playlogo(RenderWindow& window)
 
 	window.setFramerateLimit(120);
 
+	bool isOpen = true;
+
 #pragma endregion
 
-	while (window.isOpen()) //Цикл программы
+	while (isOpen) //Цикл лого
 	{
 		Event event;
 		while (window.pollEvent(event)) //Цикл событий
@@ -83,7 +85,7 @@ void playlogo(RenderWindow& window)
 			col.a = 0;
 			Time t = seconds(1.5f);
 			sleep(t);
-			return;
+			isOpen = false;
 		}
 
 		window.clear(Color::Black);

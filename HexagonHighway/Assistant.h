@@ -7,7 +7,7 @@ class StructureCell;
 class Button;
 class Car;
 
-int ReadLevelFile(const char lvlpath[]);
+void ReadLevelFile(const char lvlpath[], int& roadSize, int& decorSize, int& structSize);
 
 bool isBelong(sf::Vector2i a, DrivableCell cell);
 
@@ -32,6 +32,8 @@ void SetPositions(const int roadSize, DrivableCell cell[],
 void SetIsChosen(bool var, const int N, DrivableCell cell[]);
 
 void ReadCarPosition(Car& car, const char lvlpath[]);
+
+void ReadCellsTypes(const char path[], int& straight, int& turned, int& threeway, int& fourway, int& finish, int& flowers, int& private_residence, int& apartments);
 
 void DrawCells(sf::RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 	const int roadSize, NonDrivableCell decor[], const int decorSize, 
