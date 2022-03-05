@@ -39,8 +39,8 @@ void levelStart(RenderWindow& window)
 	ReadCarPosition(car, "levels\\level_testcar.lvl");
 	car.ReCalcPosition(window);
 
-	ReadMainPositions(roadSize, roads, decorationSize, decorations,
-		structureSize, structures, "levels\\level_test.lvl");
+	ReadMainPositions("levels\\level_test.lvl", roads, roadSize, decorations, decorationSize,
+		structures, structureSize);
 	SetPositions(roadSize, roads, decorationSize, decorations,
 		structureSize, structures, window);
 
@@ -63,13 +63,13 @@ void levelStart(RenderWindow& window)
 			case Event::MouseButtonPressed: //Нажата кнопка мыши
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
-					SetIsChosen(false, roadSize, roads);
+					SetIsChosen(false, roads, roadSize);
 					for (int i = 0; i < roadSize; i++)
 						if (isBelong(Mouse::getPosition(window), roads[i]))
 							roads[i].Rotation();
 				}
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
-					CheckSwap(roadSize, roads, window);
+					CheckSwap(window, roads, roadSize);
 				break;
 			case Event::KeyPressed:
 				if (event.key.code == Keyboard::Space)

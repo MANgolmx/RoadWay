@@ -47,29 +47,29 @@ bool isBelong(Vector2i a, Button bt)
 	return false;
 }
 
-void SetDrivablePath(DrivableCell* mas, const int masSize,
+void SetDrivablePath(DrivableCell mas[], const int masSize,
 	int straight, int turned, int threeway, int fourway)
 {
 	for (int i = 0; i < masSize; i++)
 		mas[i].SetType(straight, turned, threeway, fourway);
 }
 
-void SetNonDrivablePath(NonDrivableCell* mas, const int masSize,
-	int flowers, int private_residence, int apartment)
+void SetNonDrivablePath(NonDrivableCell mas[], const int masSize,
+	int forest, int private_residence, int apartment)
 {
 	for (int i = 0; i < masSize; i++)
-		mas[i].SetType(flowers, private_residence, apartment);
+		mas[i].SetType(forest, private_residence, apartment);
 }
 
-void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
+void CheckSwap(sf::RenderWindow& window, DrivableCell road[], const int roadSize)
 {
 	int count = 0;
 	int ind1 = -1, ind2 = -1;
-	for (int i = 0; i < N; i++)
-		if (isBelong(Mouse::getPosition(window), cell[i]))
-			cell[i].SetChose(true);
-	for (int i = 0; i < N; i++)
-		if (cell[i].ifChosen())
+	for (int i = 0; i < roadSize; i++)
+		if (isBelong(Mouse::getPosition(window), road[i]))
+			road[i].SetChose(true);
+	for (int i = 0; i < roadSize; i++)
+		if (road[i].ifChosen())
 		{
 			if (count == 0) ind1 = i;
 			else ind2 = i;
@@ -77,15 +77,15 @@ void CheckSwap(const int N, DrivableCell cell[], RenderWindow& window)
 		}
 	if (count == 2)
 	{
-		DrivableCell::Swap(cell[ind1], cell[ind2]);
-		for (int i = 0; i < N; i++)
-			cell[i].SetChose(false);
+		DrivableCell::Swap(road[ind1], road[ind2]);
+		for (int i = 0; i < roadSize; i++)
+			road[i].SetChose(false);
 	}
 }
 
-void ReadMainPositions(const int roadSize, DrivableCell roads[], 
-	const int decorSize, NonDrivableCell decor[], 
-	const int structSize, StructureCell structs[], const char lvlpath[])
+void ReadMainPositions(const char lvlpath[], DrivableCell road[], const int roadSize,
+	NonDrivableCell decor[], const int decorSize,
+	StructureCell structs[], const int structSize)
 {
 	int mpx, mpy;
 	FILE* level_file;
@@ -102,7 +102,7 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	for (int i = 0; i < roadSize; i++)
 	{
 		fscanf_s(level_file, "%i %i", &mpx, &mpy);
-		roads[i].SetMainPosition(mpx, mpy);
+		road[i].SetMainPosition(mpx, mpy);
 	}
 
 	for (int i = 0; i < decorSize; i++)
@@ -142,10 +142,10 @@ void SetPositions(const int roadSize, DrivableCell roads[],
 		structs[i].SetPosition(*tmp);
 }
 
-void SetIsChosen(bool var, const int N, DrivableCell cell[])
+void SetIsChosen(bool var, DrivableCell road[], const int roadSize)
 {
-	for (int i = 0; i < N; i++)
-		cell[i].SetChose(var);
+	for (int i = 0; i < roadSize; i++)
+		road[i].SetChose(var);
 }
 
 void ReadCarPosition(Car& car, const char lvlpath[])
