@@ -12,22 +12,19 @@
 
 using namespace sf;
 
-int ReadLevelFile(const char lvlpath[])
+void ReadLevelFile(const char lvlpath[], int& roadSize, int& decorSize, int& structSize)
 {
-	int a;
 	FILE* level_file;
 	if (fopen_s(&level_file, lvlpath, "rt"))
 	{
 		std::cout << "Can not open level file!" << std::endl;
 		system("pause");
-		return 0;
+		return;
 	}
 
-	fscanf_s(level_file, "%i", &a);
+	fscanf_s(level_file, "%i%i%i", &roadSize, &decorSize, &structSize);
 
 	fclose(level_file);
-
-	return a;
 }
 
 bool isBelong(Vector2i a, DrivableCell cell)
@@ -102,9 +99,7 @@ void ReadMainPositions(const int roadSize, DrivableCell roads[],
 	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
 	fscanf_s(level_file, "%i", &mpx);//TODO: Заменить на движение курсора
 
-	roads[0].SetMainPosition(0, 0);
-
-	for (int i = 1; i < roadSize; i++)
+	for (int i = 0; i < roadSize; i++)
 	{
 		fscanf_s(level_file, "%i %i", &mpx, &mpy);
 		roads[i].SetMainPosition(mpx, mpy);
@@ -171,6 +166,21 @@ void ReadCarPosition(Car& car, const char lvlpath[])
 
 	car.SetMainPosition({ mx,my });
 	car.SetDirection(dir);
+	fclose(level_file);
+}
+
+void ReadCellsTypes(const char path[], int& straight, int& turned, int& threeway, int& fourway, int& finish, int& flowers, int& private_residence, int& apartments)
+{
+	FILE* level_file;
+	if (fopen_s(&level_file, path, "rt"))
+	{
+		std::cout << "Can not open level file!" << std::endl;
+		system("pause");
+		return;
+	}
+
+	fscanf_s(level_file, "%i%i%i%i%i%i%i%i", &straight, &turned, &threeway, &fourway, &finish, &flowers, &private_residence, &apartments);
+
 	fclose(level_file);
 }
 

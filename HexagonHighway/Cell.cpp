@@ -10,7 +10,7 @@ Cell::Cell()
 	position.y = 0;
 	mainPosition.x = 0;
 	mainPosition.y = 0;
-	direction = up;
+	direction = UP;
 }
 
 Cell::Cell(std::string path)
@@ -96,25 +96,25 @@ void Cell::Rotation()
 {
 	switch (direction)
 	{
-	case up: 
+	case UP: 
 		square_sprite.setRotation(90);
 		square_sprite.setOrigin(0, 101);
-		direction = right;
+		direction = RIGHT;
 		break;
-	case right:
+	case RIGHT:
 		square_sprite.setRotation(180);
 		square_sprite.setOrigin(101, 101);
-		direction = down;
+		direction = DOWN;
 		break;
-	case down:
+	case DOWN:
 		square_sprite.setRotation(270);
 		square_sprite.setOrigin(101, 0);
-		direction = left;
+		direction = LEFT;
 		break;
-	case left:
+	case LEFT:
 		square_sprite.setRotation(0);
 		square_sprite.setOrigin(0, 0);
-		direction = up;
+		direction = UP;
 		break;
 	}
 }

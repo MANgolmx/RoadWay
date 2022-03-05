@@ -44,26 +44,26 @@ bool DrivableCell::CanGo(directions& carDir, directions& lastCarDir)
 	switch (type) {
 	case straight:
 		switch (direction) {
-		case up: case down: if (carDir == up || carDir == down) return false; else return true; break;
-		case right: case left: if (carDir == right || carDir == left) return false; else return true; break;
+		case UP: case DOWN: if (carDir == UP || carDir == DOWN) return false; else return true; break;
+		case RIGHT: case LEFT: if (carDir == RIGHT || carDir == LEFT) return false; else return true; break;
 		} break;
 	case turned:
 		switch (direction) {
-		case up: if (carDir == right || carDir == down ||
-			carDir == left && lastCarDir == down || carDir == up && lastCarDir == right) return true; break;
-		case right: if (carDir == down || carDir == left ||
-			carDir == right && lastCarDir == down || carDir == up && lastCarDir == left) return true; break;
-		case down: if (carDir == left || carDir == up ||
-			carDir == right && lastCarDir == up || carDir == down && lastCarDir == left) return true; break;
-		case left:  if (carDir == up || carDir == right ||
-			carDir == left && lastCarDir == up || carDir == down && lastCarDir == right) return true; break;
+		case UP: if (carDir == RIGHT || carDir == DOWN ||
+			carDir == LEFT && lastCarDir == DOWN || carDir == UP && lastCarDir == RIGHT) return true; break;
+		case RIGHT: if (carDir == DOWN || carDir == LEFT ||
+			carDir == RIGHT && lastCarDir == DOWN || carDir == UP && lastCarDir == LEFT) return true; break;
+		case DOWN: if (carDir == LEFT || carDir == UP ||
+			carDir == RIGHT && lastCarDir == UP || carDir == DOWN && lastCarDir == LEFT) return true; break;
+		case LEFT:  if (carDir == UP || carDir == RIGHT ||
+			carDir == LEFT && lastCarDir == UP || carDir == DOWN && lastCarDir == RIGHT) return true; break;
 		} break;
 	case threeway:
 		switch (direction) {
-		case up: if (carDir == left && lastCarDir == left) return false; else return true; break;
-		case right: if (carDir == up && lastCarDir == up) return false; else return true; break;
-		case down: if (carDir == right && lastCarDir == right) return false; else return true; break;
-		case left: if (carDir == down && lastCarDir == down) return false; else return true; break;
+		case UP: if (carDir == LEFT && lastCarDir == LEFT) return false; else return true; break;
+		case RIGHT: if (carDir == UP && lastCarDir == UP) return false; else return true; break;
+		case DOWN: if (carDir == RIGHT && lastCarDir == RIGHT) return false; else return true; break;
+		case LEFT: if (carDir == DOWN && lastCarDir == DOWN) return false; else return true; break;
 		} break;
 	case fourway:
 		return true; break;
@@ -131,10 +131,10 @@ void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourw
 
 	int a = rand() % 4;
 	switch (a) {
-	case 0: Cell::direction = up; break;
-	case 1: Cell::direction = right; break;
-	case 2: Cell::direction = down; break;
-	case 3: Cell::direction = left; break;
+	case 0: Cell::direction = UP; break;
+	case 1: Cell::direction = RIGHT; break;
+	case 2: Cell::direction = DOWN; break;
+	case 3: Cell::direction = LEFT; break;
 	}
 	Rotation();
 	

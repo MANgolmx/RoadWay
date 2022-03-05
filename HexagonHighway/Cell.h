@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-enum directions { STOP ,up, right, down, left };
+enum directions { STOP ,UP, RIGHT, DOWN, LEFT};
 
 class Cell
 {

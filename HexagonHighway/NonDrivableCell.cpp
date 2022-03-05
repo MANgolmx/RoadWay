@@ -32,10 +32,10 @@ void NonDrivableCell::SetType(int& flowers, int& private_residence, int& apartme
 
 	int a = rand() % 4;
 	switch (a) {
-	case 0: Cell::direction = up; break;
-	case 1: Cell::direction = right; break;
-	case 2: Cell::direction = down; break;
-	case 3: Cell::direction = left; break;
+	case 0: Cell::direction = UP; break;
+	case 1: Cell::direction = RIGHT; break;
+	case 2: Cell::direction = DOWN; break;
+	case 3: Cell::direction = LEFT; break;
 	}
 	Rotation();
 

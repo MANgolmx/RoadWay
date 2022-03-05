@@ -14,23 +14,25 @@ void levelStart(RenderWindow& window)
 
 #pragma region INITIALIZATION
 
-	int roadSize = 12;
-	int decorationSize = 4;
-	int structuresSize = 1;
+	int roadSize, decorationSize, structureSize;
+	ReadLevelFile("levels\\level_test.lvl", roadSize, decorationSize, structureSize);
 
-	int window_width = 1212, window_height = 808;
+	int straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments;
+	ReadCellsTypes("levels\\level_testtypes.lvl", straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments);
+
+	int window_width = 1200, window_height = 800;
 
 	Clock clock;
 
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
 	DrivableCell* roads = new DrivableCell[roadSize];
-	SetDrivablePath(roads, roadSize, 6, 6, 0, 0);
+	SetDrivablePath(roads, roadSize, straight, turned, threeway, fourway);
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
-	SetNonDrivablePath(decorations, decorationSize, 2, 2, 0);
+	SetNonDrivablePath(decorations, decorationSize, flowers, privateResidence, apartments);
 
-	StructureCell* structures = new StructureCell[structuresSize];
+	StructureCell* structures = new StructureCell[structureSize];
 	structures[0].SetCellSprite("resources\\cells\\structures\\structure_park.png");
 
 	Car car("resources\\cars\\car_1.png");
@@ -38,9 +40,9 @@ void levelStart(RenderWindow& window)
 	car.ReCalcPosition(window);
 
 	ReadMainPositions(roadSize, roads, decorationSize, decorations,
-		structuresSize, structures, "levels\\level_test.lvl");
+		structureSize, structures, "levels\\level_test.lvl");
 	SetPositions(roadSize, roads, decorationSize, decorations,
-		structuresSize, structures, window);
+		structureSize, structures, window);
 
 	window.setFramerateLimit(60);
 
@@ -77,7 +79,7 @@ void levelStart(RenderWindow& window)
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
 				SetPositions(roadSize, roads, decorationSize, decorations,
-					structuresSize, structures, window);
+					structureSize, structures, window);
 				ReadCarPosition(car, "levels\\level_testcar.lvl");
 				car.ReCalcPosition(window);
 				break;
@@ -87,7 +89,7 @@ void levelStart(RenderWindow& window)
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
-		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, structures, structuresSize);
+		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, structures, structureSize);
 		car.Draw(window);
 		window.display();
 	}
