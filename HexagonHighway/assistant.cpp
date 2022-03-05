@@ -133,16 +133,18 @@ void SetPositions(const int roadSize, DrivableCell roads[],
 	float f1 = window.getSize().x / 2 - 101 / 2;
 	float f2 = window.getSize().y / 2 - 101 / 2;
 
-	roads[0].SetPosition({f1,f2});
+	DrivableCell *tmp = DrivableCell::GetCellFromMainPos({ 0,0 }, roads, roadSize);
 
-	for (int i = 1; i < roadSize; i++)
-		roads[i].SetPosition(roads[0]);
+	tmp->SetPosition({f1,f2});
+
+	for (int i = 0; i < roadSize; i++)
+		roads[i].SetPosition(*tmp);
 
 	for (int i = 0; i < decorSize; i++)
-		decor[i].SetPosition(roads[0]);
+		decor[i].SetPosition(*tmp);
 
 	for (int i = 0; i < structSize; i++)
-		structs[i].SetPosition(roads[0]);
+		structs[i].SetPosition(*tmp);
 }
 
 void SetIsChosen(bool var, const int N, DrivableCell cell[])
