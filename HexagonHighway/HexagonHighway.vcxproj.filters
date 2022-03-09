@@ -78,6 +78,9 @@
     <ClCompile Include="StructureCell.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Исходные файлы\Executable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assistant.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="StructureCell.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Файлы заголовков\Executable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -27,5 +27,7 @@ public:
 
 	FText GetFText();
 
+	void Draw(sf::RenderWindow& win);
+
 	void operator=(Button bt);
 };

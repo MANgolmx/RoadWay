@@ -10,6 +10,7 @@
 #include "Background.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Settings.h" 
 
 using namespace sf;
 
@@ -32,9 +33,16 @@ int main()
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
 
-	FText play_txt("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_play(play_txt, "resources\\buttons\\button_play.png", {20,24});
+	FText txt_play("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_play(txt_play, "resources\\buttons\\button_play.png", {20,24});
 	bt_play.SetPosition({ f1, f2 });
+	
+	f1 = window.getSize().x / 2;
+	f2 = window.getSize().y / 2;
+
+	FText txt_settings("SETTINGS", 46, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_settings(txt_settings, "resources\\buttons\\button_play.png", {10,34});
+	bt_settings.SetPosition({ f1,f2 });
 
 	window.setFramerateLimit(60);
 
@@ -61,16 +69,26 @@ int main()
 				break;
 			case Event::MouseButtonPressed:
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
+				{
 					if (isBelong(Mouse::getPosition(window), bt_play))
 						levelStart(window);
+					if (isBelong(Mouse::getPosition(window), bt_settings))
+						settings(window);
+				}
 				break;
 			case Event::Resized:
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
+
 				f1 = window.getSize().x / 10;
 				f2 = window.getSize().y / 10 + 50;
 				bt_play.SetPosition({ f1, f2 });
+
+				f1 = window.getSize().x / 2;
+				f2 = window.getSize().y / 2;
+				bt_settings.SetPosition({ f1,f2 });
+
 				f1 = (1920 / 2 - window.getSize().x / 2);
 				f2 = (1080 / 2 - window.getSize().y / 2);
 				menu.SetPosition({ -f1,-f2 });
@@ -79,8 +97,8 @@ int main()
 		}
 
 		window.draw(menu.GetSprite());
-		window.draw(bt_play.GetSprite());
-		window.draw(bt_play.GetFText().GetText());
+		bt_play.Draw(window);
+		bt_settings.Draw(window);
 		window.display();
 	}
 

@@ -60,6 +60,12 @@ FText Button::GetFText()
 	return ftext;
 }
 
+void Button::Draw(sf::RenderWindow& win)
+{
+	win.draw(sprite);
+	win.draw(ftext.GetText());
+}
+
 void Button::operator=(Button bt)
 {
 	ftext = bt.ftext;
