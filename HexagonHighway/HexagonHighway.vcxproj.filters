@@ -37,6 +37,12 @@
     <Filter Include="Файлы заголовков\Executable">
       <UniqueIdentifier>{eae94dbe-2921-4b37-86af-95536aff1dc2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Sounds">
+      <UniqueIdentifier>{96d59008-4b1e-4d5a-9f86-3ed047dc7a15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Sounds">
+      <UniqueIdentifier>{ed6263f8-8ee7-4dc5-831c-b04febc4df7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp">

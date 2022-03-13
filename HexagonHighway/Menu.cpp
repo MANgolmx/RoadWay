@@ -10,6 +10,7 @@
 #include "Background.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Settings.h" 
 
 using namespace sf;
@@ -26,6 +27,12 @@ int main()
 
 	Background menu("resources\\menu.png");
 	
+	Music menu_bg;
+	menu_bg.openFromFile("resources\\sounds\\menu.ogg");
+	menu_bg.play();
+	menu_bg.setLoop(true);
+	menu_bg.setVolume(20);
+
 	float f1 = 1920 / 2 - window_width / 2;
 	float f2 = 1080 / 2 - window_height / 2;
 	menu.SetPosition({ -f1,-f2 });
@@ -40,7 +47,7 @@ int main()
 	f1 = window.getSize().x / 2;
 	f2 = window.getSize().y / 2;
 
-	FText txt_settings("SETTINGS", 46, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	FText txt_settings("SETTINGS", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
 	Button bt_settings(txt_settings, "resources\\buttons\\button_play.png", {10,34});
 	bt_settings.SetPosition({ f1,f2 });
 
