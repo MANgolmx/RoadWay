@@ -48,7 +48,7 @@ int main()
 	f2 = window.getSize().y / 2;
 
 	FText txt_settings("SETTINGS", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_settings(txt_settings, "resources\\buttons\\button_play.png", {10,34});
+	Button bt_settings(txt_settings, "resources\\buttons\\button_settings.png", {20,24});
 	bt_settings.SetPosition({ f1,f2 });
 
 	window.setFramerateLimit(60);
