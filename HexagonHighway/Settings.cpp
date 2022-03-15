@@ -14,7 +14,7 @@
 
 using namespace sf;
 
-void settings(sf::RenderWindow& window)
+int settings(sf::RenderWindow& window)
 {
 	srand(time(0));
 
@@ -40,8 +40,7 @@ void settings(sf::RenderWindow& window)
 			switch (event.type)
 			{
 			case Event::Closed:
-				window.close();
-				break;
+				return 1;
 			case Event::KeyPressed:
 				if (event.key.code == Keyboard::Escape)
 					inSettings = false;

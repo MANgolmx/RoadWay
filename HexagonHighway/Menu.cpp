@@ -68,7 +68,8 @@ int main()
 
 #pragma endregion
 
-	playlogo(window);
+	if (playlogo(window))
+		isOpened = false;
 
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
@@ -88,15 +89,17 @@ int main()
 			switch (event.type)
 			{
 			case Event::Closed:
-				window.close();
+				isOpened = false;
 				break;
 			case Event::MouseButtonPressed:
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
 					if (isBelong(Mouse::getPosition(window), bt_play))
-						levelStart(window);
+						if (levelStart(window))
+							isOpened = false;
 					if (isBelong(Mouse::getPosition(window), bt_settings))
-						settings(window);
+						if(settings(window))
+							isOpened = false;
 					if (isBelong(Mouse::getPosition(window), bt_exit))
 						isOpened = false;
 				}

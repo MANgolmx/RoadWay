@@ -9,7 +9,7 @@
 
 using namespace sf;
 
-void levelStart(RenderWindow& window)
+int levelStart(RenderWindow& window)
 {
 
 #pragma region INITIALIZATION
@@ -58,8 +58,7 @@ void levelStart(RenderWindow& window)
 			switch (event.type)
 			{
 			case Event::Closed:
-				window.close();
-				break;
+				return 1;
 			case Event::MouseButtonPressed: //Нажата кнопка мыши
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{

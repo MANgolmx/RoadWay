@@ -1,4 +1,4 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 
-void levelStart(sf::RenderWindow& window);
+int levelStart(sf::RenderWindow& window);

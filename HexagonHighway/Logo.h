@@ -1,4 +1,4 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-void playlogo(sf::RenderWindow& window);
+int playlogo(sf::RenderWindow& window);
