@@ -1,3 +1,3 @@
 #include <SFML/Graphics.hpp>
 
-void settings(sf::RenderWindow& window);
+int settings(sf::RenderWindow& window);

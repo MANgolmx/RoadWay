@@ -10,7 +10,7 @@
 
 using namespace sf;
 
-void playlogo(RenderWindow& window)
+int playlogo(RenderWindow& window)
 {
 	srand(time(0));
 
@@ -41,10 +41,9 @@ void playlogo(RenderWindow& window)
 			switch (event.type)
 			{
 			case Event::Closed:
-				window.close();
-				break;
+				return 1;
 			case Event::KeyPressed:
-				return;
+				return 0;
 			case Event::Resized:
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
@@ -93,5 +92,5 @@ void playlogo(RenderWindow& window)
 		window.display();
 	}
 
-	return;
+	return 0;
 }

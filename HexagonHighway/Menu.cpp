@@ -25,46 +25,63 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	Background menu("resources\\menu.png");
+	Image icon;
+	if (!icon.loadFromFile("resources\\icon.png"))
+		exit(1);
+	window.setIcon(101, 101, icon.getPixelsPtr());
 	
-	Music menu_bg;
-	menu_bg.openFromFile("resources\\sounds\\menu.ogg");
-	menu_bg.play();
-	menu_bg.setLoop(true);
-	menu_bg.setVolume(20);
+	Music song_menu_bg;
+	song_menu_bg.openFromFile("resources\\sounds\\menu.ogg");
+	song_menu_bg.setLoop(true);
+	song_menu_bg.setVolume(10);
+	
+	Background menu("resources\\menu.png");
 
 	float f1 = 1920 / 2 - window_width / 2;
 	float f2 = 1080 / 2 - window_height / 2;
 	menu.SetPosition({ -f1,-f2 });
 
+	FText txt_play("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_play(txt_play, "resources\\buttons\\button_small.png", {20,24});
+	
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
-
-	FText txt_play("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_play(txt_play, "resources\\buttons\\button_play.png", {20,24});
 	bt_play.SetPosition({ f1, f2 });
-	
-	f1 = window.getSize().x / 2;
-	f2 = window.getSize().y / 2;
 
 	FText txt_settings("SETTINGS", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_settings(txt_settings, "resources\\buttons\\button_settings.png", {20,24});
+	Button bt_settings(txt_settings, "resources\\buttons\\button_settings.png", {30,24});
+	
+	f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
+	f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
 	bt_settings.SetPosition({ f1,f2 });
+
+	FText txt_exit("EXIT", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_exit(txt_exit, "resources\\buttons\\button_small.png", { 30,24 });
+
+	f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
+	f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
+	bt_exit.SetPosition({ f1,f2 });
 
 	window.setFramerateLimit(60);
 
+	bool isOpened = true;
+
 #pragma endregion
 
-	playlogo(window);
+	if (playlogo(window))
+		isOpened = false;
 
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
 	bt_play.SetPosition({ f1, f2 });
+
 	f1 = (1920 / 2 - window.getSize().x / 2);
 	f2 = (1080 / 2 - window.getSize().y / 2);
 	menu.SetPosition({ -f1,-f2 });
+	
+	song_menu_bg.play();
 
-	while (window.isOpen()) //Цикл программы
+	while (isOpened) //Цикл программы
 	{
 		Event event;
 		while (window.pollEvent(event)) //Цикл событий
@@ -72,15 +89,19 @@ int main()
 			switch (event.type)
 			{
 			case Event::Closed:
-				window.close();
+				isOpened = false;
 				break;
 			case Event::MouseButtonPressed:
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
 					if (isBelong(Mouse::getPosition(window), bt_play))
-						levelStart(window);
+						if (levelStart(window))
+							isOpened = false;
 					if (isBelong(Mouse::getPosition(window), bt_settings))
-						settings(window);
+						if(settings(window))
+							isOpened = false;
+					if (isBelong(Mouse::getPosition(window), bt_exit))
+						isOpened = false;
 				}
 				break;
 			case Event::Resized:
@@ -92,9 +113,13 @@ int main()
 				f2 = window.getSize().y / 10 + 50;
 				bt_play.SetPosition({ f1, f2 });
 
-				f1 = window.getSize().x / 2;
-				f2 = window.getSize().y / 2;
+				f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
+				f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
 				bt_settings.SetPosition({ f1,f2 });
+				
+				f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
+				f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
+				bt_exit.SetPosition({ f1,f2 });
 
 				f1 = (1920 / 2 - window.getSize().x / 2);
 				f2 = (1080 / 2 - window.getSize().y / 2);
@@ -106,8 +131,11 @@ int main()
 		window.draw(menu.GetSprite());
 		bt_play.Draw(window);
 		bt_settings.Draw(window);
+		bt_exit.Draw(window);
 		window.display();
 	}
 
+	song_menu_bg.stop();
+	window.close();
 	return 0;
 }

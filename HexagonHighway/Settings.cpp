@@ -14,7 +14,7 @@
 
 using namespace sf;
 
-void settings(sf::RenderWindow& window)
+int settings(sf::RenderWindow& window)
 {
 	srand(time(0));
 
@@ -40,7 +40,10 @@ void settings(sf::RenderWindow& window)
 			switch (event.type)
 			{
 			case Event::Closed:
-				window.close();
+				return 1;
+			case Event::KeyPressed:
+				if (event.key.code == Keyboard::Escape)
+					inSettings = false;
 				break;
 			case Event::MouseButtonPressed:
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
@@ -63,4 +66,6 @@ void settings(sf::RenderWindow& window)
 		window.draw(menu.GetSprite());
 		window.display();
 	}
+
+	return 0;
 }
