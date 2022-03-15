@@ -42,6 +42,10 @@ void settings(sf::RenderWindow& window)
 			case Event::Closed:
 				window.close();
 				break;
+			case Event::KeyPressed:
+				if (event.key.code == Keyboard::Escape)
+					inSettings = false;
+				break;
 			case Event::MouseButtonPressed:
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
