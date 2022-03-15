@@ -94,4 +94,6 @@ int levelStart(RenderWindow& window)
 		car.Draw(window);
 		window.display();
 	}
+
+	return 0;
 }

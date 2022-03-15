@@ -66,4 +66,6 @@ int settings(sf::RenderWindow& window)
 		window.draw(menu.GetSprite());
 		window.display();
 	}
+
+	return 0;
 }
