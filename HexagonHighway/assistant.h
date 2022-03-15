@@ -81,7 +81,7 @@ void ReadCarPosition(Car& car, const char lvlpath[]);
 void ReadCellsTypes(const char lvlpath[], int& straight, int& turned, int& threeway, int& fourway, int& finish, int& flowers, int& private_residence, int& apartments);
 
 ///////////////////////////////////////////////////////////
-   /// \brief Draw all cells int the given window
+   /// \brief Draw all cells in the given window
 ////////////////////////////////////////////////////////////
 void DrawCells(sf::RenderWindow& win, DrivableCell roads[], NonDrivableCell chosen,
 	const int roadSize, NonDrivableCell decor[], const int decorSize, 

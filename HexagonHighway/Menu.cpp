@@ -25,12 +25,17 @@ int main()
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
-	Background menu("resources\\menu.png");
+	Image icon;
+	if (!icon.loadFromFile("resources\\icon.png"))
+		exit(1);
+	window.setIcon(101, 101, icon.getPixelsPtr());
 	
 	Music song_menu_bg;
 	song_menu_bg.openFromFile("resources\\sounds\\menu.ogg");
 	song_menu_bg.setLoop(true);
-	song_menu_bg.setVolume(20);
+	song_menu_bg.setVolume(10);
+	
+	Background menu("resources\\menu.png");
 
 	float f1 = 1920 / 2 - window_width / 2;
 	float f2 = 1080 / 2 - window_height / 2;
