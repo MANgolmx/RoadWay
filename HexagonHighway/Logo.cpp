@@ -32,7 +32,7 @@ int playlogo(RenderWindow& window)
 
 	Music song_logo_bg;
 	song_logo_bg.openFromFile("resources\\sounds\\logo_short.ogg");
-	song_logo_bg.setVolume(70);
+	song_logo_bg.setVolume(0);
 
 	bool isOpen = true;
 
@@ -64,17 +64,20 @@ int playlogo(RenderWindow& window)
 
 		ms.ChangeColor(col);
 		if (phase == 0) {
+			song_logo_bg.setVolume(75 - 37.5 + col.a / 6);
 			col.a++;
 			if (col.a == 225)
 				phase++;
 		}
 		if (phase == 1) {
+			song_logo_bg.setVolume(75);
 			Time t = seconds(1.f);
 			sleep(t);
 			phase++;
 		}
 		if (phase == 2)
 		{
+			song_logo_bg.setVolume(75 - 75 + col.a / 3);
 			col.a--;
 			if (col.a == 0) {
 				phase++;
