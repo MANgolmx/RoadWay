@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
@@ -27,11 +28,17 @@ int playlogo(RenderWindow& window)
 
 	ms.SetPosition({f1,f2});
 
-	window.setFramerateLimit(120);
+	window.setFramerateLimit(200);
+
+	Music song_logo_bg;
+	song_logo_bg.openFromFile("resources\\sounds\\logo_short.ogg");
+	song_logo_bg.setVolume(70);
 
 	bool isOpen = true;
 
 #pragma endregion
+
+	song_logo_bg.play();
 
 	while (isOpen) //Цикл лого
 	{
@@ -62,7 +69,7 @@ int playlogo(RenderWindow& window)
 				phase++;
 		}
 		if (phase == 1) {
-			Time t = seconds(2.f);
+			Time t = seconds(1.f);
 			sleep(t);
 			phase++;
 		}
@@ -82,7 +89,7 @@ int playlogo(RenderWindow& window)
 		if (phase == 3)
 		{
 			col.a = 0;
-			Time t = seconds(1.5f);
+			Time t = seconds(1.f);
 			sleep(t);
 			isOpen = false;
 		}
@@ -92,5 +99,6 @@ int playlogo(RenderWindow& window)
 		window.display();
 	}
 
+	song_logo_bg.stop();
 	return 0;
 }
