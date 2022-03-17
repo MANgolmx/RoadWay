@@ -12,6 +12,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Settings.h" 
+#include "Level_Menu.h"
 
 using namespace sf;
 
@@ -95,7 +96,7 @@ int main()
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
 					if (isBelong(Mouse::getPosition(window), bt_play))
-						if (levelStart(window))
+						if (levelMenu(window))
 							isOpened = false;
 					if (isBelong(Mouse::getPosition(window), bt_settings))
 						if(settings(window))

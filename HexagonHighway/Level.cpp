@@ -9,16 +9,16 @@
 
 using namespace sf;
 
-int levelStart(RenderWindow& window)
+int levelStart(RenderWindow& window, const char level_path[], const char level_carpath[], const char level_typespath[])
 {
 
 #pragma region INITIALIZATION
 
 	int roadSize, decorationSize, structureSize;
-	ReadLevelFile("levels\\level_test.lvl", roadSize, decorationSize, structureSize);
+	ReadLevelFile(level_path, roadSize, decorationSize, structureSize);
 
 	int straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments;
-	ReadCellsTypes("levels\\level_testtypes.lvl", straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments);
+	ReadCellsTypes(level_typespath, straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments);
 
 	int window_width = 1200, window_height = 800;
 
@@ -36,10 +36,10 @@ int levelStart(RenderWindow& window)
 	structures[0].SetCellSprite("resources\\cells\\structures\\structure_park.png");
 
 	Car car("resources\\cars\\car_1.png");
-	ReadCarPosition(car, "levels\\level_testcar.lvl");
+	ReadCarPosition(car, level_carpath);
 	car.ReCalcPosition(window);
 
-	ReadMainPositions("levels\\level_test.lvl", roads, roadSize, decorations, decorationSize,
+	ReadMainPositions(level_path, roads, roadSize, decorations, decorationSize,
 		structures, structureSize);
 	SetPositions(roadSize, roads, decorationSize, decorations,
 		structureSize, structures, window);
@@ -81,7 +81,7 @@ int levelStart(RenderWindow& window)
 					windowSize.y / 2.f), Vector2f(windowSize)));
 				SetPositions(roadSize, roads, decorationSize, decorations,
 					structureSize, structures, window);
-				ReadCarPosition(car, "levels\\level_testcar.lvl");
+				ReadCarPosition(car, level_carpath);
 				car.ReCalcPosition(window);
 				break;
 			}
