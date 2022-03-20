@@ -22,7 +22,7 @@ int main()
 
 #pragma region INITIALIZATION
 
-	int window_width = 1212, window_height = 808;
+	int window_width = 1600, window_height = 900;
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
