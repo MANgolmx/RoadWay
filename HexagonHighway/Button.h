@@ -26,6 +26,8 @@ public:
 	sf::Vector2f GetPosition();
 	void SetPosition(sf::Vector2f pos);
 
+	void Mirrored(float angle);
+
 	FText GetFText();
 
 	void Draw(sf::RenderWindow& win);

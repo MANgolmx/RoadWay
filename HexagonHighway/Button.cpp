@@ -68,6 +68,12 @@ void Button::SetPosition(Vector2f pos)
 	ftext.SetPosition(sprite.getPosition() + textPosition);
 }
 
+void Button::Mirrored(float angle)
+{
+	sprite.setRotation(angle);
+	sprite.setOrigin(0, texture.getSize().x);
+}
+
 FText Button::GetFText()
 {
 	return ftext;

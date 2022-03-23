@@ -26,10 +26,19 @@ int settings(sf::RenderWindow& window)
 	float f2 = 1080 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
+	FText txt_volume_minus(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_volume_minus(txt_volume_minus, "resources\\buttons\\button_volume.png", { 0,0 });
+
+	f1 = window.getSize().x / 2 - bt_volume_minus.GetTexture().getSize().x - 100;
+	f2 = window.getSize().y / 4 - bt_volume_minus.GetTexture().getSize().y;
+	bt_volume_minus.SetPosition({ f1,f2 });
+
+	bt_volume_minus.Mirrored(180);
+
 	FText txt_volume_plus(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
 	Button bt_volume_plus(txt_volume_plus, "resources\\buttons\\button_volume.png", { 0,0 });
 
-	f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x;
+	f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x + 100;
 	f2 = window.getSize().y / 4 - bt_volume_plus.GetTexture().getSize().y;
 	bt_volume_plus.SetPosition({ f1,f2 });
 
@@ -67,14 +76,19 @@ int settings(sf::RenderWindow& window)
 				f2 = (1080 / 2 - window.getSize().y / 2);
 				menu.SetPosition({ -f1,-f2 });
 
-				f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x;
+				f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x + 100;
 				f2 = window.getSize().y / 4 - bt_volume_plus.GetTexture().getSize().y;
 				bt_volume_plus.SetPosition({ f1,f2 });
+
+				f1 = window.getSize().x / 2 - bt_volume_minus.GetTexture().getSize().x - 100;
+				f2 = window.getSize().y / 4 - bt_volume_minus.GetTexture().getSize().y;
+				bt_volume_minus.SetPosition({ f1,f2 });
 				break;
 			}
 		}
 
 		window.draw(menu.GetSprite());
+		bt_volume_minus.Draw(window);
 		bt_volume_plus.Draw(window);
 		window.display();
 	}
