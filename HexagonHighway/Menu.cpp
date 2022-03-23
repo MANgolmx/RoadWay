@@ -96,8 +96,10 @@ int main()
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
 					if (isBelong(Mouse::getPosition(window), bt_play))
-						if (levelMenu(window))
+						if (levelStart(window, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
 							isOpened = false;
+						//if (levelMenu(window))
+							//isOpened = false;
 					if (isBelong(Mouse::getPosition(window), bt_settings))
 						if(settings(window))
 							isOpened = false;
