@@ -34,6 +34,19 @@ Button::Button(FText txt, sf::Texture Texture, Vector2f textPos)
 	ftext.SetPosition(sprite.getPosition() + textPos);
 }
 
+Button::Button(std::string texturePath)
+{
+	textPosition = { 0,0 };
+	if (!texture.loadFromFile(texturePath)) {
+		std::cout << "[ERROR OCURRED] Can not open button texture" << std::endl;
+		exit(1);
+	}
+
+	sprite.setTexture(texture);
+	sprite.setPosition(0, 0);
+	ftext.SetPosition(sprite.getPosition());
+}
+
 sf::Sprite Button::GetSprite()
 {
 	return sprite;
