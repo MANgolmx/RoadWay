@@ -20,8 +20,6 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 	int straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments;
 	ReadCellsTypes(level_typespath, straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments);
 
-	int window_width = 1200, window_height = 800;
-
 	Clock clock;
 
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
