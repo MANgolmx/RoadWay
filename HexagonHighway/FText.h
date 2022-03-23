@@ -17,6 +17,8 @@ public:
 
 	void ChangeColor(sf::Color col);
 
+	void ChangeText(std::string txt);
+
 	sf::Vector2f GetPosition();
 	void SetPosition(sf::Vector2f pos);
 

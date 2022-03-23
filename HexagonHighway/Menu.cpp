@@ -24,17 +24,17 @@ int main()
 
 	int window_width = 1600, window_height = 900;
 
+	float volume = 100;
+
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
 	Image icon;
-	if (!icon.loadFromFile("resources\\icon.png"))
-		exit(1);
+	if (!icon.loadFromFile("resources\\icon.png")) exit(1);
 	window.setIcon(101, 101, icon.getPixelsPtr());
 	
 	Music song_menu_bg;
 	song_menu_bg.openFromFile("resources\\sounds\\menu.ogg");
 	song_menu_bg.setLoop(true);
-	song_menu_bg.setVolume(10);
 	
 	Background menu("resources\\menu.png");
 
@@ -101,8 +101,11 @@ int main()
 						//if (levelMenu(window))
 							//isOpened = false;
 					if (isBelong(Mouse::getPosition(window), bt_settings))
-						if(settings(window))
+					{
+						if (settings(window, volume))
 							isOpened = false;
+						song_menu_bg.setVolume(volume);
+					}
 					if (isBelong(Mouse::getPosition(window), bt_exit))
 						isOpened = false;
 				}

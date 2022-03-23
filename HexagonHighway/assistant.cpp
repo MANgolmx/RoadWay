@@ -47,6 +47,16 @@ bool isBelong(Vector2i a, Button bt)
 	return false;
 }
 
+bool isBelong(sf::Vector2i a, sf::Rect<float> pl)
+{
+	if (a.x >= pl.left &&
+		a.x <= pl.left + pl.width &&
+		a.y >= pl.top &&
+		a.y <= pl.top + pl.height)
+		return true;
+	return false;
+}
+
 void SetDrivablePath(DrivableCell mas[], const int masSize,
 	int straight, int turned, int threeway, int fourway)
 {

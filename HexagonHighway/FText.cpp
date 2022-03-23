@@ -37,6 +37,11 @@ void FText::ChangeColor(Color col)
 	text.setFillColor(col);
 }
 
+void FText::ChangeText(std::string txt)
+{
+	text.setString(txt);
+}
+
 Vector2f FText::GetPosition()
 {
 	return text.getPosition();
