@@ -29,6 +29,13 @@ bool isBelong(sf::Vector2i a, DrivableCell cell);
 bool isBelong(sf::Vector2i a, Button bt);
 
 ////////////////////////////////////////////////////////////
+   /// \brief Checks is point belong to given place on tha window
+   ///
+   /// \param a - point that needs to be checked
+////////////////////////////////////////////////////////////
+bool isBelong(sf::Vector2i a, sf::Rect<float> pl);
+
+////////////////////////////////////////////////////////////
    /// \brief Sets textures to cells
 ////////////////////////////////////////////////////////////
 void SetDrivablePath(DrivableCell road[], const int roadSize,

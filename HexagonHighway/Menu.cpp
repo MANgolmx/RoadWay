@@ -24,7 +24,7 @@ int main()
 
 	int window_width = 1600, window_height = 900;
 
-	float volume = 100;
+	float volume = 10;
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
@@ -35,7 +35,8 @@ int main()
 	Music song_menu_bg;
 	song_menu_bg.openFromFile("resources\\sounds\\menu.ogg");
 	song_menu_bg.setLoop(true);
-	
+	song_menu_bg.setVolume(volume);
+
 	Background menu("resources\\menu.png");
 
 	float f1 = 1920 / 2 - window_width / 2;
