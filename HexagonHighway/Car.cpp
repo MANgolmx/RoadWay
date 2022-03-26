@@ -42,35 +42,32 @@ Car::Car(std::string path)
 void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	NonDrivableCell decor[], const int decorCount)
 {
-	sf::Vector2f pos = DrivableCell::GetCellFromMainPos({ 0,0 }, roads, roadCount)->GetPosition();
-	int f1 = (position.x - pos.x) / 101;
-	int f2 = (position.y - pos.y) / 101;
-
-	mainPosition = { float(f1), float(f2) };
-
 	bool isOnCell = false;
 	for (int i = 0; i < roadCount; i++)
 		if (mainPosition == roads[i].GetMainPosition())
 		{
 			isOnCell = true;
+			StartMoving();
 			break;
 		}
 
 	if (!isOnCell)
 		StopMoving();
 
-	if (isMoving)
+	if (!isMoving) return;
+
+	if (timeToMove < time.asMilliseconds())
 	{
-		if (timeToMove < time.asMilliseconds())
-		{
-			switch (direction) {
-			case UP: speed = { 0,-maxspeed * (time.asSeconds() / timeToMove) }; break;
-			case RIGHT: speed = { maxspeed * (time.asSeconds() / timeToMove),0 }; break;
-			case DOWN: speed = { 0,maxspeed * (time.asSeconds() / timeToMove) }; break;
-			case LEFT: speed = { -maxspeed * (time.asSeconds() / timeToMove),0 }; break;
-			case STOP: speed = { 0,0 }; break;
-			}
+		switch (direction) {
+		case UP: speed = { 0,-maxspeed * (time.asSeconds() / timeToMove) }; break;
+		case RIGHT: speed = { maxspeed * (time.asSeconds() / timeToMove),0 }; break;
+		case DOWN: speed = { 0,maxspeed* (time.asSeconds() / timeToMove) }; break;
+		case LEFT: speed = { -maxspeed * (time.asSeconds() / timeToMove),0 }; break;
+		case STOP: speed = { 0,0 }; break;
 		}
+
+	 	if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount) == nullptr) { StopMoving(); return; }
+		mainPosition = DrivableCell::GetCellFromPos(position + speed, roads, roadCount)->GetMainPosition();
 
 		MoveOn(speed);
 	}

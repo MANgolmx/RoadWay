@@ -24,7 +24,7 @@ int main()
 
 	int window_width = 1600, window_height = 900;
 
-	float volume = 10;
+	float volume = 1;
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 

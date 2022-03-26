@@ -15,7 +15,7 @@ private:
 	int toTurn = 0;
 
 	sf::Vector2f speed = { 0,0 };
-	float maxspeed = 400;
+	float maxspeed = 600;
 
 	sf::Vector2f position;
 	sf::Vector2f mainPosition;
