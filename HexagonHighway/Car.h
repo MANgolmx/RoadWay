@@ -10,9 +10,12 @@ class Car
 {
 private:
 
-	int timeToMove = 15;
+	int timeToMove = 10;
 	int timePassed = 0;
 	int toTurn = 0;
+
+	sf::Vector2f speed = { 0,0 };
+	float maxspeed = 400;
 
 	sf::Vector2f position;
 	sf::Vector2f mainPosition;
@@ -39,6 +42,8 @@ public:
 	void SetPosition(sf::Vector2f pos);
 	void SetMainPosition(sf::Vector2f pos);
 	void SetDirection(directions dir);
+
+	void MoveOn(sf::Vector2f pos);
 
 	void ReCalcPosition(sf::RenderWindow& window);
 

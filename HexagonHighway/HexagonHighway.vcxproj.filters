@@ -129,4 +129,15 @@
       <Filter>Файлы заголовков\Executable</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="levels\level_testcar.lvl">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="levels\level_testtypes.lvl">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="levels\level_test.lvl">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+  </ItemGroup>
 </Project>

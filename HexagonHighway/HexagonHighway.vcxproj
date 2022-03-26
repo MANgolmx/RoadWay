@@ -186,6 +186,11 @@
     <ClInclude Include="Settings.h" />
     <ClInclude Include="StructureCell.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="levels\level_test.lvl" />
+    <None Include="levels\level_testcar.lvl" />
+    <None Include="levels\level_testtypes.lvl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

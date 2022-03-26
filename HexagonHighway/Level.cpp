@@ -42,7 +42,7 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 	SetPositions(roadSize, roads, decorationSize, decorations,
 		structureSize, structures, window);
 
-	window.setFramerateLimit(60);
+	window.setFramerateLimit(120);
 
 	bool isPlaying = true;
 
