@@ -68,8 +68,22 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount) == nullptr) { StopMoving(); return; }
 		mainPosition = DrivableCell::GetCellFromPos(position + speed, roads, roadCount)->GetMainPosition();
 
+		if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount)->GetType() == turned)
+		{
+			int t1 = position.x / 101;
+			float t2 = position.x - 101 * t1;
+			int t3 = position.y / 101;
+			float t4 = position.y - 101 * t3;
+			if (t2 < 51 && t2 > 49 || t4 < 51 - 15 && t4 > 49 - 15)
+			{
+				//lastDirection = direction;
+				//direction = DOWN;
+			}
+		}
+
 	if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount)->CanGo(direction, lastDirection))
 		MoveOn(speed);
+
 }
 
 bool Car::IsOnCell(DrivableCell cell)
