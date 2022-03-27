@@ -9,7 +9,7 @@ using namespace sf;
 
 Car::Car()
 {
-	timeToMove = 15;
+	timeToMove = 10;
 	timePassed;
 	position.x = position.y = 0;
 	mainPosition.x = mainPosition.y = 0;
@@ -23,7 +23,7 @@ Car::~Car()
 
 Car::Car(std::string path)
 {
-	timeToMove = 15;
+	timeToMove = 10;
 	timePassed;
 	position = { 535,436 };
 	mainPosition = { 0,1 };
@@ -47,7 +47,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 		if (mainPosition == roads[i].GetMainPosition())
 		{
 			isOnCell = true;
-			StartMoving();
 			break;
 		}
 
@@ -65,12 +64,12 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 		case LEFT: speed = { -maxspeed * (time.asSeconds() / timeToMove),0 }; break;
 		case STOP: speed = { 0,0 }; break;
 		}
-
-	 	if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount) == nullptr) { StopMoving(); return; }
+	}
+	if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount) == nullptr) { StopMoving(); return; }
 		mainPosition = DrivableCell::GetCellFromPos(position + speed, roads, roadCount)->GetMainPosition();
 
+	if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount)->CanGo(direction, lastDirection))
 		MoveOn(speed);
-	}
 }
 
 bool Car::IsOnCell(DrivableCell cell)
@@ -98,6 +97,7 @@ void Car::Draw(RenderWindow& win)
 void Car::StopMoving()
 {
 	isMoving = false;
+	speed = { 0,0 };
 }
 
 void Car::StartMoving()
