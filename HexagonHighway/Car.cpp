@@ -90,6 +90,10 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 						}
 					}
 					break;
+				case finish:
+					std::cout << "YOU COMPLETED THE GAME!\n";
+					StopMoving();
+					break;
 				}
 			}
 			else {
@@ -137,6 +141,10 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 							lastDirection = direction;
 						}
 					}
+					break;
+				case finish:
+					std::cout << "YOU COMPLETED THE GAME!\n";
+					StopMoving();
 					break;
 				}
 			}
@@ -186,6 +194,10 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 							lastDirection = direction;
 						}
 					}
+					break;
+				case finish:
+					std::cout << "YOU COMPLETED THE GAME!\n";
+					StopMoving();
 					break;
 				}
 			} else {
@@ -239,6 +251,10 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			else {
 				isMoving = false;
 			}
+			break;
+		case finish:
+			std::cout << "YOU COMPLETED THE GAME!\n";
+			StopMoving();
 			break;
 		}
 	}

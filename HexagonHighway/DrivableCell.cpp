@@ -63,7 +63,7 @@ bool DrivableCell::CanGo(directions& carDir, directions& lastCarDir)
 		case UP: if (carDir == LEFT && lastCarDir == LEFT) return false; else return true; break;
 		case RIGHT: if (carDir == UP && lastCarDir == UP) return false; else return true; break;
 		case DOWN: if (carDir == RIGHT && lastCarDir == RIGHT) return false; else return true; break;
-		case LEFT: if (carDir == DOWN && lastCarDir == DOWN) return false; else return true; break;
+		case LEFT: if (carDir ==  DOWN && lastCarDir == DOWN) return false; else return true; break;
 		} break;
 	case fourway:
 		return true; break;
