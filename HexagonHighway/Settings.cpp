@@ -94,6 +94,7 @@ int settings(sf::RenderWindow& window, float &volume)
 							volume--;
 				}
 				break;
+				//TODO: Можно добавить ивент MouseButtonReleased и проверять на задержание кнопки
 			case Event::Resized:
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
 				window.setView(View(Vector2f(windowSize.x / 2.f,
