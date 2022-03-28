@@ -86,10 +86,12 @@ int settings(sf::RenderWindow& window, float &volume)
 				{
 					if (isBelong(Mouse::getPosition(window),
 						{ bt_volume_plus.GetPosition().x, bt_volume_plus.GetPosition().y, float(bt_volume_plus.GetTexture().getSize().x),float(bt_volume_plus.GetTexture().getSize().y) }))
-						volume++;
+						if (volume < 100)
+							volume++;
 					if (isBelong(Mouse::getPosition(window),
 						{ bt_volume_minus.GetPosition().x - bt_volume_minus.GetTexture().getSize().x, bt_volume_minus.GetPosition().y, float(bt_volume_minus.GetTexture().getSize().x),float(bt_volume_minus.GetTexture().getSize().y) }))
-						volume--;
+						if (volume > 0)
+							volume--;
 				}
 				break;
 			case Event::Resized:
