@@ -58,11 +58,10 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	if (timeToMove < time.asMilliseconds())
 	{
 		switch (direction) {
-		case UP: speed = { 0,-maxspeed * (time.asSeconds() / timeToMove) }; break;
-		case RIGHT: speed = { maxspeed * (time.asSeconds() / timeToMove),0 }; break;
-		case DOWN: speed = { 0,maxspeed* (time.asSeconds() / timeToMove) }; break;
-		case LEFT: speed = { -maxspeed * (time.asSeconds() / timeToMove),0 }; break;
-		case STOP: speed = { 0,0 }; break;
+		case UP:    speed = { 0,-maxspeed * (time.asSeconds() / timeToMove) };   break;
+		case RIGHT: speed = { maxspeed    * (time.asSeconds() / timeToMove),0 }; break;
+		case DOWN:  speed = { 0, maxspeed * (time.asSeconds() / timeToMove) };   break;
+		case LEFT:  speed = { -maxspeed   * (time.asSeconds() / timeToMove),0 }; break;
 		}
 	}
 	if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount) == nullptr) { StopMoving(); return; }
@@ -70,14 +69,12 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 
 		if (DrivableCell::GetCellFromPos(position + speed, roads, roadCount)->GetType() == turned)
 		{
-			int t1 = position.x / 101;
-			float t2 = position.x - 101 * t1;
-			int t3 = position.y / 101;
-			float t4 = position.y - 101 * t3;
-			if (t2 < 51 && t2 > 49 || t4 < 51 - 15 && t4 > 49 - 15)
+			float t1 = position.x - 101 * (int(position.x / 101));
+			float t2 = position.y - 101 * (int(position.y / 101));
+			if (t1 < 77 && t1 > 75 || t2 < 51 - 15 && t2 > 49 - 15)
 			{
-				//lastDirection = direction;
-				//direction = DOWN;
+				lastDirection = direction;
+				direction = directions(direction + 1);
 			}
 		}
 
