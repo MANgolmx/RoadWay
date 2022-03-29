@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Cell.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
