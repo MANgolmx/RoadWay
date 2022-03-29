@@ -96,10 +96,7 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 		}
 
 		if (car.IsFinished())
-		{
-
-
-		}
+			isPlaying = false;
 
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
