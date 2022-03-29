@@ -85,6 +85,12 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 			}
 		}
 
+		if (car.IsFinished())
+		{
+
+
+		}
+
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });

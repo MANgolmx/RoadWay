@@ -25,6 +25,8 @@ private:
 
 	bool isMoving;
 
+	bool isFinished = false;
+
 public:
 
 	Car();
@@ -48,6 +50,7 @@ public:
 	void StartMoving();
 
 	bool IsMoving();
+	bool IsFinished();
 
 	bool IsOnCell(DrivableCell cell);
 
