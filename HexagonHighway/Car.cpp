@@ -42,6 +42,7 @@ Car::Car(std::string path)
 void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	NonDrivableCell decor[], const int decorCount)
 {
+	timeToMove = 5;
 	if (isMoving)
 	if (timePassed + time.asMilliseconds() > timeToMove)
 	{

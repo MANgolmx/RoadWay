@@ -92,6 +92,7 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 
 		}
 
+
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
