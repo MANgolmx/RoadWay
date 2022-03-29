@@ -18,8 +18,8 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 	int roadSize, decorationSize, structureSize;
 	ReadLevelFile(level_path, roadSize, decorationSize, structureSize);
 
-	int straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments;
-	ReadCellsTypes(level_typespath, straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments);
+	int straight, turned, threeway, fourway, fin, flowers, privateResidence, apartments;
+	ReadCellsTypes(level_typespath, straight, turned, threeway, fourway, fin, flowers, privateResidence, apartments);
 
 	Clock clock;
 
@@ -27,6 +27,11 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 
 	DrivableCell* roads = new DrivableCell[roadSize];
 	SetDrivablePath(roads, roadSize, straight, turned, threeway, fourway);
+
+	DrivableCell finishCell("resources\\cells\\finish.png");
+	finishCell.SetMainPosition({ 6,4 });
+	finishCell.SetDrivableType(finish);
+	finishCell.SetChose(false);
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
 	SetNonDrivablePath(decorations, decorationSize, flowers, privateResidence, apartments);
@@ -42,6 +47,7 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 		structures, structureSize);
 	SetPositions(roadSize, roads, decorationSize, decorations,
 		structureSize, structures, window);
+	finishCell.SetPosition(DrivableCell::GetCellFromMainPos({ 0, 0 }, roads, roadSize));
 
 	window.setFramerateLimit(60);
 
@@ -65,6 +71,8 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 					for (int i = 0; i < roadSize; i++)
 						if (isBelong(Mouse::getPosition(window), roads[i]))
 							roads[i].Rotation();
+					if (isBelong(Mouse::getPosition(window), finishCell))
+						finishCell.Rotation();
 				}
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
 					CheckSwap(window, roads, roadSize);
@@ -80,6 +88,7 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 					windowSize.y / 2.f), Vector2f(windowSize)));
 				SetPositions(roadSize, roads, decorationSize, decorations,
 					structureSize, structures, window);
+				finishCell.SetPosition(DrivableCell::GetCellFromMainPos({ 0, 0 }, roads, roadSize));
 				ReadCarPosition(car, level_carpath);
 				car.ReCalcPosition(window);
 				break;
@@ -92,10 +101,10 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 
 		}
 
-
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
+		finishCell.Draw(window, chosen);
 		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, structures, structureSize);
 		car.Draw(window);
 		window.display();

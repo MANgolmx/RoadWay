@@ -39,6 +39,11 @@ void DrivableCell::SetChose(bool ch)
 	isChosen = ch;
 }
 
+void DrivableCell::SetDrivableType(drivableTypes tp)
+{
+	type = tp;
+}
+
 bool DrivableCell::CanGo(directions& carDir, directions& lastCarDir)
 {
 	switch (type) {

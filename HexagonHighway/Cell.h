@@ -20,6 +20,7 @@ public:
 
 	sf::Vector2f GetPosition();
 	void SetPosition(Cell cell);
+	void SetPosition(Cell* cell);
 	void SetPosition(sf::Vector2f pos);
 	void SetPosition(int x, int y);
 

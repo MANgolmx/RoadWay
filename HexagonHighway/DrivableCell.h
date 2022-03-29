@@ -20,6 +20,7 @@ public:
 	bool ifChosen();
 	void SetChose(bool ch);
 
+	void SetDrivableType(drivableTypes tp);
 	bool CanGo(directions& carDir, directions& lastCarDir);
 
 	void Draw(sf::RenderWindow& win, NonDrivableCell chosen);
