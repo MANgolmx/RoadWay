@@ -1,7 +1,7 @@
 #pragma once
 #include "Cell.h"
 
-enum drivableTypes { undefiened, straight, turned, threeway, fourway, finish };
+enum drivableTypes { undefiened, straight, turned, threeway, fourway, finish, start };
 
 class DrivableCell;
 class NonDrivableCell;

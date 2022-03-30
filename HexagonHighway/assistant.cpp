@@ -60,7 +60,11 @@ bool isBelong(sf::Vector2i a, sf::Rect<float> pl)
 void SetDrivablePath(DrivableCell mas[], const int masSize,
 	int straight, int turned, int threeway, int fourway)
 {
-	for (int i = 0; i < masSize; i++)
+	mas[0].SetCellSprite("resources\\cells\\finish.png");
+	mas[0].SetDrivableType(start);
+	mas[1].SetCellSprite("resources\\cells\\finish.png");
+	mas[1].SetDrivableType(finish);
+	for (int i = 2; i < masSize; i++)
 		mas[i].SetType(straight, turned, threeway, fourway);
 }
 

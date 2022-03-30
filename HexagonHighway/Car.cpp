@@ -93,8 +93,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				case finish:
 					std::cout << "YOU COMPLETED THE GAME!\n";
 					StopMoving();
-					Time t = seconds(3.f);
-					sleep(t);
 					isFinished = true;
 					break;
 				}
@@ -105,7 +103,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			break;
 		case DOWN:
 			tmp = DrivableCell::GetCellFromPos({ position.x, position.y + 31}, roads, roadCount);
-			if (tmp != nullptr && tmp->CanGo(direction, lastDirection))
+			if (tmp != nullptr && tmp->CanGo(direction, lastDirection)) 
 			{
 				switch (tmp->GetType())
 				{
@@ -148,8 +146,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				case finish:
 					std::cout << "YOU COMPLETED THE GAME!\n";
 					StopMoving();
-					Time t = seconds(3.f);
-					sleep(t);
 					isFinished = true;
 					break;
 				}
@@ -204,8 +200,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				case finish:
 					std::cout << "YOU COMPLETED THE GAME!\n";
 					StopMoving();
-					Time t = seconds(3.f);
-					sleep(t);
 					isFinished = true;
 					break;
 				}
@@ -264,8 +258,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 		case finish:
 			std::cout << "YOU COMPLETED THE GAME!\n";
 			StopMoving();
-			Time t = seconds(3.f);
-			sleep(t);
 			isFinished = true;
 			break;
 		}
