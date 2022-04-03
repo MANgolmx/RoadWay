@@ -91,7 +91,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					}
 					break;
 				case finish:
-					std::cout << "YOU COMPLETED THE GAME!\n";
+					std::cout << "YOU COMPLETED THE GAME!" << std::endl;
 					StopMoving();
 					isFinished = true;
 					break;
