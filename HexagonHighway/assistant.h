@@ -7,6 +7,8 @@ class StructureCell;
 class Button;
 class Car;
 
+class TextureManager;
+
 ////////////////////////////////////////////////////////////
    /// \brief Reads level sizes of all cells types
    ///

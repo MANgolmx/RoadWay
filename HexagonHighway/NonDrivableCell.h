@@ -13,6 +13,6 @@ public:
 	NonDrivableCell(std::string path);
 	~NonDrivableCell();
 
-	void SetType(int& flowers, int& private_residence, int& apartment);
+	void SetType(TextureManager& tm, int& flowers, int& private_residence, int& apartment);
 
 };

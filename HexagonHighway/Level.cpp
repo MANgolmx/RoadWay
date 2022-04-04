@@ -7,10 +7,11 @@
 #include "Assistant.h"
 #include "Car.h"
 #include "Level.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
-int levelStart(RenderWindow& window, const char level_path[], const char level_carpath[], const char level_typespath[])
+int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[], const char level_carpath[], const char level_typespath[])
 {
 
 #pragma region INITIALIZATION

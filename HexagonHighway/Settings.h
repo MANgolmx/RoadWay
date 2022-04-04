@@ -1,3 +1,5 @@
 #include <SFML/Graphics.hpp>
 
-int settings(sf::RenderWindow& window, float &volume);
+class TextureManager;
+
+int settings(sf::RenderWindow& window, TextureManager& tm, float &volume);

@@ -11,10 +11,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include "TextureManager.h"
 
 using namespace sf;
 
-int levelMenu(sf::RenderWindow& window)
+int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 {
 
 #pragma region INITIALIZATION
@@ -53,7 +54,7 @@ int levelMenu(sf::RenderWindow& window)
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{ 
 					if (isBelong(Mouse::getPosition(window), bt_lvl1))
-						if (levelStart(window, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
+						if (levelStart(window, tm, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
 							return 1;
 				}
 				break;

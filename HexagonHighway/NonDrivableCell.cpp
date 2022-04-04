@@ -1,6 +1,6 @@
 #include "NonDrivableCell.h"
 #include <iostream>
-
+#include "TextureManager.h"
 
 NonDrivableCell::NonDrivableCell()
 {
@@ -24,7 +24,7 @@ NonDrivableCell::~NonDrivableCell()
 {
 }
 
-void NonDrivableCell::SetType(int& flowers, int& private_residence, int& apartment)
+void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_residence, int& apartment)
 {
 	std::string path;
 

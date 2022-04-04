@@ -11,10 +11,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Settings.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
-int settings(sf::RenderWindow& window, float &volume)
+int settings(sf::RenderWindow& window, TextureManager& tm, float &volume)
 {
 	srand(time(0));
 

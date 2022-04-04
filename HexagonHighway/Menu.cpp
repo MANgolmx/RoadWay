@@ -13,6 +13,7 @@
 #include <SFML/Audio.hpp>
 #include "Settings.h" 
 #include "Level_Menu.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
@@ -21,10 +22,13 @@ int main()
 	srand(time(0));
 
 #pragma region INITIALIZATION
-
+	
 	int window_width = 1600, window_height = 900;
 
 	float volume = 10;
+
+	TextureManager tm;
+	tm.IncludeCellTextures();
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
@@ -97,13 +101,13 @@ int main()
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
 					if (isBelong(Mouse::getPosition(window), bt_play))
-						if (levelStart(window, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
+						if (levelStart(window, tm, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
 							isOpened = false;
 						//if (levelMenu(window))
 							//isOpened = false;
 					if (isBelong(Mouse::getPosition(window), bt_settings))
 					{
-						if (settings(window, volume))
+						if (settings(window, tm, volume))
 							isOpened = false;
 						song_menu_bg.setVolume(volume);
 					}

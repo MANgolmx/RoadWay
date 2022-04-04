@@ -31,5 +31,5 @@ public:
 	static DrivableCell* GetCellFromPos(sf::Vector2f pos, DrivableCell cells[], const int size);
 
 	drivableTypes GetType();
-	void SetType(int& straight, int& turned, int& threeway, int& fourway);
+	void SetType(TextureManager& tm, int& straight, int& turned, int& threeway, int& fourway);
 };

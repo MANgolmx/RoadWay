@@ -2,6 +2,7 @@
 #include "NonDrivableCell.h"
 #include <iostream>
 #include <SFML\Graphics.hpp>
+#include "TextureManager.h"
 
 using namespace sf;
 
@@ -128,7 +129,7 @@ DrivableCell* DrivableCell::GetCellFromPos(Vector2f pos, DrivableCell cells[], c
 	return nullptr;
 }
 
-void DrivableCell::SetType(int& straight, int& turned, int& threeway, int& fourway)
+void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& threeway, int& fourway)
 {
 	std::string path;
 

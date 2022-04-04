@@ -84,6 +84,9 @@
     <ClCompile Include="Level_Menu.cpp">
       <Filter>Исходные файлы\Executable</Filter>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Исходные файлы\Assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assistant.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="Level_Menu.h">
       <Filter>Файлы заголовков\Executable</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Файлы заголовков\Assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
