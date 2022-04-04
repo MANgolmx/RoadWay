@@ -23,8 +23,8 @@ int levelMenu(sf::RenderWindow& window)
 
 	Background menu("resources\\menu.png");
 
-	f1 = 1920 / 2 - window.getSize().x / 2;
-	f2 = 1080 / 2 - window.getSize().y / 2;
+	f1 = 3840 / 2 - window.getSize().x / 2;
+	f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_lvl1("1", 120, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
@@ -70,8 +70,8 @@ int levelMenu(sf::RenderWindow& window)
 				f2 = window.getSize().y / 10 + 50;
 				bt_lvl1.SetPosition({ f1, f2 });
 
-				float f1 = 1920 / 2 - window.getSize().x / 2;
-				float f2 = 1080 / 2 - window.getSize().y / 2;
+				float f1 = 3840 / 2 - window.getSize().x / 2;
+				float f2 = 2160 / 2 - window.getSize().y / 2;
 				menu.SetPosition({ -f1,-f2 });
 				break;
 			}

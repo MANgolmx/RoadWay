@@ -39,8 +39,8 @@ int main()
 
 	Background menu("resources\\menu.png");
 
-	float f1 = 1920 / 2 - window_width / 2;
-	float f2 = 1080 / 2 - window_height / 2;
+	float f1 = 3840 / 2 - window.getSize().x / 2;
+	float f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_play("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
@@ -77,8 +77,8 @@ int main()
 	f2 = window.getSize().y / 10 + 50;
 	bt_play.SetPosition({ f1, f2 });
 
-	f1 = (1920 / 2 - window.getSize().x / 2);
-	f2 = (1080 / 2 - window.getSize().y / 2);
+	f1 = 3840 / 2 - window.getSize().x / 2;
+	f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 	
 	song_menu_bg.play();
@@ -128,8 +128,8 @@ int main()
 				f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
 				bt_exit.SetPosition({ f1,f2 });
 
-				f1 = (1920 / 2 - window.getSize().x / 2);
-				f2 = (1080 / 2 - window.getSize().y / 2);
+				f1 = (3840 / 2 - window.getSize().x / 2);
+				f2 = (2160 / 2 - window.getSize().y / 2);
 				menu.SetPosition({ -f1,-f2 });
 				break;
 			}

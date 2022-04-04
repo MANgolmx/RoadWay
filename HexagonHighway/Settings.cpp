@@ -22,8 +22,8 @@ int settings(sf::RenderWindow& window, float &volume)
 
 	Background menu("resources\\menu.png");
 
-	float f1 = 1920 / 2 - window.getSize().x / 2;
-	float f2 = 1080 / 2 - window.getSize().y / 2;
+	float f1 = 3840 / 2 - window.getSize().x / 2;
+	float f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_volume_minus(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
@@ -100,8 +100,8 @@ int settings(sf::RenderWindow& window, float &volume)
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
 
-				f1 = (1920 / 2 - window.getSize().x / 2);
-				f2 = (1080 / 2 - window.getSize().y / 2);
+				f1 = 3840 / 2 - window.getSize().x / 2;
+				f2 = 2160 / 2 - window.getSize().y / 2;
 				menu.SetPosition({ -f1,-f2 });
 
 				f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x / 2 + 400;
