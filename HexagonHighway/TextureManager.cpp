@@ -11,54 +11,67 @@ TextureManager::~TextureManager()
 
 void TextureManager::IncludeCellTextures()
 {
+	/*
 	sf::Texture tmp;
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_flowers_1.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_flowers_1.png"] = tmp;
-	
+	TexturePointers["resources\\cells\\straight\\straight_flowers_1.png"] = Textures["resources\\cells\\straight\\straight_flowers_1.png"];
+
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_flowers_2.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_flowers_2.png"] = tmp;
-	
+	TexturePointers["resources\\cells\\straight\\straight_flowers_2.png"] = Textures["resources\\cells\\straight\\straight_flowers_2.png"];
+
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_flowers_3.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_flowers_3.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_flowers_3.png"] = Textures["resources\\cells\\straight\\straight_flowers_3.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_flowers_4.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_flowers_4.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_flowers_4.png"] = Textures["resources\\cells\\straight\\straight_flowers_4.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_trashbin_1.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_trashbin_1.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_trashbin_1.png"] = Textures["resources\\cells\\straight\\straight_trashbin_1.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_trashbin_2.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_trashbin_2.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_trashbin_2.png"] = Textures["resources\\cells\\straight\\straight_trashbin_2.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_trashbin_3.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_trashbin_3.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_trashbin_3.png"] = Textures["resources\\cells\\straight\\straight_trashbin_3.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_trashbin_4.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_trashbin_4.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_trashbin_4.png"] = Textures["resources\\cells\\straight\\straight_trashbin_4.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_trashbin_5.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_trashbin_5.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_trashbin_5.png"] = Textures["resources\\cells\\straight\\straight_trashbin_5.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_trashbin_6.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\straight\\straight_trashbin_6.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_trashbin_6.png"] = Textures["resources\\cells\\straight\\straight_trashbin_6.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\straight\\straight_busstop_1.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1);  }
 	Textures["resources\\cells\\straight\\straight_busstop_1.png"] = tmp;
+	TexturePointers["resources\\cells\\straight\\straight_busstop_1.png"] = Textures["resources\\cells\\straight\\straight_busstop_1.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\turned\\turned_flowers_1.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
 	Textures["resources\\cells\\turned\\turned_flowers_1.png"] = tmp;
+	TexturePointers["resources\\cells\\turned\\turned_flowers_1.png"] = Textures["resources\\cells\\straight\\straight_busstop_1.png"];
 
 	if (!tmp.loadFromFile("resources\\cells\\turned\\turned_flowers_2.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
@@ -146,12 +159,12 @@ void TextureManager::IncludeCellTextures()
 
 	if (!tmp.loadFromFile("resources\\cells\\privateResidence\\private_residence_4.png"))
 	{ std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl; exit(1); }
-	Textures["resources\\cells\\privateResidence\\private_residence_4.png"] = tmp;
+	Textures["resources\\cells\\privateResidence\\private_residence_4.png"] = tmp; */
 }
 
-sf::Texture TextureManager::PullTexture(std::string key)
+sf::Texture* TextureManager::PullTexture(std::string key)
 {
-	if (Textures.find(key) != Textures.end()) return Textures[key];
+	if (Textures.find(key) != Textures.end()) return TexturePointers[key];
 
 	sf::Texture tmp;
 	if (!tmp.loadFromFile(key))
@@ -161,5 +174,6 @@ sf::Texture TextureManager::PullTexture(std::string key)
 	}
 
 	Textures[key] = tmp;
-	return Textures[key];
+	TexturePointers[key] = &Textures[key];
+	return TexturePointers[key];
 }

@@ -6,6 +6,7 @@ class TextureManager
 {
 private:
 	std::map<std::string, sf::Texture> Textures;
+	std::map<std::string, sf::Texture*> TexturePointers;
 
 public:
 
@@ -14,5 +15,5 @@ public:
 
 	void IncludeCellTextures();
 
-	sf::Texture PullTexture(std::string key);
+	sf::Texture* PullTexture(std::string key);
 };

@@ -5,6 +5,7 @@ enum drivableTypes { undefiened, straight, turned, threeway, fourway, finish, st
 
 class DrivableCell;
 class NonDrivableCell;
+class TextureManager;
 
 class DrivableCell:public Cell
 {

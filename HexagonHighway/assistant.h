@@ -40,13 +40,13 @@ bool isBelong(sf::Vector2i a, sf::Rect<float> pl);
 ////////////////////////////////////////////////////////////
    /// \brief Sets textures to cells
 ////////////////////////////////////////////////////////////
-void SetDrivablePath(DrivableCell road[], const int roadSize,
+void SetDrivablePath(TextureManager& tm, DrivableCell road[], const int roadSize,
 	int straight, int turned, int threeway, int fourway);
 
 ////////////////////////////////////////////////////////////
    /// \brief Set textures to cells
 ////////////////////////////////////////////////////////////
-void SetNonDrivablePath(NonDrivableCell decor[], const int decorSize,
+void SetNonDrivablePath(TextureManager& tm, NonDrivableCell decor[], const int decorSize,
 	int forest, int private_residence, int apartment);
 
 ////////////////////////////////////////////////////////////

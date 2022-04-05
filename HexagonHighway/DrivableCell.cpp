@@ -131,8 +131,6 @@ DrivableCell* DrivableCell::GetCellFromPos(Vector2f pos, DrivableCell cells[], c
 
 void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& threeway, int& fourway)
 {
-	std::string path;
-
 	int Exit = 0;
 
 	int a = rand() % 4;
@@ -161,25 +159,20 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 
 			switch (tmp) {
 			case 4: case 8: case 12:
-			case 0: path = "resources\\cells\\straight\\straight_flowers_1.png";	 break;
+			case 0: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_1.png");	 break;
 			case 5: case 9: case 13:
-			case 1: path = "resources\\cells\\straight\\straight_flowers_2.png";	 break;
+			case 1: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_2.png");	 break;
 			case 6: case 10: case 20:
-			case 2: path = "resources\\cells\\straight\\straight_flowers_3.png"; 	 break;
+			case 2: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_3.png"); 	 break;
 			case 7: case 11: case 21:
-			case 3: path = "resources\\cells\\straight\\straight_flowers_4.png";	 break;
-			case 14: path = "resources\\cells\\straight\\straight_trashbin_1.png";	 break;
-			case 15: path = "resources\\cells\\straight\\straight_trashbin_2.png";	 break;
-			case 16: path = "resources\\cells\\straight\\straight_trashbin_3.png";	 break;
-			case 17: path = "resources\\cells\\straight\\straight_trashbin_4.png";	 break;
-			case 18: path = "resources\\cells\\straight\\straight_trashbin_5.png";	 break;
-			case 19: path = "resources\\cells\\straight\\straight_trashbin_6.png";	 break;
-			case 22: path = "resources\\cells\\straight\\straight_busstop_1.png";	 break;
-			}
-
-			if (!square_texture.loadFromFile(path)) {
-				std::cout << "[ERROR OCURRED] Can not open Straight.png" << std::endl;
-				exit(1);
+			case 3: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_4.png");	 break;
+			case 14: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_1.png"); break;
+			case 15: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_2.png"); break;
+			case 16: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_3.png"); break;
+			case 17: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_4.png"); break;
+			case 18: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_5.png"); break;
+			case 19: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_6.png"); break;
+			case 22: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_busstop_1.png");	 break;
 			}
 
 			square_sprite.setTexture(square_texture);
@@ -196,17 +189,12 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 			int tmp = rand() % 6;
 
 			switch (tmp) {
-			case 0: path = "resources\\cells\\turned\\turned_flowers_1.png"; break;
-			case 1: path = "resources\\cells\\turned\\turned_flowers_2.png"; break;
-			case 2: path = "resources\\cells\\turned\\turned_flowers_3.png"; break;
-			case 3: path = "resources\\cells\\turned\\turned_flowers_4.png"; break;
-			case 4: path = "resources\\cells\\turned\\turned_busstop_1.png"; break;
-			case 5: path = "resources\\cells\\turned\\turned_busstop_2.png"; break;
-			}
-
-			if (!square_texture.loadFromFile(path)) {
-				std::cout << "[ERROR OCURRED] Can not open Turned.png" << std::endl;
-				exit(1);
+			case 0: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_1.png"); break;
+			case 1: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_2.png"); break;
+			case 2: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_3.png"); break;
+			case 3: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_4.png"); break;
+			case 4: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_busstop_1.png"); break;
+			case 5: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_busstop_2.png"); break;
 			}
 
 			square_sprite.setTexture(square_texture);
@@ -223,18 +211,13 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 			int tmp = rand() % 7;
 
 			switch (tmp) {
-			case 0: path = "resources\\cells\\threeway\\threeway_flowers_1.png"; break;
-			case 1: path = "resources\\cells\\threeway\\threeway_flowers_2.png"; break;
-			case 2: path = "resources\\cells\\threeway\\threeway_flowers_3.png"; break;
-			case 3: path = "resources\\cells\\threeway\\threeway_flowers_4.png"; break;
-			case 4: path = "resources\\cells\\threeway\\threeway_flowers_5.png"; break;
-			case 5: path = "resources\\cells\\threeway\\threeway_busstop_1.png"; break;
-			case 6: path = "resources\\cells\\threeway\\threeway_busstop_2.png"; break;
-			}
-
-			if (!square_texture.loadFromFile(path)) {
-				std::cout << "[ERROR OCURRED] Can not open Turned.png" << std::endl;
-				exit(1);
+			case 0: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_1.png"); break;
+			case 1: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_2.png"); break;
+			case 2: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_3.png"); break;
+			case 3: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_4.png"); break;
+			case 4: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_5.png"); break;
+			case 5: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_busstop_1.png"); break;
+			case 6: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_busstop_2.png"); break;
 			}
 
 			square_sprite.setTexture(square_texture);

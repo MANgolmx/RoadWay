@@ -3,6 +3,8 @@
 
 enum nondrivableTypes { undefined, flowers, private_residence, apartments, structure};
 
+class TextureManager;
+
 class NonDrivableCell:public Cell
 {
 protected:

@@ -27,10 +27,10 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 	NonDrivableCell chosen("resources\\cells\\chosen.png");
 
 	DrivableCell* roads = new DrivableCell[roadSize];
-	SetDrivablePath(roads, roadSize, straight, turned, threeway, fourway);
+	SetDrivablePath(tm, roads, roadSize, straight, turned, threeway, fourway);
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
-	SetNonDrivablePath(decorations, decorationSize, flowers, privateResidence, apartments);
+	SetNonDrivablePath(tm, decorations, decorationSize, flowers, privateResidence, apartments);
 
 	StructureCell* structures = new StructureCell[structureSize];
 	structures[0].SetCellSprite("resources\\cells\\structures\\structure_park.png");

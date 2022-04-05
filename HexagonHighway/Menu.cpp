@@ -28,7 +28,7 @@ int main()
 	float volume = 10;
 
 	TextureManager tm;
-	tm.IncludeCellTextures();
+	//tm.IncludeCellTextures();
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 

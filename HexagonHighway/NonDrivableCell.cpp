@@ -26,8 +26,6 @@ NonDrivableCell::~NonDrivableCell()
 
 void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_residence, int& apartment)
 {
-	std::string path;
-
 	int Exit = 0;
 
 	int a = rand() % 4;
@@ -39,7 +37,7 @@ void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_res
 	}
 	Rotation();
 
-	 a = rand() % 3;
+	a = rand() % 3;
 	switch (a) {
 	case 0: goto flowersRand;
 	case 1: goto privateResidenceRand;
@@ -54,17 +52,12 @@ void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_res
 			a = rand() % 6;
 
 			switch (a) {
-			case 0: path = "resources\\cells\\flowers\\flowers_1.png"; break;
-			case 1: path = "resources\\cells\\flowers\\flowers_2.png"; break;
-			case 2: path = "resources\\cells\\flowers\\flowers_3.png"; break;
-			case 3: path = "resources\\cells\\flowers\\flowers_4.png"; break;
-			case 4: path = "resources\\cells\\flowers\\flowers_5.png"; break;
-			case 5: path = "resources\\cells\\flowers\\flowers_6.png"; break;
-			}
-
-			if (!square_texture.loadFromFile(path)) {
-				std::cout << "[ERROR OCURRED] Can not open Flowers.png" << std::endl;
-				exit(1);
+			case 0: square_texture = tm.PullTexture("resources\\cells\\flowers\\flowers_1.png"); break;
+			case 1: square_texture = tm.PullTexture("resources\\cells\\flowers\\flowers_2.png"); break;
+			case 2: square_texture = tm.PullTexture("resources\\cells\\flowers\\flowers_3.png"); break;
+			case 3: square_texture = tm.PullTexture("resources\\cells\\flowers\\flowers_4.png"); break;
+			case 4: square_texture = tm.PullTexture("resources\\cells\\flowers\\flowers_5.png"); break;
+			case 5: square_texture = tm.PullTexture("resources\\cells\\flowers\\flowers_6.png"); break;
 			}
 
 			square_sprite.setTexture(square_texture);
@@ -80,15 +73,10 @@ void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_res
 			a = rand() % 4;
 
 			switch (a) {
-			case 0: path = "resources\\cells\\privateResidence\\private_residence_1.png"; break;
-			case 1: path = "resources\\cells\\privateResidence\\private_residence_2.png"; break;
-			case 2: path = "resources\\cells\\privateResidence\\private_residence_3.png"; break;
-			case 3: path = "resources\\cells\\privateResidence\\private_residence_4.png"; break;
-			}
-
-			if (!square_texture.loadFromFile(path)) {
-				std::cout << "[ERROR OCURRED] Can not open PrivateResidence.png" << std::endl;
-				exit(1);
+			case 0: square_texture = tm.PullTexture("resources\\cells\\privateResidence\\private_residence_1.png"); break;
+			case 1: square_texture = tm.PullTexture("resources\\cells\\privateResidence\\private_residence_2.png"); break;
+			case 2: square_texture = tm.PullTexture("resources\\cells\\privateResidence\\private_residence_3.png"); break;
+			case 3: square_texture = tm.PullTexture("resources\\cells\\privateResidence\\private_residence_4.png"); break;
 			}
 
 			square_sprite.setTexture(square_texture);
@@ -104,12 +92,7 @@ void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_res
 
 
 
-			if (!square_texture.loadFromFile(path)) {
-				std::cout << "[ERROR OCURRED] Can not open Apartments.png" << std::endl;
-				exit(1);
-			}
-
-			square_sprite.setTexture(square_texture);
+			//square_sprite.setTexture(square_texture);
 
 			apartment--;
 			return;

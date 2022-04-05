@@ -9,6 +9,7 @@
 #include "Assistant.h"
 #include "Car.h"
 #include "Button.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
@@ -57,22 +58,22 @@ bool isBelong(sf::Vector2i a, sf::Rect<float> pl)
 	return false;
 }
 
-void SetDrivablePath(DrivableCell mas[], const int masSize,
+void SetDrivablePath(TextureManager& tm, DrivableCell mas[], const int masSize,
 	int straight, int turned, int threeway, int fourway)
 {
-	mas[0].SetCellSprite("resources\\cells\\finish.png");
+	mas[0].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
 	mas[0].SetDrivableType(start);
-	mas[1].SetCellSprite("resources\\cells\\finish.png");
+	mas[1].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
 	mas[1].SetDrivableType(finish);
 	for (int i = 2; i < masSize; i++)
-		mas[i].SetType(straight, turned, threeway, fourway);
+		mas[i].SetType(tm, straight, turned, threeway, fourway);
 }
 
-void SetNonDrivablePath(NonDrivableCell mas[], const int masSize,
+void SetNonDrivablePath(TextureManager& tm, NonDrivableCell mas[], const int masSize,
 	int forest, int private_residence, int apartment)
 {
 	for (int i = 0; i < masSize; i++)
-		mas[i].SetType(forest, private_residence, apartment);
+		mas[i].SetType(tm, forest, private_residence, apartment);
 }
 
 void CheckSwap(sf::RenderWindow& window, DrivableCell road[], const int roadSize)

@@ -72,6 +72,14 @@ void Cell::SetCellSprite(std::string path)
 	square_sprite.setPosition(0, 0);
 }
 
+void Cell::SetCellSprite(sf::Texture tx)
+{
+	square_texture = tx;
+
+	square_sprite.setTexture(square_texture);
+	square_sprite.setPosition(0, 0);
+}
+
 void Cell::SetMainPosition(Vector2f pos)
 {
 	mainPosition.x = pos.x;
