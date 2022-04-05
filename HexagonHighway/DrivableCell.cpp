@@ -16,12 +16,12 @@ DrivableCell::DrivableCell()
 DrivableCell::DrivableCell(std::string path)
 {
 	type = undefiened;
-	if (!square_texture.loadFromFile(path)) {
+	if (!square_texture->loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open drivableCell texture" << std::endl;
 		exit(1);
 	}
 
-	square_sprite.setTexture(square_texture);
+	square_sprite.setTexture(*square_texture);
 	square_sprite.setPosition(0, 0);
 }
 
@@ -175,7 +175,7 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 			case 22: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_busstop_1.png");	 break;
 			}
 
-			square_sprite.setTexture(square_texture);
+			square_sprite.setTexture(*square_texture);
 
 			straight--;
 			return;
@@ -197,7 +197,7 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 			case 5: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_busstop_2.png"); break;
 			}
 
-			square_sprite.setTexture(square_texture);
+			square_sprite.setTexture(*square_texture);
 
 			turned--;
 			return;
@@ -220,7 +220,7 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 			case 6: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_busstop_2.png"); break;
 			}
 
-			square_sprite.setTexture(square_texture);
+			square_sprite.setTexture(*square_texture);
 
 			threeway--;
 			return;

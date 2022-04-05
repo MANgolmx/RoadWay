@@ -11,12 +11,12 @@ NonDrivableCell::NonDrivableCell()
 NonDrivableCell::NonDrivableCell(std::string path)
 {
 	type = undefined;
-	if (!square_texture.loadFromFile(path)) {
+	if (!square_texture->loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open nonDrivableCell texture" << std::endl;
 		exit(1);
 	}
 
-	square_sprite.setTexture(square_texture);
+	square_sprite.setTexture(*square_texture);
 	square_sprite.setPosition(0, 0);
 }
 
@@ -60,7 +60,7 @@ void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_res
 			case 5: square_texture = tm.PullTexture("resources\\cells\\flowers\\flowers_6.png"); break;
 			}
 
-			square_sprite.setTexture(square_texture);
+			square_sprite.setTexture(*square_texture);
 
 			flowers--;
 			return;
@@ -79,7 +79,7 @@ void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_res
 			case 3: square_texture = tm.PullTexture("resources\\cells\\privateResidence\\private_residence_4.png"); break;
 			}
 
-			square_sprite.setTexture(square_texture);
+			square_sprite.setTexture(*square_texture);
 
 			private_residence--;
 			return;
@@ -92,7 +92,7 @@ void NonDrivableCell::SetType(TextureManager& tm, int& flowers, int& private_res
 
 
 
-			//square_sprite.setTexture(square_texture);
+			//square_sprite.setTexture(*square_texture);
 
 			apartment--;
 			return;
