@@ -25,7 +25,7 @@ public:
 	void SetPosition(int x, int y);
 
 	virtual void SetCellSprite(std::string path);
-	virtual void SetCellSprite(sf::Texture* tx);
+	virtual void SetCellSprite(sf::Texture& tx);
 
 	void SetMainPosition(sf::Vector2f pos);
 	void SetMainPosition(int x, int y);

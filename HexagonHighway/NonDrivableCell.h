@@ -12,7 +12,7 @@ protected:
 
 public:
 	NonDrivableCell();
-	NonDrivableCell(std::string path);
+	NonDrivableCell(TextureManager& tm, std::string path);
 	~NonDrivableCell();
 
 	void SetType(TextureManager& tm, int& flowers, int& private_residence, int& apartment);

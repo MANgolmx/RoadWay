@@ -24,7 +24,7 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 
 	Clock clock;
 
-	NonDrivableCell chosen("resources\\cells\\chosen.png");
+	NonDrivableCell chosen(tm, "resources\\cells\\chosen.png");
 
 	DrivableCell* roads = new DrivableCell[roadSize];
 	SetDrivablePath(tm, roads, roadSize, straight, turned, threeway, fourway);
@@ -33,7 +33,7 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 	SetNonDrivablePath(tm, decorations, decorationSize, flowers, privateResidence, apartments);
 
 	StructureCell* structures = new StructureCell[structureSize];
-	structures[0].SetCellSprite("resources\\cells\\structures\\structure_park.png");
+	structures[0].SetCellSprite(tm.PullTexture("resources\\cells\\structures\\structure_park.png"));
 
 	Car car("resources\\cars\\car_1.png");
 	ReadCarPosition(car, level_carpath);
@@ -43,6 +43,7 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 		structures, structureSize);
 	SetPositions(roadSize, roads, decorationSize, decorations,
 		structureSize, structures, window);
+	SetIsChosen(false, roads, roadSize);
 
 	window.setFramerateLimit(60);
 

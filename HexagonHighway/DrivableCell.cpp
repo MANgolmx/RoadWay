@@ -8,21 +8,21 @@ using namespace sf;
 
 DrivableCell::DrivableCell()
 {
-	type = undefiened;
+	/*type = undefiened;
 	isChosen = false;
-	Cell();
+	Cell();*/
 }
 
 DrivableCell::DrivableCell(std::string path)
 {
 	type = undefiened;
-	if (!square_texture->loadFromFile(path)) {
+	/*if (!square_texture->loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open drivableCell texture" << std::endl;
 		exit(1);
 	}
 
 	square_sprite.setTexture(*square_texture);
-	square_sprite.setPosition(0, 0);
+	square_sprite.setPosition(0, 0);*/
 }
 
 DrivableCell::~DrivableCell()
@@ -159,20 +159,20 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 
 			switch (tmp) {
 			case 4: case 8: case 12:
-			case 0: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_1.png");	 break;
+			case 0: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_flowers_1.png");	 break;
 			case 5: case 9: case 13:
-			case 1: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_2.png");	 break;
+			case 1: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_flowers_2.png");	 break;
 			case 6: case 10: case 20:
-			case 2: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_3.png"); 	 break;
+			case 2: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_flowers_3.png"); 	 break;
 			case 7: case 11: case 21:
-			case 3: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_flowers_4.png");	 break;
-			case 14: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_1.png"); break;
-			case 15: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_2.png"); break;
-			case 16: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_3.png"); break;
-			case 17: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_4.png"); break;
-			case 18: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_5.png"); break;
-			case 19: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_trashbin_6.png"); break;
-			case 22: square_texture = tm.PullTexture("resources\\cells\\straight\\straight_busstop_1.png");	 break;
+			case 3: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_flowers_4.png");	 break;
+			case 14: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_trashbin_1.png"); break;
+			case 15: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_trashbin_2.png"); break;
+			case 16: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_trashbin_3.png"); break;
+			case 17: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_trashbin_4.png"); break;
+			case 18: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_trashbin_5.png"); break;
+			case 19: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_trashbin_6.png"); break;
+			case 22: square_texture = &tm.PullTexture("resources\\cells\\straight\\straight_busstop_1.png");	 break;
 			}
 
 			square_sprite.setTexture(*square_texture);
@@ -189,12 +189,12 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 			int tmp = rand() % 6;
 
 			switch (tmp) {
-			case 0: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_1.png"); break;
-			case 1: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_2.png"); break;
-			case 2: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_3.png"); break;
-			case 3: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_flowers_4.png"); break;
-			case 4: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_busstop_1.png"); break;
-			case 5: square_texture = tm.PullTexture("resources\\cells\\turned\\turned_busstop_2.png"); break;
+			case 0: square_texture = &tm.PullTexture("resources\\cells\\turned\\turned_flowers_1.png"); break;
+			case 1: square_texture = &tm.PullTexture("resources\\cells\\turned\\turned_flowers_2.png"); break;
+			case 2: square_texture = &tm.PullTexture("resources\\cells\\turned\\turned_flowers_3.png"); break;
+			case 3: square_texture = &tm.PullTexture("resources\\cells\\turned\\turned_flowers_4.png"); break;
+			case 4: square_texture = &tm.PullTexture("resources\\cells\\turned\\turned_busstop_1.png"); break;
+			case 5: square_texture = &tm.PullTexture("resources\\cells\\turned\\turned_busstop_2.png"); break;
 			}
 
 			square_sprite.setTexture(*square_texture);
@@ -211,13 +211,13 @@ void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& 
 			int tmp = rand() % 7;
 
 			switch (tmp) {
-			case 0: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_1.png"); break;
-			case 1: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_2.png"); break;
-			case 2: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_3.png"); break;
-			case 3: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_4.png"); break;
-			case 4: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_5.png"); break;
-			case 5: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_busstop_1.png"); break;
-			case 6: square_texture = tm.PullTexture("resources\\cells\\threeway\\threeway_busstop_2.png"); break;
+			case 3: square_texture = &tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_4.png"); break;
+			case 4: square_texture = &tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_5.png"); break;
+			case 0: square_texture = &tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_1.png"); break;
+			case 1: square_texture = &tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_2.png"); break;
+			case 2: square_texture = &tm.PullTexture("resources\\cells\\threeway\\threeway_flowers_3.png"); break;
+			case 5: square_texture = &tm.PullTexture("resources\\cells\\threeway\\threeway_busstop_1.png"); break;
+			case 6: square_texture = &tm.PullTexture("resources\\cells\\threeway\\threeway_busstop_2.png"); break;
 			}
 
 			square_sprite.setTexture(*square_texture);

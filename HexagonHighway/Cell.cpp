@@ -15,13 +15,14 @@ Cell::Cell()
 
 Cell::Cell(std::string path)
 {
+	/*
 	if (!square_texture->loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
 		exit(1);
 	}
 
 	square_sprite.setTexture(*square_texture);
-	square_sprite.setPosition(0, 0);
+	square_sprite.setPosition(0, 0);*/
 }
 
 Cell::~Cell()
@@ -72,9 +73,9 @@ void Cell::SetCellSprite(std::string path)
 	square_sprite.setPosition(0, 0);
 }
 
-void Cell::SetCellSprite(sf::Texture* tx)
+void Cell::SetCellSprite(sf::Texture& tx)
 {
-	square_texture = tx;
+	square_texture = &tx;
 
 	square_sprite.setTexture(*square_texture);
 	square_sprite.setPosition(0, 0);

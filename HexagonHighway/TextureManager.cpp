@@ -162,9 +162,9 @@ void TextureManager::IncludeCellTextures()
 	Textures["resources\\cells\\privateResidence\\private_residence_4.png"] = tmp; */
 }
 
-sf::Texture* TextureManager::PullTexture(std::string key)
+sf::Texture& TextureManager::PullTexture(std::string key)
 {
-	if (Textures.find(key) != Textures.end()) return TexturePointers[key];
+	if (Textures.find(key) != Textures.end()) return Textures[key];
 
 	sf::Texture tmp;
 	if (!tmp.loadFromFile(key))
@@ -174,6 +174,5 @@ sf::Texture* TextureManager::PullTexture(std::string key)
 	}
 
 	Textures[key] = tmp;
-	TexturePointers[key] = &Textures[key];
-	return TexturePointers[key];
+	return Textures[key];
 }
