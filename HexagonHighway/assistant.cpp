@@ -63,8 +63,10 @@ void SetDrivablePath(TextureManager& tm, DrivableCell mas[], const int masSize,
 {
 	mas[0].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
 	mas[0].SetDrivableType(start);
+	mas[0].ChangeMoveStatus(false);
 	mas[1].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
 	mas[1].SetDrivableType(finish);
+	mas[1].ChangeMoveStatus(false);
 	for (int i = 2; i < masSize; i++)
 		mas[i].SetType(tm, straight, turned, threeway, fourway);
 }
@@ -81,7 +83,7 @@ void CheckSwap(sf::RenderWindow& window, DrivableCell road[], const int roadSize
 	int count = 0;
 	int ind1 = -1, ind2 = -1;
 	for (int i = 0; i < roadSize; i++)
-		if (isBelong(Mouse::getPosition(window), road[i]))
+		if (isBelong(Mouse::getPosition(window), road[i]) && road[i].CanBeMoved())
 			road[i].SetChose(true);
 	for (int i = 0; i < roadSize; i++)
 		if (road[i].ifChosen())

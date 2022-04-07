@@ -3,7 +3,6 @@
 
 enum drivableTypes { undefiened, straight, turned, threeway, fourway, finish, start };
 
-class DrivableCell;
 class NonDrivableCell;
 class TextureManager;
 
@@ -13,6 +12,7 @@ private:
 	drivableTypes type;
 	bool isChosen;
 
+	bool canBeMoved;
 public:
 	DrivableCell();
 	DrivableCell(sf::Texture& tx);
@@ -30,6 +30,9 @@ public:
 
 	static DrivableCell* GetCellFromMainPos(sf::Vector2f mainPos, DrivableCell cells[], const int size);
 	static DrivableCell* GetCellFromPos(sf::Vector2f pos, DrivableCell cells[], const int size);
+
+	void ChangeMoveStatus(bool newMode);
+	bool CanBeMoved();
 
 	drivableTypes GetType();
 	void SetType(TextureManager& tm, int& straight, int& turned, int& threeway, int& fourway);

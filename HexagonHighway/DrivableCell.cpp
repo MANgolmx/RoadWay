@@ -10,6 +10,7 @@ DrivableCell::DrivableCell()
 {
 	type = undefiened;
 	isChosen = false;
+	canBeMoved = true;
 	Cell();
 }
 
@@ -19,7 +20,7 @@ DrivableCell::DrivableCell(sf::Texture& tx)
 
 	square_sprite.setTexture(*square_texture);
 	square_sprite.setPosition(0, 0);
-
+	canBeMoved = true;
 }
 
 DrivableCell::~DrivableCell()
@@ -124,6 +125,16 @@ DrivableCell* DrivableCell::GetCellFromPos(Vector2f pos, DrivableCell cells[], c
 			pos.y < cells[i].position.y + 101)
 			return &cells[i];
 	return nullptr;
+}
+
+void DrivableCell::ChangeMoveStatus(bool newMode)
+{
+	canBeMoved = newMode;
+}
+
+bool DrivableCell::CanBeMoved()
+{
+	return canBeMoved;
 }
 
 void DrivableCell::SetType(TextureManager& tm, int& straight, int& turned, int& threeway, int& fourway)
