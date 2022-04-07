@@ -8,21 +8,18 @@ using namespace sf;
 
 DrivableCell::DrivableCell()
 {
-	/*type = undefiened;
+	type = undefiened;
 	isChosen = false;
-	Cell();*/
+	Cell();
 }
 
-DrivableCell::DrivableCell(std::string path)
+DrivableCell::DrivableCell(sf::Texture& tx)
 {
-	type = undefiened;
-	/*if (!square_texture->loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open drivableCell texture" << std::endl;
-		exit(1);
-	}
+	square_texture = &tx;
 
 	square_sprite.setTexture(*square_texture);
-	square_sprite.setPosition(0, 0);*/
+	square_sprite.setPosition(0, 0);
+
 }
 
 DrivableCell::~DrivableCell()

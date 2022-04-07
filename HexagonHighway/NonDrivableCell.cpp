@@ -8,11 +8,12 @@ NonDrivableCell::NonDrivableCell()
 	Cell();
 }
 
-NonDrivableCell::NonDrivableCell(TextureManager& tm, std::string path)
+NonDrivableCell::NonDrivableCell(sf::Texture& tx)
 {
 	type = undefined;
 
-	square_texture = &tm.PullTexture(path);
+	square_texture = &tx;
+
 	square_sprite.setTexture(*square_texture);
 	square_sprite.setPosition(0, 0);
 }

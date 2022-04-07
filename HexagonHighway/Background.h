@@ -4,13 +4,13 @@
 class Background
 {
 private:
-	sf::Texture texture;
+	sf::Texture* texture;
 	sf::Sprite sprite;
 
 public:
 
 	Background();
-	Background(std::string path);
+	Background(sf::Texture& tx);
 	~Background();
 
 	sf::Sprite GetSprite();

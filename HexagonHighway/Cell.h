@@ -15,7 +15,7 @@ protected:
 
 public:
 	Cell();
-	Cell(std::string path);
+	Cell(sf::Texture& tx);
 	~Cell();
 
 	sf::Vector2f GetPosition();

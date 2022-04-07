@@ -41,28 +41,28 @@ int main()
 	song_menu_bg.setLoop(true);
 	song_menu_bg.setVolume(volume);
 
-	Background menu("resources\\menu.png");
+	Background menu(tm.PullTexture("resources\\menu.png"));
 
 	float f1 = 3840 / 2 - window.getSize().x / 2;
 	float f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_play("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_play(txt_play, "resources\\buttons\\button_small.png", {20,24});
+	Button bt_play(txt_play, tm.PullTexture("resources\\buttons\\button_small.png"), {20,24});
 	
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
 	bt_play.SetPosition({ f1, f2 });
 
 	FText txt_settings("SETTINGS", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_settings(txt_settings, "resources\\buttons\\button_settings.png", {30,24});
+	Button bt_settings(txt_settings, tm.PullTexture("resources\\buttons\\button_settings.png"), {30,24});
 	
 	f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
 	f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
 	bt_settings.SetPosition({ f1,f2 });
 
 	FText txt_exit("EXIT", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_exit(txt_exit, "resources\\buttons\\button_small.png", { 30,24 });
+	Button bt_exit(txt_exit, tm.PullTexture("resources\\buttons\\button_small.png"), { 30,24 });
 
 	f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
 	f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;

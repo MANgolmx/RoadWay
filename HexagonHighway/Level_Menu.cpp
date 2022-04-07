@@ -22,14 +22,14 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 
 	float f1, f2;
 
-	Background menu("resources\\menu.png");
+	Background menu(tm.PullTexture("resources\\menu.png"));
 
 	f1 = 3840 / 2 - window.getSize().x / 2;
 	f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_lvl1("1", 120, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_lvl1(txt_lvl1, "resources\\buttons\\button_level.png", { 60, 5 });
+	Button bt_lvl1(txt_lvl1, tm.PullTexture("resources\\buttons\\button_level.png"), {60, 5});
 
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;

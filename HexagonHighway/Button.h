@@ -8,14 +8,14 @@ private:
 	FText ftext;
 
 	sf::Sprite sprite;
-	sf::Texture texture;
+	sf::Texture* texture;
 
 	sf::Vector2f textPosition;
 
 public:
 	Button();
 	Button(FText txt, std::string texturePath, sf::Vector2f textPos);
-	Button(FText txt, sf::Texture Texture, sf::Vector2f textPos);
+	Button(FText txt, sf::Texture& Texture, sf::Vector2f textPos);
 	Button(std::string texturePath);
 
 	~Button() {};

@@ -13,16 +13,12 @@ Cell::Cell()
 	direction = UP;
 }
 
-Cell::Cell(std::string path)
+Cell::Cell(sf::Texture& tx)
 {
-	/*
-	if (!square_texture->loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open cell texture" << std::endl;
-		exit(1);
-	}
+	square_texture = &tx;
 
 	square_sprite.setTexture(*square_texture);
-	square_sprite.setPosition(0, 0);*/
+	square_sprite.setPosition(0, 0);
 }
 
 Cell::~Cell()

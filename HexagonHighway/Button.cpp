@@ -13,23 +13,23 @@ Button::Button(FText txt, std::string texturePath, Vector2f textPos)
 {
 	ftext = txt;
 	textPosition = textPos;
-	if (!texture.loadFromFile(texturePath)) {
+	if (!texture->loadFromFile(texturePath)) {
 		std::cout << "[ERROR OCURRED] Can not open button texture" << std::endl;
 		exit(1);
 	}
 
-	sprite.setTexture(texture);
+	sprite.setTexture(*texture);
 	sprite.setPosition(0, 0);
 	ftext.SetPosition(sprite.getPosition() + textPos);
 
 }
 
-Button::Button(FText txt, sf::Texture Texture, Vector2f textPos)
+Button::Button(FText txt, sf::Texture& Texture, Vector2f textPos)
 {
 	ftext = txt;
-	texture = Texture;
+	texture = &Texture;
 	textPosition = textPos;
-	sprite.setTexture(texture);
+	sprite.setTexture(*texture);
 	sprite.setPosition(0, 0);
 	ftext.SetPosition(sprite.getPosition() + textPos);
 }
@@ -37,12 +37,12 @@ Button::Button(FText txt, sf::Texture Texture, Vector2f textPos)
 Button::Button(std::string texturePath)
 {
 	textPosition = { 0,0 };
-	if (!texture.loadFromFile(texturePath)) {
+	if (!texture->loadFromFile(texturePath)) {
 		std::cout << "[ERROR OCURRED] Can not open button texture" << std::endl;
 		exit(1);
 	}
 
-	sprite.setTexture(texture);
+	sprite.setTexture(*texture);
 	sprite.setPosition(0, 0);
 	ftext.SetPosition(sprite.getPosition());
 }
@@ -54,7 +54,7 @@ sf::Sprite Button::GetSprite()
 
 sf::Texture Button::GetTexture()
 {
-	return texture;
+	return *texture;
 }
 
 Vector2f Button::GetPosition()
@@ -71,7 +71,7 @@ void Button::SetPosition(Vector2f pos)
 void Button::Mirrored(float angle)
 {
 	sprite.setRotation(angle);
-	sprite.setOrigin(0, texture.getSize().x);
+	sprite.setOrigin(0, texture->getSize().x);
 }
 
 FText Button::GetFText()
@@ -89,7 +89,7 @@ void Button::operator=(Button bt)
 {
 	ftext = bt.ftext;
 	texture = bt.texture;
-	sprite.setTexture(texture);
+	sprite.setTexture(*texture);
 	sprite.setPosition(bt.sprite.getPosition());
 	ftext.SetPosition(bt.ftext.GetPosition());
 }

@@ -5,14 +5,11 @@ Background::Background()
 {
 }
 
-Background::Background(std::string path)
+Background::Background(sf::Texture& tx)
 {
-	if (!texture.loadFromFile(path)) {
-		std::cout << "[ERROR OCURRED] Can not open menu texture" << std::endl;
-		exit(1);
-	}
+	texture = &tx;
 
-	sprite.setTexture(texture);
+	sprite.setTexture(*texture);
 	sprite.setPosition(0, 0);
 }
 

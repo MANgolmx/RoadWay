@@ -9,6 +9,5 @@ protected:
 public:
 
 	StructureCell();
-    StructureCell(std::string path, sf::Vector2f size);
 	~StructureCell();
 };

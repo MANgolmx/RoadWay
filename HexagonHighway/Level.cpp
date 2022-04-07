@@ -24,7 +24,7 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 
 	Clock clock;
 
-	NonDrivableCell chosen(tm, "resources\\cells\\chosen.png");
+	NonDrivableCell chosen(tm.PullTexture("resources\\cells\\chosen.png"));
 
 	DrivableCell* roads = new DrivableCell[roadSize];
 	SetDrivablePath(tm, roads, roadSize, straight, turned, threeway, fourway);
@@ -35,7 +35,7 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 	StructureCell* structures = new StructureCell[structureSize];
 	structures[0].SetCellSprite(tm.PullTexture("resources\\cells\\structures\\structure_park.png"));
 
-	Car car("resources\\cars\\car_1.png");
+	Car car(tm.PullTexture("resources\\cars\\car_1.png"));
 	ReadCarPosition(car, level_carpath);
 	car.ReCalcPosition(window);
 
@@ -98,6 +98,10 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 		car.Draw(window);
 		window.display();
 	}
+
+	delete[] roads;
+	delete[] decorations;
+	delete[] structures;
 
 	return 0;
 }

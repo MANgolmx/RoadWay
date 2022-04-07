@@ -15,7 +15,7 @@ private:
 
 public:
 	DrivableCell();
-	DrivableCell(std::string path);
+	DrivableCell(sf::Texture& tx);
 	~DrivableCell();
 	
 	bool ifChosen();

@@ -17,7 +17,7 @@ private:
 	sf::Vector2f position;
 	sf::Vector2f mainPosition;
 
-	sf::Texture car_texture;
+	sf::Texture* car_texture;
 	sf::Sprite car_sprite;
 
 	directions lastDirection;
@@ -31,6 +31,7 @@ public:
 
 	Car();
 	Car(std::string path);
+	Car(sf::Texture& tx);
 	~Car();
 
 	sf::Vector2f GetPosition();
