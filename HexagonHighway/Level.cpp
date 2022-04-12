@@ -24,16 +24,18 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 
 	Clock clock;
 
-	NonDrivableCell chosen(tm.PullTexture("resources\\cells\\chosen.png"));
+	//NonDrivableCell chosen(tm.PullTexture("resources\\cells\\chosen.png"));
 
-	DrivableCell* roads = new DrivableCell[roadSize];
-	SetDrivablePath(tm, roads, roadSize, straight, turned, threeway, fourway);
+	//DrivableCell* roads = new DrivableCell[roadSize];
+	//SetDrivablePath(tm, roads, roadSize, straight, turned, threeway, fourway);
 
-	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
-	SetNonDrivablePath(tm, decorations, decorationSize, flowers, privateResidence, apartments);
+	//NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
+	//SetNonDrivablePath(tm, decorations, decorationSize, flowers, privateResidence, apartments);
 
-	StructureCell* structures = new StructureCell[structureSize];
-	structures[0].SetCellSprite(tm.PullTexture("resources\\cells\\structures\\structure_park.png"));
+	//StructureCell* structures = new StructureCell[structureSize];
+	//structures[0].SetCellSprite(tm.PullTexture("resources\\cells\\structures\\structure_park.png"));
+
+	std::map<sf::Vector2i, Cell> map;
 
 	Car car(tm.PullTexture("resources\\cars\\car_1.png"));
 	ReadCarPosition(car, level_carpath);

@@ -85,7 +85,7 @@
       <Filter>Исходные файлы\Executable</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
-      <Filter>Исходные файлы\Assist</Filter>
+      <Filter>Исходные файлы\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,7 +132,7 @@
       <Filter>Файлы заголовков\Executable</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
-      <Filter>Файлы заголовков\Assist</Filter>
+      <Filter>Файлы заголовков\Other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
