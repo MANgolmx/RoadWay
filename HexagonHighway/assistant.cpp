@@ -9,6 +9,7 @@
 #include "Assistant.h"
 #include "Car.h"
 #include "Button.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
@@ -30,9 +31,9 @@ void ReadLevelFile(const char lvlpath[], int& roadSize, int& decorSize, int& str
 bool isBelong(Vector2i a, DrivableCell cell)
 {
 	if (a.x >= cell.GetPosition().x &&
-		a.x <= cell.GetPosition().x + cell.GetCellTexture().getSize().x &&
+		a.x <= cell.GetPosition().x + cell.GetCellTexture()->getSize().x &&
 		a.y >= cell.GetPosition().y &&
-		a.y <= cell.GetPosition().y + cell.GetCellTexture().getSize().y)
+		a.y <= cell.GetPosition().y + cell.GetCellTexture()->getSize().y)
 		return true;
 	return false;
 }
@@ -57,18 +58,24 @@ bool isBelong(sf::Vector2i a, sf::Rect<float> pl)
 	return false;
 }
 
-void SetDrivablePath(DrivableCell mas[], const int masSize,
+void SetDrivablePath(TextureManager& tm, DrivableCell mas[], const int masSize,
 	int straight, int turned, int threeway, int fourway)
 {
-	for (int i = 0; i < masSize; i++)
-		mas[i].SetType(straight, turned, threeway, fourway);
+	mas[0].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
+	mas[0].SetDrivableType(start);
+	mas[0].ChangeMoveStatus(false);
+	mas[1].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
+	mas[1].SetDrivableType(finish);
+	mas[1].ChangeMoveStatus(false);
+	for (int i = 2; i < masSize; i++)
+		mas[i].SetType(tm, straight, turned, threeway, fourway);
 }
 
-void SetNonDrivablePath(NonDrivableCell mas[], const int masSize,
+void SetNonDrivablePath(TextureManager& tm, NonDrivableCell mas[], const int masSize,
 	int forest, int private_residence, int apartment)
 {
 	for (int i = 0; i < masSize; i++)
-		mas[i].SetType(forest, private_residence, apartment);
+		mas[i].SetType(tm, forest, private_residence, apartment);
 }
 
 void CheckSwap(sf::RenderWindow& window, DrivableCell road[], const int roadSize)
@@ -76,7 +83,7 @@ void CheckSwap(sf::RenderWindow& window, DrivableCell road[], const int roadSize
 	int count = 0;
 	int ind1 = -1, ind2 = -1;
 	for (int i = 0; i < roadSize; i++)
-		if (isBelong(Mouse::getPosition(window), road[i]))
+		if (isBelong(Mouse::getPosition(window), road[i]) && road[i].CanBeMoved())
 			road[i].SetChose(true);
 	for (int i = 0; i < roadSize; i++)
 		if (road[i].ifChosen())

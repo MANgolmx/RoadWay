@@ -11,24 +11,25 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include "TextureManager.h"
 
 using namespace sf;
 
-int levelMenu(sf::RenderWindow& window)
+int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 {
 
 #pragma region INITIALIZATION
 
 	float f1, f2;
 
-	Background menu("resources\\menu.png");
+	Background menu(tm.PullTexture("resources\\menu.png"));
 
-	f1 = 1920 / 2 - window.getSize().x / 2;
-	f2 = 1080 / 2 - window.getSize().y / 2;
+	f1 = 3840 / 2 - window.getSize().x / 2;
+	f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_lvl1("1", 120, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_lvl1(txt_lvl1, "resources\\buttons\\button_level.png", { 60, 5 });
+	Button bt_lvl1(txt_lvl1, tm.PullTexture("resources\\buttons\\button_level.png"), {60, 5});
 
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
@@ -53,7 +54,7 @@ int levelMenu(sf::RenderWindow& window)
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{ 
 					if (isBelong(Mouse::getPosition(window), bt_lvl1))
-						if (levelStart(window, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
+						if (levelStart(window, tm, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
 							return 1;
 				}
 				break;
@@ -70,8 +71,8 @@ int levelMenu(sf::RenderWindow& window)
 				f2 = window.getSize().y / 10 + 50;
 				bt_lvl1.SetPosition({ f1, f2 });
 
-				float f1 = 1920 / 2 - window.getSize().x / 2;
-				float f2 = 1080 / 2 - window.getSize().y / 2;
+				float f1 = 3840 / 2 - window.getSize().x / 2;
+				float f2 = 2160 / 2 - window.getSize().y / 2;
 				menu.SetPosition({ -f1,-f2 });
 				break;
 			}

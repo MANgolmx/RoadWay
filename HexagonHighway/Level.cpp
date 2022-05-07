@@ -7,10 +7,11 @@
 #include "Assistant.h"
 #include "Car.h"
 #include "Level.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
-int levelStart(RenderWindow& window, const char level_path[], const char level_carpath[], const char level_typespath[])
+int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[], const char level_carpath[], const char level_typespath[])
 {
 
 #pragma region INITIALIZATION
@@ -18,23 +19,23 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 	int roadSize, decorationSize, structureSize;
 	ReadLevelFile(level_path, roadSize, decorationSize, structureSize);
 
-	int straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments;
-	ReadCellsTypes(level_typespath, straight, turned, threeway, fourway, finish, flowers, privateResidence, apartments);
+	int straight, turned, threeway, fourway, fin, flowers, privateResidence, apartments;
+	ReadCellsTypes(level_typespath, straight, turned, threeway, fourway, fin, flowers, privateResidence, apartments);
 
 	Clock clock;
 
-	NonDrivableCell chosen("resources\\cells\\chosen.png");
+	NonDrivableCell chosen(tm.PullTexture("resources\\cells\\chosen.png"));
 
 	DrivableCell* roads = new DrivableCell[roadSize];
-	SetDrivablePath(roads, roadSize, straight, turned, threeway, fourway);
+	SetDrivablePath(tm, roads, roadSize, straight, turned, threeway, fourway);
 
 	NonDrivableCell* decorations = new NonDrivableCell[decorationSize];
-	SetNonDrivablePath(decorations, decorationSize, flowers, privateResidence, apartments);
+	SetNonDrivablePath(tm, decorations, decorationSize, flowers, privateResidence, apartments);
 
 	StructureCell* structures = new StructureCell[structureSize];
-	structures[0].SetCellSprite("resources\\cells\\structures\\structure_park.png");
+	structures[0].SetCellSprite(tm.PullTexture("resources\\cells\\structures\\structure_park.png"));
 
-	Car car("resources\\cars\\car_1.png");
+	Car car(tm.PullTexture("resources\\cars\\car_1.png"));
 	ReadCarPosition(car, level_carpath);
 	car.ReCalcPosition(window);
 
@@ -42,6 +43,7 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 		structures, structureSize);
 	SetPositions(roadSize, roads, decorationSize, decorations,
 		structureSize, structures, window);
+	SetIsChosen(false, roads, roadSize);
 
 	window.setFramerateLimit(60);
 
@@ -87,11 +89,7 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 		}
 
 		if (car.IsFinished())
-		{
-
-
-		}
-
+			isPlaying = false;
 
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
@@ -100,6 +98,10 @@ int levelStart(RenderWindow& window, const char level_path[], const char level_c
 		car.Draw(window);
 		window.display();
 	}
+
+	delete[] roads;
+	delete[] decorations;
+	delete[] structures;
 
 	return 0;
 }

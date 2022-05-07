@@ -3,6 +3,8 @@
 
 enum nondrivableTypes { undefined, flowers, private_residence, apartments, structure};
 
+class TextureManager;
+
 class NonDrivableCell:public Cell
 {
 protected:
@@ -10,9 +12,9 @@ protected:
 
 public:
 	NonDrivableCell();
-	NonDrivableCell(std::string path);
+	NonDrivableCell(sf::Texture& tx);
 	~NonDrivableCell();
 
-	void SetType(int& flowers, int& private_residence, int& apartment);
+	void SetType(TextureManager& tm, int& flowers, int& private_residence, int& apartment);
 
 };

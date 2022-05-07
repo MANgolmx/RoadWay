@@ -1,10 +1,10 @@
 #pragma once
 #include "Cell.h"
 
-enum drivableTypes { undefiened, straight, turned, threeway, fourway, finish };
+enum drivableTypes { undefiened, straight, turned, threeway, fourway, finish, start };
 
-class DrivableCell;
 class NonDrivableCell;
+class TextureManager;
 
 class DrivableCell:public Cell
 {
@@ -12,14 +12,16 @@ private:
 	drivableTypes type;
 	bool isChosen;
 
+	bool canBeMoved;
 public:
 	DrivableCell();
-	DrivableCell(std::string path);
+	DrivableCell(sf::Texture& tx);
 	~DrivableCell();
 	
 	bool ifChosen();
 	void SetChose(bool ch);
 
+	void SetDrivableType(drivableTypes tp);
 	bool CanGo(directions& carDir, directions& lastCarDir);
 
 	void Draw(sf::RenderWindow& win, NonDrivableCell chosen);
@@ -29,6 +31,9 @@ public:
 	static DrivableCell* GetCellFromMainPos(sf::Vector2f mainPos, DrivableCell cells[], const int size);
 	static DrivableCell* GetCellFromPos(sf::Vector2f pos, DrivableCell cells[], const int size);
 
+	void ChangeMoveStatus(bool newMode);
+	bool CanBeMoved();
+
 	drivableTypes GetType();
-	void SetType(int& straight, int& turned, int& threeway, int& fourway);
+	void SetType(TextureManager& tm, int& straight, int& turned, int& threeway, int& fourway);
 };

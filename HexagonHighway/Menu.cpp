@@ -13,6 +13,7 @@
 #include <SFML/Audio.hpp>
 #include "Settings.h" 
 #include "Level_Menu.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
@@ -21,10 +22,13 @@ int main()
 	srand(time(0));
 
 #pragma region INITIALIZATION
-
+	
 	int window_width = 1600, window_height = 900;
 
 	float volume = 10;
+
+	TextureManager tm;
+	//tm.IncludeCellTextures();
 
 	RenderWindow window(VideoMode(window_width, window_height), "RoadWay");
 
@@ -37,28 +41,28 @@ int main()
 	song_menu_bg.setLoop(true);
 	song_menu_bg.setVolume(volume);
 
-	Background menu("resources\\menu.png");
+	Background menu(tm.PullTexture("resources\\menu.png"));
 
-	float f1 = 1920 / 2 - window_width / 2;
-	float f2 = 1080 / 2 - window_height / 2;
+	float f1 = 3840 / 2 - window.getSize().x / 2;
+	float f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_play("PLAY", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_play(txt_play, "resources\\buttons\\button_small.png", {20,24});
+	Button bt_play(txt_play, tm.PullTexture("resources\\buttons\\button_small.png"), {20,24});
 	
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
 	bt_play.SetPosition({ f1, f2 });
 
 	FText txt_settings("SETTINGS", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_settings(txt_settings, "resources\\buttons\\button_settings.png", {30,24});
+	Button bt_settings(txt_settings, tm.PullTexture("resources\\buttons\\button_settings.png"), {30,24});
 	
 	f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
 	f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
 	bt_settings.SetPosition({ f1,f2 });
 
 	FText txt_exit("EXIT", 76, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_exit(txt_exit, "resources\\buttons\\button_small.png", { 30,24 });
+	Button bt_exit(txt_exit, tm.PullTexture("resources\\buttons\\button_small.png"), { 30,24 });
 
 	f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
 	f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
@@ -73,14 +77,23 @@ int main()
 	if (playlogo(window))
 		isOpened = false;
 
+
+	f1 = 3840 / 2 - window.getSize().x / 2;
+	f2 = 2160 / 2 - window.getSize().y / 2;
+	menu.SetPosition({ -f1,-f2 });
+
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
 	bt_play.SetPosition({ f1, f2 });
-
-	f1 = (1920 / 2 - window.getSize().x / 2);
-	f2 = (1080 / 2 - window.getSize().y / 2);
-	menu.SetPosition({ -f1,-f2 });
 	
+	f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
+	f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
+	bt_settings.SetPosition({ f1,f2 });
+
+	f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
+	f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
+	bt_exit.SetPosition({ f1,f2 });
+
 	song_menu_bg.play();
 
 	while (isOpened) //Цикл программы
@@ -97,13 +110,30 @@ int main()
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
 					if (isBelong(Mouse::getPosition(window), bt_play))
-						if (levelStart(window, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
+					{
+						if (levelStart(window, tm, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
 							isOpened = false;
 						//if (levelMenu(window))
 							//isOpened = false;
+						f1 = 3840 / 2 - window.getSize().x / 2;
+						f2 = 2160 / 2 - window.getSize().y / 2;
+						menu.SetPosition({ -f1,-f2 });
+
+						f1 = window.getSize().x / 10;
+						f2 = window.getSize().y / 10 + 50;
+						bt_play.SetPosition({ f1, f2 });
+
+						f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
+						f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
+						bt_settings.SetPosition({ f1,f2 });
+
+						f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
+						f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
+						bt_exit.SetPosition({ f1,f2 });
+					}
 					if (isBelong(Mouse::getPosition(window), bt_settings))
 					{
-						if (settings(window, volume))
+						if (settings(window, tm, volume))
 							isOpened = false;
 						song_menu_bg.setVolume(volume);
 					}
@@ -128,8 +158,8 @@ int main()
 				f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
 				bt_exit.SetPosition({ f1,f2 });
 
-				f1 = (1920 / 2 - window.getSize().x / 2);
-				f2 = (1080 / 2 - window.getSize().y / 2);
+				f1 = (3840 / 2 - window.getSize().x / 2);
+				f2 = (2160 / 2 - window.getSize().y / 2);
 				menu.SetPosition({ -f1,-f2 });
 				break;
 			}

@@ -25,24 +25,38 @@ Car::Car(std::string path)
 {
 	timeToMove = 15;
 	timePassed;
-	position = { 535,436 };
-	mainPosition = { 0,1 };
+	position = { 0,0 };
+	mainPosition = { 0,0 };
 	direction = lastDirection = UP;
 	isMoving = false;
 
-	if (!car_texture.loadFromFile(path)) {
+	if (!car_texture->loadFromFile(path)) {
 		std::cout << "[ERROR OCURRED] Can not open car texture" << std::endl;
 		exit(1);
 	}
 
-	car_sprite.setTexture(car_texture);
+	car_sprite.setTexture(*car_texture);
+	car_sprite.setPosition(0, 0);
+}
+
+Car::Car(sf::Texture& tx)
+{
+	timeToMove = 15;
+	timePassed;
+	position = { 0,0 };
+	mainPosition = { 0,0 };
+	direction = lastDirection = UP;
+	isMoving = false;
+
+	car_texture = &tx;
+
+	car_sprite.setTexture(*car_texture);
 	car_sprite.setPosition(0, 0);
 }
 
 void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 	NonDrivableCell decor[], const int decorCount)
 {
-	timeToMove = 5;
 	if (isMoving)
 	if (timePassed + time.asMilliseconds() > timeToMove)
 	{
@@ -92,10 +106,8 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 					}
 					break;
 				case finish:
-					std::cout << "YOU COMPLETED THE GAME!\n";
+					std::cout << "YOU COMPLETED THE GAME!" << std::endl;
 					StopMoving();
-					Time t = seconds(3.f);
-					sleep(t);
 					isFinished = true;
 					break;
 				}
@@ -106,7 +118,7 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 			break;
 		case DOWN:
 			tmp = DrivableCell::GetCellFromPos({ position.x, position.y + 31}, roads, roadCount);
-			if (tmp != nullptr && tmp->CanGo(direction, lastDirection))
+			if (tmp != nullptr && tmp->CanGo(direction, lastDirection)) 
 			{
 				switch (tmp->GetType())
 				{
@@ -149,8 +161,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				case finish:
 					std::cout << "YOU COMPLETED THE GAME!\n";
 					StopMoving();
-					Time t = seconds(3.f);
-					sleep(t);
 					isFinished = true;
 					break;
 				}
@@ -205,8 +215,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 				case finish:
 					std::cout << "YOU COMPLETED THE GAME!\n";
 					StopMoving();
-					Time t = seconds(3.f);
-					sleep(t);
 					isFinished = true;
 					break;
 				}
@@ -265,8 +273,6 @@ void Car::Move(Time time, DrivableCell roads[], const int roadCount,
 		case finish:
 			std::cout << "YOU COMPLETED THE GAME!\n";
 			StopMoving();
-			Time t = seconds(3.f);
-			sleep(t);
 			isFinished = true;
 			break;
 		}

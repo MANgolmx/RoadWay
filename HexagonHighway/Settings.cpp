@@ -11,23 +11,24 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Settings.h"
+#include "TextureManager.h"
 
 using namespace sf;
 
-int settings(sf::RenderWindow& window, float &volume)
+int settings(sf::RenderWindow& window, TextureManager& tm, float &volume)
 {
 	srand(time(0));
 
 #pragma region INITIALIZATION
 
-	Background menu("resources\\menu.png");
+	Background menu(tm.PullTexture("resources\\menu.png"));
 
-	float f1 = 1920 / 2 - window.getSize().x / 2;
-	float f2 = 1080 / 2 - window.getSize().y / 2;
+	float f1 = 3840 / 2 - window.getSize().x / 2;
+	float f2 = 2160 / 2 - window.getSize().y / 2;
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_volume_minus(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_volume_minus(txt_volume_minus, "resources\\buttons\\button_volume.png", { 0,0 });
+	Button bt_volume_minus(txt_volume_minus, tm.PullTexture("resources\\buttons\\button_volume.png"), { 0,0 });
 
 	f1 = window.getSize().x / 2 - bt_volume_minus.GetTexture().getSize().x / 2 + 200;
 	f2 = window.getSize().y / 4 - bt_volume_minus.GetTexture().getSize().y;
@@ -36,14 +37,14 @@ int settings(sf::RenderWindow& window, float &volume)
 	bt_volume_minus.Mirrored(180);
 
 	FText txt_volume_bg(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_volume_bg(txt_volume_bg, "resources\\buttons\\button_settings.png", { 0,0 });
+	Button bt_volume_bg(txt_volume_bg, tm.PullTexture("resources\\buttons\\button_settings.png"), { 0,0 });
 
 	f1 = window.getSize().x / 2 - bt_volume_bg.GetTexture().getSize().x / 2 + 238;
 	f2 = window.getSize().y / 4 - bt_volume_bg.GetTexture().getSize().y + 16;
 	bt_volume_bg.SetPosition({ f1,f2 });
 
 	FText txt_volume_plus(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_volume_plus(txt_volume_plus, "resources\\buttons\\button_volume.png", { 0,0 });
+	Button bt_volume_plus(txt_volume_plus, tm.PullTexture("resources\\buttons\\button_volume.png"), { 0,0 });
 
 	f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x / 2 + 400;
 	f2 = window.getSize().y / 4 - bt_volume_plus.GetTexture().getSize().y;
@@ -100,8 +101,8 @@ int settings(sf::RenderWindow& window, float &volume)
 				window.setView(View(Vector2f(windowSize.x / 2.f,
 					windowSize.y / 2.f), Vector2f(windowSize)));
 
-				f1 = (1920 / 2 - window.getSize().x / 2);
-				f2 = (1080 / 2 - window.getSize().y / 2);
+				f1 = 3840 / 2 - window.getSize().x / 2;
+				f2 = 2160 / 2 - window.getSize().y / 2;
 				menu.SetPosition({ -f1,-f2 });
 
 				f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x / 2 + 400;
