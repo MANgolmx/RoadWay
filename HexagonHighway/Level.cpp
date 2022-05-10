@@ -47,6 +47,13 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 		structureSize, structures, window);
 	SetIsChosen(false, roads, roadSize);
 
+	FText txt_win("YOU WIN!", 80, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_win(txt_win, tm.PullTexture("resources\\buttons\\button_win.png"), {float(800 / 2 - txt_win.GetText().getCharacterSize() * 5 / 2), 130});
+
+	float f1 = window.getSize().x - window.getSize().x / 2 - bt_win.GetTexture().getSize().x / 2;
+	float f2 = window.getSize().y - window.getSize().y / 2 - bt_win.GetTexture().getSize().y / 2;
+	bt_win.SetPosition({ f1,f2 });
+
 	window.setFramerateLimit(60);
 
 	bool isPlaying = true;
@@ -69,6 +76,9 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 					for (int i = 0; i < roadSize; i++)
 						if (isBelong(Mouse::getPosition(window), roads[i]))
 							roads[i].Rotation();
+
+					if (car.IsFinished() && isBelong(Mouse::getPosition(window), bt_win))
+						isPlaying = false;
 				}
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
 					CheckSwap(window, roads, roadSize);
@@ -89,24 +99,14 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 				break;
 			}
 		}
-
-		if (car.IsFinished())
-		{
-			FText txt_win("YOU WIN!", 80, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-			Button bt_win(txt_win, tm.PullTexture("resorces\\buttons\\button_win.png"), {800 / 2 - txt_win.GetText().getCharacterSize() * 7 / 2, 100});
-
-			float f1 = window.getSize().x - window.getSize().x / 2 - bt_win.GetTexture().getSize().x / 2;
-			float f2 = window.getSize().y - window.getSize().y / 2 - bt_win.GetTexture().getSize().y / 2;
-			bt_win.SetPosition({ f1,f2 });
-
-			//isPlaying = false;
-		}
 		
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
 		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, structures, structureSize);
 		car.Draw(window);
+		if (car.IsFinished());
+			bt_win.Draw(window);
 		window.display();
 	}
 
