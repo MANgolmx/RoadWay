@@ -10,18 +10,11 @@ class Car;
 class TextureManager;
 
 ////////////////////////////////////////////////////////////
-   /// \brief Reads level sizes of all cells types
-   ///
-   /// \param lvlpath - path to level file
-////////////////////////////////////////////////////////////
-void ReadLevelFile(const char lvlpath[], int& roadSize, int& decorSize, int& structSize);
-
-////////////////////////////////////////////////////////////
    /// \brief Checks is point belong to given cell
    ///
    /// \param a - point that needs to be checked
 ////////////////////////////////////////////////////////////
-bool isBelong(sf::Vector2i a, DrivableCell cell);
+bool isBelong(sf::Vector2i a, Cell cell);
 
 ////////////////////////////////////////////////////////////
    /// \brief Checks is point belong to given button
@@ -36,6 +29,13 @@ bool isBelong(sf::Vector2i a, Button bt);
    /// \param a - point that needs to be checked
 ////////////////////////////////////////////////////////////
 bool isBelong(sf::Vector2i a, sf::Rect<float> pl);
+
+////////////////////////////////////////////////////////////
+   /// \brief Reads level sizes of all cells types
+   ///
+   /// \param lvlpath - path to level file
+////////////////////////////////////////////////////////////
+void ReadLevelFile(const char lvlpath[], int& roadSize, int& decorSize, int& structSize);
 
 ////////////////////////////////////////////////////////////
    /// \brief Sets textures to cells

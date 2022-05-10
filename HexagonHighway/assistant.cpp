@@ -28,7 +28,7 @@ void ReadLevelFile(const char lvlpath[], int& roadSize, int& decorSize, int& str
 	fclose(level_file);
 }
 
-bool isBelong(Vector2i a, DrivableCell cell)
+bool isBelong(Vector2i a, Cell cell)
 {
 	if (a.x >= cell.GetPosition().x &&
 		a.x <= cell.GetPosition().x + cell.GetCellTexture()->getSize().x &&
