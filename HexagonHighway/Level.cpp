@@ -72,13 +72,13 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 			case Event::MouseButtonPressed: //Нажата кнопка мыши
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
+					if (car.IsFinished() && isBelong(Mouse::getPosition(window), bt_win))
+						isPlaying = false;
+
 					SetIsChosen(false, roads, roadSize);
 					for (int i = 0; i < roadSize; i++)
 						if (isBelong(Mouse::getPosition(window), roads[i]))
 							roads[i].Rotation();
-
-					if (car.IsFinished() && isBelong(Mouse::getPosition(window), bt_win))
-						isPlaying = false;
 				}
 				if (Mouse::isButtonPressed(Mouse::Button::Right)) //Правая кнопка мыши
 					CheckSwap(window, roads, roadSize);
@@ -96,6 +96,11 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 					structureSize, structures, window);
 				ReadCarPosition(car, level_carpath);
 				car.ReCalcPosition(window);
+
+				f1 = window.getSize().x - window.getSize().x / 2 - bt_win.GetTexture().getSize().x / 2;
+				f2 = window.getSize().y - window.getSize().y / 2 - bt_win.GetTexture().getSize().y / 2;
+				bt_win.SetPosition({ f1,f2 });
+
 				break;
 			}
 		}
@@ -105,7 +110,7 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 		window.clear({ 181, 230, 29, 255 });
 		DrawCells(window, roads, chosen, roadSize, decorations, decorationSize, structures, structureSize);
 		car.Draw(window);
-		if (car.IsFinished());
+		if (car.IsFinished())
 			bt_win.Draw(window);
 		window.display();
 	}
