@@ -47,6 +47,16 @@ Button::Button(std::string texturePath)
 	ftext.SetPosition(sprite.getPosition());
 }
 
+Button::Button(sf::Texture& txture)
+{
+	textPosition = { 0,0 };
+	texture = &txture;
+
+	sprite.setTexture(*texture);
+	sprite.setPosition(0, 0);
+	ftext.SetPosition(sprite.getPosition());
+}
+
 sf::Sprite Button::GetSprite()
 {
 	return sprite;

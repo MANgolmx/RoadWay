@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Cell.h"
+#include "FText.h"
+#include "Button.h"
 #include "DrivableCell.h"
 #include "NonDrivableCell.h"
 #include "StructureCell.h"
@@ -89,8 +91,17 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 		}
 
 		if (car.IsFinished())
-			isPlaying = false;
+		{
+			FText txt_win("YOU WIN!", 80, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+			Button bt_win(txt_win, tm.PullTexture("resorces\\buttons\\button_win.png"), {800 / 2 - txt_win.GetText().getCharacterSize() * 7 / 2, 100});
 
+			float f1 = window.getSize().x - window.getSize().x / 2 - bt_win.GetTexture().getSize().x / 2;
+			float f2 = window.getSize().y - window.getSize().y / 2 - bt_win.GetTexture().getSize().y / 2;
+			bt_win.SetPosition({ f1,f2 });
+
+			//isPlaying = false;
+		}
+		
 		car.Move(clock.restart(), roads, roadSize, decorations, decorationSize);
 
 		window.clear({ 181, 230, 29, 255 });
