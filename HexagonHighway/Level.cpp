@@ -13,7 +13,7 @@
 
 using namespace sf;
 
-int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[], const char level_carpath[], const char level_typespath[])
+int levelStart(RenderWindow& window, TextureManager& tm, int carType, const char level_path[], const char level_carpath[], const char level_typespath[])
 {
 
 #pragma region INITIALIZATION
@@ -37,7 +37,13 @@ int levelStart(RenderWindow& window, TextureManager& tm, const char level_path[]
 	StructureCell* structures = new StructureCell[structureSize];
 	structures[0].SetCellSprite(tm.PullTexture("resources\\cells\\structures\\structure_park.png"));
 
-	Car car(tm.PullTexture("resources\\cars\\car_1.png"));
+	std::string carPath;
+	switch (carType) {
+	case 0: carPath = "resources\\cars\\car_1.png"; break;
+	case 1: carPath = "resources\\cars\\car_2.png"; break;
+	case 2: carPath = "resources\\cars\\car_police.png"; break;
+	}
+	Car car(tm.PullTexture(carPath));
 	ReadCarPosition(car, level_carpath);
 	car.ReCalcPosition(window);
 

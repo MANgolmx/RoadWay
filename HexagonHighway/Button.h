@@ -27,6 +27,8 @@ public:
 	sf::Vector2f GetPosition();
 	void SetPosition(sf::Vector2f pos);
 
+	void SetScale(sf::Vector2f factors);
+
 	void Mirrored(float angle);
 
 	FText GetFText();

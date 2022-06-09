@@ -78,6 +78,11 @@ void Button::SetPosition(Vector2f pos)
 	ftext.SetPosition(sprite.getPosition() + textPosition);
 }
 
+void Button::SetScale(sf::Vector2f factors)
+{
+	sprite.setScale(factors);
+}
+
 void Button::Mirrored(float angle)
 {
 	sprite.setRotation(angle);

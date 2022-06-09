@@ -31,7 +31,7 @@ bool isBelong(sf::Vector2i a, DrivableCell cell);
 bool isBelong(sf::Vector2i a, Button bt);
 
 ////////////////////////////////////////////////////////////
-   /// \brief Checks is point belong to given place on tha window
+   /// \brief Checks is point belong to given place on the window
    ///
    /// \param a - point that needs to be checked
 ////////////////////////////////////////////////////////////

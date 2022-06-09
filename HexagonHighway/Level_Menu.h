@@ -2,4 +2,4 @@
 
 #include <SFML\Graphics.hpp>
 
-int levelMenu(sf::RenderWindow& window);
+int levelMenu(sf::RenderWindow& window, TextureManager& tm);

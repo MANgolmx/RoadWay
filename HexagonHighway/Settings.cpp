@@ -28,7 +28,7 @@ int settings(sf::RenderWindow& window, TextureManager& tm, float &volume)
 	menu.SetPosition({ -f1,-f2 });
 
 	FText txt_volume_minus(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_volume_minus(txt_volume_minus, tm.PullTexture("resources\\buttons\\button_volume.png"), { 0,0 });
+	Button bt_volume_minus(txt_volume_minus, tm.PullTexture("resources\\buttons\\button_next.png"), { 0,0 });
 
 	f1 = window.getSize().x / 2 - bt_volume_minus.GetTexture().getSize().x / 2 + 200;
 	f2 = window.getSize().y / 4 - bt_volume_minus.GetTexture().getSize().y;
@@ -44,7 +44,7 @@ int settings(sf::RenderWindow& window, TextureManager& tm, float &volume)
 	bt_volume_bg.SetPosition({ f1,f2 });
 
 	FText txt_volume_plus(" ", 0, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
-	Button bt_volume_plus(txt_volume_plus, tm.PullTexture("resources\\buttons\\button_volume.png"), { 0,0 });
+	Button bt_volume_plus(txt_volume_plus, tm.PullTexture("resources\\buttons\\button_next.png"), { 0,0 });
 
 	f1 = window.getSize().x / 2 - bt_volume_plus.GetTexture().getSize().x / 2 + 400;
 	f2 = window.getSize().y / 4 - bt_volume_plus.GetTexture().getSize().y;
@@ -85,8 +85,7 @@ int settings(sf::RenderWindow& window, TextureManager& tm, float &volume)
 			case Event::MouseButtonPressed:
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{
-					if (isBelong(Mouse::getPosition(window),
-						{ bt_volume_plus.GetPosition().x, bt_volume_plus.GetPosition().y, float(bt_volume_plus.GetTexture().getSize().x),float(bt_volume_plus.GetTexture().getSize().y) }))
+					if (isBelong(Mouse::getPosition(window), bt_volume_plus))
 						if (volume < 100)
 							volume++;
 					if (isBelong(Mouse::getPosition(window),
