@@ -14,11 +14,17 @@
 #include "Settings.h" 
 #include "Level_Menu.h"
 #include "TextureManager.h"
+#include <Windows.h>
 
 using namespace sf;
 
 int main()
 {
+	HWND Hide;
+	AllocConsole();
+	Hide = FindWindowA("ConsoleWindowClass", NULL);
+	ShowWindow(Hide, 0);
+
 	srand(time(0));
 
 #pragma region INITIALIZATION
