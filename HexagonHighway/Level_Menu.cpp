@@ -99,6 +99,29 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 						{ bt_car_prev.GetPosition().x - bt_car_prev.GetTexture().getSize().x, bt_car_prev.GetPosition().y, float(bt_car_prev.GetTexture().getSize().x), float(bt_car_prev.GetTexture().getSize().y) }))
 						if (carType > 0) carType--;
 						else carType = 2;
+
+					#pragma region RESIZING
+					f1 = window.getSize().x / 10;
+					f2 = window.getSize().y / 10 + 50;
+					bt_lvl1.SetPosition({ f1, f2 });
+
+					f1 = window.getSize().x / 2 - bt_car_1.GetTexture().getSize().x / 2;
+					f2 = window.getSize().y - window.getSize().y / 10 - 50;
+					bt_car_1.SetPosition({ f1,f2 });
+					bt_car_2.SetPosition({ f1,f2 });
+
+					f1 = window.getSize().x / 2 - bt_car_next.GetTexture().getSize().x / 2 + 170;
+					f2 = window.getSize().y - window.getSize().y / 10 - 50;
+					bt_car_next.SetPosition({ f1,f2 });
+
+					f1 = window.getSize().x / 2 - bt_car_next.GetTexture().getSize().x / 2 + 38;
+					f2 = window.getSize().y - window.getSize().y / 10 - 50;
+					bt_car_prev.SetPosition({ f1,f2 });
+
+					f1 = 3840 / 2 - window.getSize().x / 2;
+					f2 = 2160 / 2 - window.getSize().y / 2;
+					menu.SetPosition({ -f1,-f2 });
+#pragma endregion
 				}
 				break;
 			case Event::KeyPressed:
