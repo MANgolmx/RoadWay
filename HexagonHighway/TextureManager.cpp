@@ -172,7 +172,7 @@ sf::Texture& TextureManager::PullTexture(std::string key)
 		std::cout << "[ERROR OCURRED] Can not open texture from key" << std::endl;
 		exit(1);
 	}
-
+	
 	Textures[key] = tmp;
 	return Textures[key];
 }

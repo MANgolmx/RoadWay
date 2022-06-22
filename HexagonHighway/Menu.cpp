@@ -114,12 +114,48 @@ int main()
 							//isOpened = false;
 						if (levelMenu(window, tm))
 							isOpened = false;
+
+						#pragma region RESIZING
+						f1 = window.getSize().x / 10;
+						f2 = window.getSize().y / 10 + 50;
+						bt_play.SetPosition({ f1, f2 });
+
+						f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
+						f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
+						bt_settings.SetPosition({ f1,f2 });
+
+						f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
+						f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
+						bt_exit.SetPosition({ f1,f2 });
+
+						f1 = (3840 / 2 - window.getSize().x / 2);
+						f2 = (2160 / 2 - window.getSize().y / 2);
+						menu.SetPosition({ -f1,-f2 });
+#pragma endregion
 					}
 					if (isBelong(Mouse::getPosition(window), bt_settings))
 					{
 						if (settings(window, tm, volume))
 							isOpened = false;
 						song_menu_bg.setVolume(volume);
+
+						#pragma region RESIZING
+						f1 = window.getSize().x / 10;
+						f2 = window.getSize().y / 10 + 50;
+						bt_play.SetPosition({ f1, f2 });
+
+						f1 = window.getSize().x / 2 - bt_settings.GetTexture().getSize().x / 2;
+						f2 = window.getSize().y / 2 - bt_settings.GetTexture().getSize().y / 2;
+						bt_settings.SetPosition({ f1,f2 });
+
+						f1 = window.getSize().x - window.getSize().x / 10 - bt_exit.GetTexture().getSize().x;
+						f2 = window.getSize().y - window.getSize().y / 10 - bt_exit.GetTexture().getSize().y;
+						bt_exit.SetPosition({ f1,f2 });
+
+						f1 = (3840 / 2 - window.getSize().x / 2);
+						f2 = (2160 / 2 - window.getSize().y / 2);
+						menu.SetPosition({ -f1,-f2 });
+#pragma endregion
 					}
 					if (isBelong(Mouse::getPosition(window), bt_exit))
 						isOpened = false;
