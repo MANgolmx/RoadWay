@@ -36,6 +36,20 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 	f1 = window.getSize().x / 10;
 	f2 = window.getSize().y / 10 + 50;
 	bt_lvl1.SetPosition({ f1, f2 });
+	
+	FText txt_lvl2("2", 120, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_lvl2(txt_lvl2, tm.PullTexture("resources\\buttons\\button_level.png"), {50, 5});
+
+	f1 = window.getSize().x / 2 - 15;
+	f2 = window.getSize().y / 10 + 50;
+	bt_lvl2.SetPosition({ f1, f2 });
+
+	FText txt_lvl3("3", 120, "resources\\fonts\\pixeltime\\PixelTimes.ttf");
+	Button bt_lvl3(txt_lvl3, tm.PullTexture("resources\\buttons\\button_level.png"), {50, 5});
+
+	f1 = window.getSize().x - window.getSize().x / 10 - bt_lvl3.GetTexture().getSize().x;
+	f2 = window.getSize().y / 10 + 50;
+	bt_lvl3.SetPosition({ f1, f2 });
 
 	Button bt_car_1(tm.PullTexture("resources\\cars\\car_1.png"));
 	bt_car_1.SetScale({ 4,4 });
@@ -46,14 +60,14 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 
 	Button bt_car_2(tm.PullTexture("resources\\cars\\car_2.png"));
 	bt_car_2.SetScale({ 4,4 });
-	f1 = window.getSize().x / 2 - bt_car_1.GetTexture().getSize().x / 2;
+	f1 = window.getSize().x / 2 - bt_car_2.GetTexture().getSize().x / 2;
 	f2 = window.getSize().y - window.getSize().y / 10 - 50;
 	
 	bt_car_2.SetPosition({ f1,f2 });
 
 	Button bt_car_3(tm.PullTexture("resources\\cars\\car_police.png"));
 	bt_car_3.SetScale({ 4,4 });
-	f1 = window.getSize().x / 2 - bt_car_1.GetTexture().getSize().x / 2;
+	f1 = window.getSize().x / 2 - bt_car_3.GetTexture().getSize().x / 2;
 	f2 = window.getSize().y - window.getSize().y / 10 - 50;
 
 	bt_car_3.SetPosition({ f1,f2 });
@@ -88,7 +102,7 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 			case Event::MouseButtonPressed: //Нажата кнопка мыши
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{ 
-					if (isBelong(Mouse::getPosition(window), bt_lvl1))
+					if (isBelong(Mouse::getPosition(window), bt_lvl3))
 						if (levelStart(window, tm, carType, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
 							return 1;
 					
@@ -105,10 +119,19 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 					f2 = window.getSize().y / 10 + 50;
 					bt_lvl1.SetPosition({ f1, f2 });
 
+					f1 = window.getSize().x / 2 - 15;
+					f2 = window.getSize().y / 10 + 50;
+					bt_lvl2.SetPosition({ f1,f2 });
+
+					f1 = window.getSize().x - window.getSize().x / 10 - bt_lvl3.GetTexture().getSize().x;
+					f2 = window.getSize().y / 10 + 50;
+					bt_lvl3.SetPosition({ f1, f2 });
+
 					f1 = window.getSize().x / 2 - bt_car_1.GetTexture().getSize().x / 2;
 					f2 = window.getSize().y - window.getSize().y / 10 - 50;
 					bt_car_1.SetPosition({ f1,f2 });
 					bt_car_2.SetPosition({ f1,f2 });
+					bt_car_3.SetPosition({ f1,f2 });
 
 					f1 = window.getSize().x / 2 - bt_car_next.GetTexture().getSize().x / 2 + 170;
 					f2 = window.getSize().y - window.getSize().y / 10 - 50;
@@ -137,10 +160,19 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 				f2 = window.getSize().y / 10 + 50;
 				bt_lvl1.SetPosition({ f1, f2 });
 
+				f1 = window.getSize().x / 2 - 15;
+				f2 = window.getSize().y / 10 + 50;
+				bt_lvl2.SetPosition({ f1,f2 });
+
+				f1 = window.getSize().x - window.getSize().x / 10 - bt_lvl3.GetTexture().getSize().x;
+				f2 = window.getSize().y / 10 + 50;
+				bt_lvl3.SetPosition({ f1, f2 });
+
 				f1 = window.getSize().x / 2 - bt_car_1.GetTexture().getSize().x / 2;
 				f2 = window.getSize().y - window.getSize().y / 10 - 50;
 				bt_car_1.SetPosition({ f1,f2 });
 				bt_car_2.SetPosition({ f1,f2 });
+				bt_car_3.SetPosition({ f1,f2 });
 
 				f1 = window.getSize().x / 2 - bt_car_next.GetTexture().getSize().x / 2 + 170;
 				f2 = window.getSize().y - window.getSize().y / 10 - 50;
@@ -159,6 +191,8 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 
 		window.draw(menu.GetSprite());
 		bt_lvl1.Draw(window);
+		bt_lvl2.Draw(window);
+		bt_lvl3.Draw(window);
 		switch (carType) {
 		case 0: bt_car_1.Draw(window); break;
 		case 1: bt_car_2.Draw(window); break;
