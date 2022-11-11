@@ -136,16 +136,22 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="levels\level_test.lvl">
+    <None Include="levels\level_final.lvl">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="levels\level_test_2.lvl">
+    <None Include="levels\level_finalCar.lvl">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="levels\level_testcar.lvl">
+    <None Include="levels\level_finalTypes.lvl">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="levels\level_testtypes.lvl">
+    <None Include="levels\level_first.lvl">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="levels\level_firstCar.lvl">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="levels\level_firstTypes.lvl">
       <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>

@@ -189,10 +189,12 @@
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="levels\level_test.lvl" />
-    <None Include="levels\level_testcar.lvl" />
-    <None Include="levels\level_testtypes.lvl" />
-    <None Include="levels\level_test_2.lvl" />
+    <None Include="levels\level_final.lvl" />
+    <None Include="levels\level_finalCar.lvl" />
+    <None Include="levels\level_finalTypes.lvl" />
+    <None Include="levels\level_first.lvl" />
+    <None Include="levels\level_firstCar.lvl" />
+    <None Include="levels\level_firstTypes.lvl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

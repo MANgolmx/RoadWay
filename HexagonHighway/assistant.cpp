@@ -119,8 +119,8 @@ void ReadMainPositions(const char lvlpath[], DrivableCell road[], const int road
 		return;
 	}
 
-	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора
-	fscanf_s(level_file, "%i", &mpx);//TODO: Заменить на движение курсора
+	fscanf_s(level_file, "%i %i", &mpx, &mpy);//TODO: Заменить на движение курсора по файлу
+	fscanf_s(level_file, "%i", &mpx);//TODO: Заменить на движение курсора по файлу
 
 	for (int i = 0; i < roadSize; i++)
 	{

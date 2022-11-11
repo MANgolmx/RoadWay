@@ -105,12 +105,11 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 					if (isBelong(Mouse::getPosition(window), bt_lvl3))
 					{
 						lvlStart:
-						int lvlCode = levelStart(window, tm, carType, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl");
+						int lvlCode = levelStart(window, tm, carType, "levels\\level_final.lvl", "levels\\level_finalCar.lvl", "levels\\level_finalTypes.lvl");
 						if (lvlCode == 909)
 							goto lvlStart;
 						else if (lvlCode)
 							return 1;
-					
 					}
 
 					if (isBelong(Mouse::getPosition(window), bt_car_next))
