@@ -4,7 +4,7 @@
 class DrivableCell;
 class NonDrivableCell;
 
-enum directions;
+enum Directions;
 
 class Car
 {
@@ -20,8 +20,8 @@ private:
 	sf::Texture* car_texture;
 	sf::Sprite car_sprite;
 
-	directions lastDirection;
-	directions direction;
+	Directions lastDirection;
+	Directions direction;
 
 	bool isMoving;
 
@@ -41,7 +41,7 @@ public:
 
 	void SetPosition(sf::Vector2f pos);
 	void SetMainPosition(sf::Vector2f pos);
-	void SetDirection(directions dir);
+	void SetDirection(Directions dir);
 
 	void ReCalcPosition(sf::RenderWindow& window);
 

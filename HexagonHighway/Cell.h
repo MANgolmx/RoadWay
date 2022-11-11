@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-enum directions { STOP ,UP, RIGHT, DOWN, LEFT};
+enum Directions { STOP ,UP, RIGHT, DOWN, LEFT};
 
 class Cell
 {
@@ -11,7 +11,7 @@ protected:
 
 	sf::Vector2f position;
 	sf::Vector2f mainPosition;
-	directions direction;
+	Directions direction;
 
 public:
 	Cell();
@@ -31,8 +31,8 @@ public:
 	void SetMainPosition(int x, int y);
 	sf::Vector2f GetMainPosition();
 
-	directions GetDirection();
-	void SetDirection(directions dir);
+	Directions GetDirection();
+	void SetDirection(Directions dir);
 
 	void Rotation();
 

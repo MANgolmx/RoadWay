@@ -22,7 +22,7 @@ public:
 	void SetChose(bool ch);
 
 	void SetDrivableType(drivableTypes tp);
-	bool CanGo(directions& carDir, directions& lastCarDir);
+	bool CanGo(Directions& carDir, Directions& lastCarDir);
 
 	void Draw(sf::RenderWindow& win, NonDrivableCell chosen);
 

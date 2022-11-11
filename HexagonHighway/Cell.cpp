@@ -94,12 +94,12 @@ Vector2f Cell::GetMainPosition()
 	return mainPosition;
 }
 
-directions Cell::GetDirection()
+Directions Cell::GetDirection()
 {
 	return direction;
 }
 
-void Cell::SetDirection(directions dir)
+void Cell::SetDirection(Directions dir)
 {
 	direction = dir;
 }

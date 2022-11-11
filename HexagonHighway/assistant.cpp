@@ -64,9 +64,15 @@ void SetDrivablePath(TextureManager& tm, DrivableCell mas[], const int masSize,
 	mas[0].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
 	mas[0].SetDrivableType(start);
 	mas[0].ChangeMoveStatus(false);
+	for (int i = 0; i < rand() % 4; i++)
+		mas[0].Rotation();
+
 	mas[1].SetCellSprite(tm.PullTexture("resources\\cells\\finish.png"));
 	mas[1].SetDrivableType(finish);
 	mas[1].ChangeMoveStatus(false);
+	for (int i = 0; i < rand() % 4; i++)
+		mas[1].Rotation();
+
 	for (int i = 2; i < masSize; i++)
 		mas[i].SetType(tm, straight, turned, threeway, fourway);
 }
@@ -168,7 +174,7 @@ void SetIsChosen(bool var, DrivableCell road[], const int roadSize)
 void ReadCarPosition(Car& car, const char lvlpath[])
 {
 	float mx, my;
-	directions dir;
+	Directions dir;
 
 	FILE* level_file;
 

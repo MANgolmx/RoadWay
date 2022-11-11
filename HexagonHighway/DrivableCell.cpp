@@ -43,7 +43,7 @@ void DrivableCell::SetDrivableType(drivableTypes tp)
 	type = tp;
 }
 
-bool DrivableCell::CanGo(directions& carDir, directions& lastCarDir)
+bool DrivableCell::CanGo(Directions& carDir, Directions& lastCarDir)
 {
 	switch (type) {
 	case straight:

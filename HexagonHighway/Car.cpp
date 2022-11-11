@@ -341,7 +341,7 @@ void Car::SetMainPosition(sf::Vector2f pos)
 	mainPosition = pos;
 }
 
-void Car::SetDirection(directions dir)
+void Car::SetDirection(Directions dir)
 {
 	direction = dir;
 }
