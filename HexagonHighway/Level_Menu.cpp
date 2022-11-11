@@ -103,9 +103,16 @@ int levelMenu(sf::RenderWindow& window, TextureManager& tm)
 				if (Mouse::isButtonPressed(Mouse::Button::Left)) //Левая кнопка мыши
 				{ 
 					if (isBelong(Mouse::getPosition(window), bt_lvl3))
-						if (levelStart(window, tm, carType, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl"))
+					{
+						lvlStart:
+						int lvlCode = levelStart(window, tm, carType, "levels\\level_test.lvl", "levels\\level_testcar.lvl", "levels\\level_testtypes.lvl");
+						if (lvlCode == 909)
+							goto lvlStart;
+						else if (lvlCode)
 							return 1;
 					
+					}
+
 					if (isBelong(Mouse::getPosition(window), bt_car_next))
 						if (carType < 2) carType++;
 						else carType = 0;

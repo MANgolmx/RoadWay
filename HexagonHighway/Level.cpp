@@ -93,6 +93,8 @@ int levelStart(RenderWindow& window, TextureManager& tm, int carType, const char
 				if (event.key.code == Keyboard::Space)
 					if (!car.IsMoving())
 						car.StartMoving();
+				if (event.key.code == Keyboard::R)
+					return 909;
 				break;
 			case Event::Resized:
 				Vector2f windowSize = Vector2f(event.size.width, event.size.height);
